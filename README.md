@@ -25,6 +25,9 @@ PHP+MYSQL+REDIS
 #### 外卖、点餐、顾客调查表单依赖
 表单大师 http://www.jsform.com
 
+#### 小票订单打印
+佳博云打印 https://cp.poscom.cn
+
 #### 收款语音播报
 广州飞鱼科技 FY100语音播报 http://www.gzfyit.com/
 
@@ -33,14 +36,16 @@ PHP+MYSQL+REDIS
 
 
 #### 程序架构
-frontend-customer 顾客端小程序
-frontend-manager  商户端小程序
-frontend-agent    代理商端小程序
-frontend-customer-template  顾客端小程序模板（供微信开放平台使用，生成商户主体的独立小程序）
-backend           服务端脚本，供小程序调用
-backend-websocket 新浪云websocket程序
-crontab-and-jobs  服务端定时任务和守护进程
-sql-data          数据结构和测试数据
+suishouhui
+├── frontend-customer --顾客端小程序
+├── frontend-manager  --商户端小程序
+├── frontend-agent    --代理商端小程序
+├── frontend-customer-template  --顾客端小程序模板（供微信开放平台使用，生成商户主体的独立小程序）
+├── backend           --服务端脚本，供小程序调用
+├── backend-websocket --新浪云websocket程序
+├── backend-open      --微信开放平台事件回调
+├── crontab-and-jobs  --服务端定时任务和守护进程
+├── sql-data          --数据结构和测试数据
 
 #### 安装教程
 
