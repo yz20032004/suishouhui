@@ -1,0 +1,124 @@
+<!--pages/together/detail.wxml-->
+<view class="headimg-box">
+  <image src="{{together.icon_image}}" style="height:170px;width:100%;"></image>
+</view>
+<view class="head-box">
+  <view class="price-box">
+    <text class="price">￥{{together.price}}</text>
+    <text class="amount">{{together.amount}}</text>
+  </view>
+  <view class="title-box">
+    <text>【{{together.shop.business_name}}】{{together.title}}</text>
+    <text wx:if="{{together.single_limit>0}}">(每人限购{{together.single_limit}}份)</text>
+    <text wx:if="{{together.is_member_limit == '1'}}">(仅限会员购买)</text>
+  </view>
+  <view class="count-box">
+    <view class="balance">
+      <text wx:if="{{together.total_limit > 0}}">剩余{{balance}}份/</text>
+      <text>已售{{together.sold}}份</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="together-box" wx:if="{{together_list.length > 0}}">
+  <view class="look-title">这些人已拼单</view>
+  <view class="headimgurl-box">
+    <block wx:for="{{together_list}}">
+    <view style="width:20%;float:left">
+      <image src="{{item.headimgurl}}" class="memberinfo-avatar"></image>
+    </view>
+    </block>
+  </view>
+  <view class="time-box" wx:if="{{need_people > 0}}">
+    <view >还差<text class="need-people">{{need_people}}人</text>拼成</view>
+    <view><text wx:if="{{'0' == timer}}">已结束</text><text wx:else>剩余{{timer}}</text></view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="need-look">
+  <view class="look-title">购买须知</view>
+  <view class="rule-row">
+    <view class="tip-title">券有效期</view>
+    <view class="look-info">
+      <text wx:if="{{together.coupon_data.validity_type == 'relative'}}">自购买之日起{{together.coupon_data.total_days}}天有效</text>
+      <text wx:else>{{together.coupon_data.date_start}}至{{together.coupon_data.date_end}} 23:59</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">使用规则</view>
+    <view class="look-info">
+      <text>{{together.coupon_data.description}}</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">成团时限</view>
+    <view class="look-info">
+      <text>{{together.expire_times}}小时</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">退款须知</view>
+    <view class="look-info">
+      <text>未成团将自动退款，成团后券到期未使用作废</text>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>
+<view class="deal_detail" wx:if="{{together.coupon_data.deal_detail}}">
+  <view class="deal-title">详情内容</view>
+  <view class="deal-info">{{together.coupon_data.deal_detail}}</view>
+</view>
+
+<view class="detail-box">
+  <block wx:for="{{together.image_list}}">
+    <view class="detail-image">
+      <image src="{{item.image_url}}" mode="widthFix" style="width:100%"></image>
+    </view>
+  </block>
+</view>
+
+
+<view class="shop-info">
+  <view class="deal-title">门店详情</view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/shop.png"></image>
+    <view class="weui-cell__bd">
+      <text class="shop_name">{{shop.business_name}}{{shop.branch_name}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/location.png"></image>
+    <view class="address" bindtap='open_location'><text class="shop_time">地址: {{shop.city}}{{shop.district}}{{shop.address}}</text></view>
+    <image style="width:20px;height:20px;margin-left:10px;margin-right:10px;" src="/images/phone.png" data-phone="{{shop.telephone}}" bindtap='call'></image>
+  </view>
+</view>
+<view class="footer"></view>
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+  <view class="btn-left" hover-class="weui-form-preview__btn_active">
+      <view class="footer-func-box">
+        <view class="footer-box-image">
+          <button class='share-btn'  bindtap="more"><image src="/images/more.png" style="width:20px;height:20px"></image></button></view>
+        <view class="footer-box-text">
+          <button class='share-btn' bindtap="more">更多</button></view>
+      </view>
+      <view class="footer-func-box" bindtap="share">
+        <view class="footer-box-image">
+          <button class='share-btn' open-type="share"><image src="/images/share.png" style="width:20px;height:20px"></image></button></view>
+        <view class="footer-box-text">
+          <button class='share-btn' open-type="share">分享</button></view>
+      </view>
+      <view class="footer-func-box" bindtap="backtoindex">
+        <view class="footer-box-image">
+          <button class='share-btn'><image src="/images/index2.png" style="width:20px;height:20px"></image></button></view>
+        <view class="footer-box-text">
+          <button class='share-btn'>首页</button></view>
+      </view>
+  </view>
+  <view class="btn-right" hover-class="weui-form-preview__btn_active" bindtap="buy">{{buy_title}}</view>
+</view>

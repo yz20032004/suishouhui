@@ -1,0 +1,341 @@
+<!--pages/setting/add_function.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'marketing' != merchant.marketing_type}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="600">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/member.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">会员营销基础功能</text>
+      <text class="tip">顾客加会员、开卡礼、消费返积分、积分兑换、群发优惠券、群发短信</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_grade}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/privilege.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">等级特权</text>
+      <text class="tip">顾客消费升级，等级越高优惠和特权越多</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_groupon}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/shopping.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">团购</text>
+      <text class="tip">顾客可购买单张或多张优惠券，锁定顾客到店消费</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_distribute}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/shopping.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">团购分销</text>
+      <text class="tip">好友团购下单得佣金</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_timing}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/timing.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">次卡售卖</text>
+      <text class="tip">顾客可在线购买服务项目的单次或多次卡</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'marketing' == merchant.marketing_type && '0' == merchant.is_together}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="/images/pintuan.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">拼团</text>
+      <text class="tip">多人齐买享优惠，快速拉新引流</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_paybuycoupon}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="/images/paybuy.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">加价购券</text>
+      <text class="tip">顾客买单时自助加价购买优惠券，促进顾客复购</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_payed_share}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="/images/share.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">分享有礼</text>
+      <text class="tip">顾客买单后可分享优惠券给微信好友</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_pay_gift}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/fanli.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">支付有礼</text>
+      <text class="tip">顾客支付完后可领取优惠券</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_recharge}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/recharge.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">储值优惠</text>
+      <text class="tip">会员储值享受优惠，锁定会员多次消费</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_rechargenopay}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/free.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">激励储值</text>
+      <text class="tip">可设置为储值3倍免掉当笔费用</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_wakeup}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/wakeup.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">沉睡唤醒</text>
+      <text class="tip">自动给一定时间未消费的会员赠送优惠券</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_vipcard}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="/images/vip.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">付费卡</text>
+      <text class="tip">顾客购买付费会员卡，享受升级礼和尊贵权益</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_memberday}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/date.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">会员日</text>
+      <text class="tip">固定日期特别优惠，提升会员价值感</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_sharecoupon}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/sharecoupon.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">好友赠券</text>
+      <text class="tip">可给微信好友或微信群里一次赠送多种优惠券</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_wechatgroup}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="100">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/group.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">微信群</text>
+      <text class="tip">可推荐顾客加入门店微信群</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'wxaa02c1c97542b1e4' == merchant.appid}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="1000">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/huiicon.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">独立小程序</text>
+      <text class="tip">会员可使用商户品牌名称命名的独立小程序</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_waimai}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="1200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/waimai.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">外卖/外送</text>
+      <text class="tip">顾客可点外卖，商家选择自配送或第三方平台配送</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_reduce}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/dis.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">外卖消费立减</text>
+      <text class="tip">顾客消费满多少立减多少，可配置多种立减方案</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_ordering}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="1200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/ordering.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">扫码点餐</text>
+      <text class="tip">顾客扫码点餐，节省服务员点餐时间，可选餐前或餐后买单</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'0' == merchant.is_mall}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="1200">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/mall.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">商城</text>
+      <text class="tip">顾客线上购买商品，商家发快递</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'general' == merchant.mch_type}}">
+  <view class="weui-flex  weui-cell" bindtap="buy" data-cost="0">
+    <view style="width:25%">
+      <image class="avatar" src="../../images/scan.png" background-size="cover"></image>
+    </view>
+    <view style="width:65%">
+      <text class="name">在线支付</text>
+      <text class="tip">顾客在线使用微信或支付宝支付付款，自动扣券扣余额返积分，同时可在线储值、团购</text>
+    </view>
+    <view style="width:10%;text-align:right">
+      <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</view>
+
+<view class="ruleZhezhao" wx:if="{{showBuyBoxTip}}">
+  <view class='ruleZhezhaoContent'>
+    <view class='box_tip'>
+       功能费{{cost}}元一年，请联系客服购买
+    </view>
+    <button type='primary' class='contact-btn' open-type="contact" bindcontact="handleContact" style="display:none">立即回复</button>
+    <image src='/images/close.png' class='ruleHide' bindtap='closeBuyBox'></image>
+  </view>
+</view>

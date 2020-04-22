@@ -1,0 +1,31 @@
+<!--pages/shop/revenue_config.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">微信和支付宝成本费率是0.2%，基础支付为店内支付，包括扫码支付和扫码点餐支付，营销支付为线上交易，包括在线外卖、储值、团购、拼团、次卡和付费卡售卖，费率更改后立即生效</view>
+  <view class="weui-cells__title">基础支付佣金 = 店内支付流水 X (基础支付费率 - 0.2%)</view>
+  <view class="weui-cells__title">营销支付佣金 = 线上支付流水 X (营销支付费率 - 基础支付费率)</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">基础支付费率</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="digit" name="wechat_fee_rate" value="{{merchant.wechat_fee_rate * 100}}" />
+      </view>
+      <view class="percent_title">%</view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">营销支付费率</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="digit" name="marketing_fee_rate" value="{{merchant.marketing_fee_rate * 100}}" />
+      </view>
+      <view class="percent_title">%</view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

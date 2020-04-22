@@ -1,0 +1,11 @@
+/* pages/index/bind_alipay.wxss */
+.center {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.cancel {
+  width: 70%;
+  margin: 0 auto;
+}

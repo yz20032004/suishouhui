@@ -1,0 +1,149 @@
+<!--pages/coupon/list.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{couponData['enable']}}">
+              <navigator url="preview?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="coupon-type">
+                    <text wx:if="{{'cash'==item.coupon_type}}">代金券</text>
+                    <text wx:elif="{{'gift'==item.coupon_type}}">礼品券</text>
+                    <text wx:elif="{{'discount'==item.coupon_type}}">折扣券</text>
+                    <text wx:elif="{{'groupon'==item.coupon_type}}">团购券</text>
+                    <text wx:elif="{{'waimai'==item.coupon_type}}">外送券</text>
+                    <text wx:elif="{{'mall'==item.coupon_type}}">商城券</text>
+                    <text wx:else>次卡券</text>
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="coupon-name">{{item.name}}</text>
+                  </view>
+                  <view class="create-time">
+                    <text wx:if="{{'relative'==item.validity_type}}">有效期：领取后{{item.total_days}}天</text>
+                    <text wx:else>有效期: {{item.date_start}}至{{item.date_end}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{couponData['unenable']}}">
+              <navigator url="preview?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="coupon-type">
+                    <text wx:if="{{'cash'==item.coupon_type}}">代金券</text>
+                    <text wx:elif="{{'gift'==item.coupon_type}}">礼品券</text>
+                    <text wx:elif="{{'discount'==item.coupon_type}}">折扣券</text>
+                    <text wx:elif="{{'waimai'==item.coupon_type}}">外送券</text>
+                    <text wx:elif="{{'groupon'==item.coupon_type}}">团购券</text>
+                    <text wx:elif="{{'mall'==item.coupon_type}}">商城券</text>
+                    <text wx:else>次卡券</text>
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="coupon-name">{{item.name}}</text>
+                  </view>
+                  <view class="create-time">
+                    <text wx:if="{{'relative'==item.validity_type}}">有效期：领取后{{item.total_days}}天</text>
+                    <text wx:else>有效期: {{item.date_start}}至{{item.date_end}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{couponData['expire']}}">
+              <navigator url="preview?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="coupon-type">
+                    <text wx:if="{{'cash'==item.coupon_type}}">代金券</text>
+                    <text wx:elif="{{'gift'==item.coupon_type}}">礼品券</text>
+                    <text wx:elif="{{'discount'==item.coupon_type}}">折扣券</text>
+                    <text wx:elif="{{'groupon'==item.coupon_type}}">团购券</text>
+                    <text wx:elif="{{'waimai'==item.coupon_type}}">外送券</text>
+                    <text wx:elif="{{'mall'==item.coupon_type}}">商城券</text>
+                    <text wx:else>次卡券</text>                  
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="coupon-name">{{item.name}}</text>
+                  </view>
+                  <view class="create-time">
+                    <text wx:if="{{'relative'==item.validity_type}}">有效期：领取后{{item.total_days}}天</text>
+                    <text wx:else>有效期: {{item.date_start}}至{{item.date_end}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{couponData['empty']}}">
+              <navigator url="preview?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="coupon-type">
+                    <text wx:if="{{'cash'==item.coupon_type}}">代金券</text>
+                    <text wx:elif="{{'gift'==item.coupon_type}}">礼品券</text>
+                    <text wx:elif="{{'discount'==item.coupon_type}}">折扣券</text>
+                    <text wx:elif="{{'groupon'==item.coupon_type}}">团购券</text>
+                    <text wx:elif="{{'waimai'==item.coupon_type}}">外送券</text>
+                    <text wx:elif="{{'mall'==item.coupon_type}}">商城券</text>
+                    <text wx:else>次卡券</text>                  
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="coupon-name">{{item.name}}</text>
+                  </view>
+                  <view class="create-time">
+                    <text wx:if="{{'relative'==item.validity_type}}">有效期：领取后{{item.total_days}}天</text>
+                    <text wx:else>有效期: {{item.date_start}}至{{item.date_end}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-box" wx:if="{{'groupon' == marketing_type}}">
+  <button class="weui-btn" type="primary" bindtap="createGrouponCoupon">创建团购券</button>
+</view>
+<view class="bottom-box" wx:elif="{{'waimai' == marketing_type}}">
+  <button class="weui-btn" type="primary" bindtap="createCashCoupon">创建代金券</button>
+</view>
+<view class="bottom-box" wx:else>
+  <picker bindchange="bindCouponTypeChange" value="{{coupon_typeIndex}}" range="{{coupon_types}}" >
+    <button class="weui-btn" type="primary">创建优惠券</button>
+  </picker>
+</view>

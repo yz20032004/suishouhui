@@ -1,0 +1,39 @@
+<!--pages/marketing/grade.wxml-->
+<!--pages/marketing/grade.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-tab__panel">
+      <block wx:for="{{grades}}">
+        <view class="weui-tab__content">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <navigator url="grade_edit?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+              <view style="width:75%">
+                <view>
+                  <text class="campaign-name">{{item.name}}</text>
+                </view>
+                <view>
+                  <text class="create-time">{{item.condition}}</text>
+                </view>
+              </view>
+              <view style="width:25%">
+                <view class="campaign-type">
+                  <text>设置权益</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+          </view>
+        </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="add">添加会员等级</button>
+  <button class="weui-btn" type="primary" plain="true" bindtap="back">返回</button>
+</view>
+

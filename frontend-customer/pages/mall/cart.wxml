@@ -1,0 +1,32 @@
+<!--pages/mall/cart.wxml-->
+<block wx:for="{{cart_box}}" wx:for-index="id" wx:for-item="item">
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<image style="width:60px;height:60px;margin-right:10px;" src="{{item.icon_url}}"></image>
+			<view class="weui-cell__bd">
+				<view><text class="shop_name">{{item.title}}</text></view>
+				<view>{{item.price}}元</view>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd">
+				<text>购买数量</text>
+			</view>
+			<view class="weui-cell__ft">
+				<image src="/images/{{image_reduces[id]}}.png" style="width:20px;height:20px;margin-right:5px;vertical-align:middle;" bindtap="reduce_total" data-id="{{id}}"></image>
+				<text class="buy-total">{{buy_totals[id].total}}</text>
+				<image src="/images/{{image_adds[id]}}.png" style="width:20px;height:20px;margin-left:5px;vertical-align:middle; " bindtap="add_total" data-id="{{id}}"></image>
+			</view>
+		</view>
+	</view>
+</block>
+
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+	<button class="btn-left" hover-class="weui-form-preview__btn_active">
+		合计：
+		<text class='consume'> ¥{{consume}} </text>
+	</button>
+	<button wx:if="{{member.nickname}}" class="btn-right" hover-class="weui-form-preview__btn_active" disabled='{{pay_disabled}}' bindtap="pay">去结算</button>
+	<button wx:else class="btn-right" hover-class="weui-form-preview__btn_active" disabled='{{pay_disabled}}' lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser">去结算</button>
+</view>

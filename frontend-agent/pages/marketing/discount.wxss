@@ -1,0 +1,10 @@
+/* pages/marketing/discount.wxss */
+.disable_box{
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+.disable_info{
+  font-size: 15px;
+  color: red;
+}

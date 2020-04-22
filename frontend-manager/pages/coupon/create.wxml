@@ -1,0 +1,154 @@
+<!--pages/coupon/create.wxml-->
+<form bindsubmit="submit">
+  <input type="text" name="type" value="{{coupon_type}}" style="display:none" />
+  <view class="weui-cells__title">{{coupon_title}}信息
+  <block wx:if="{{discount_display == ''}}">(请填写1~9.9之间的数字，如打85折请填写8.5）</block></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input" style="display:{{discount_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">折扣大小</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="digit" name="discount" bindinput="copy_discount" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" style="display:{{name_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">{{coupon_title}}名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写,不超过9个汉字" type="text" name="name" value="{{name_title}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" style="display:{{amount_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">{{coupon_title}}面值</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="{{amount_placeholder}}" type="number" name="amount" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" wx:if="{{'cash' == coupon_type || 'discount' == coupon_type}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">券最低消费</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字,不填则无限制" type="number" name="consume_limit" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" wx:if="{{'cash' == coupon_type && ('1' == is_waimai || '1' == is_mall)}}" >
+      <radio-group class="radio-group" name="type">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="cash" checked />
+          </view>
+          <view class="weui-cell__bd">仅限堂食消费</view>
+        </label>
+        <label class="weui-cell weui-check__label" wx:if="{{'1' == is_waimai}}">
+          <view class="weui-cell__hd">
+            <radio value="waimai" checked="" />
+          </view>
+          <view class="weui-cell__bd">仅限外送消费</view>
+        </label>
+        <label class="weui-cell weui-check__label" wx:if="{{'1' == is_mall}}">
+          <view class="weui-cell__hd">
+            <radio value="mall" checked="" />
+          </view>
+          <view class="weui-cell__bd">仅限商城消费</view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="weui-cell weui-cell_switch" style='display:none'>
+      <view class="weui-cell__bd">券是否指定商品可用</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_single" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">有效期</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">请选择</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindExpireTypeChange" value="{{expireTypeIndex}}" range="{{expireTypes}}" name="validity_type">
+          <view class="weui-select weui-select_in-select-after">{{expireTypes[expireTypeIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" style="display:{{hard_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">自领取之日起</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写天数" type="number" name="total_days" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" style="display:{{relative_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">开始日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+          <view class="weui-input">{{date_start}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input" style="display:{{relative_display}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">结束日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+          <view class="weui-input">{{date_end}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch" style="display:{{hard_display}}">
+      <view class="weui-cell__bd">领券当天是否可用</view>
+      <view class="weui-cell__ft">
+        <switch checked value="1" name="is_usefully_sendday" />
+      </view>
+    </view>
+  </view>
+
+  <block style="display:{{'groupon' != coupon_type}}">
+  <view class="weui-cells__title">库存(最多1万张，可修改)</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">库存数量</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="" type="number" name="balance" value='10000' maxlength="5" />
+      </view>
+    </view>
+  </view>
+  </block>
+
+  <block wx:if="{{'groupon' == coupon_type || 'timing' == coupon_type}}">
+  <view class="weui-cells__title">{{coupon_title}}详情</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入{{coupon_title}}商品或服务项目,必填" style="height: 5.3em" name="deal_detail" />
+      </view>
+    </view>
+  </view>
+  </block>
+
+  <view class="weui-cells__title">使用规则</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入文本,可不填" style="height: 4.3em" name="description" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">添加</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

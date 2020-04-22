@@ -1,0 +1,46 @@
+<!--pages/index/recharge_detail.wxml-->
+<!--pages/recharge/detail.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell card-head">
+    <view style="width:80%;">
+        <text class="recharge">{{detail.touch}}元</text>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">充值优惠</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">充值金额</view>
+    <view class="weui-cell__ft member-right">
+        <view class='gift'>{{detail.touch}}元</view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">赠送</view>
+    <view class="weui-cell__ft member-right">
+        <view wx:if="{{'money_percent' == detail.award_type}}">{{detail.touch * detail.percent / 100}}元</view>
+        <view wx:elif="{{'money_constant' == detail.award_type}}">{{detail.amount}}元 </view>
+        <view wx:else>
+          <block wx:for="{{detail.coupons}}" wx:for-item="c">
+            <view class='award_coupon'>
+              {{c.coupon_name}}{{c.total}}张，有效期<text wx:if="{{c.expire_data.validity_type == 'relative'}}">{{c.expire_data.total_days}}天</text><text wx:else>自{{c.expire_data.date_start}}至{{c.expire_data.date_end}}</text> 
+              <text wx:if="{{c.expire_data.validity_type == 'relative' && c.expire_data.is_usefully_sendday == '0'}}">，领取当天不可用</text>
+              <text wx:if="{{c.expire_data.consume_limit > 0}}">，最低{{c.expire_data.consume_limit}}元起用;</text>
+              </view>
+          </block>
+        </view>
+      </view>
+  </view>
+    <view class="weui-cell">
+    <view class="weui-cell__bd member-left">使用须知</view>
+    <view class="weui-cell__ft member-right">
+      <text wx:if="{{detail.recharge_point_speed > 0}}">使用储值余额消费{{detail.recharge_point_speed}}倍返积分</text>
+      <text wx:else>使用储值余额消费不返积分</text>
+    </view>
+  </view>
+</view>
+  <view class="weui-cell">
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" bindtap='recharge'>充值</button>
+  </view>

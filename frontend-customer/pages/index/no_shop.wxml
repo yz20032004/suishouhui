@@ -1,0 +1,19 @@
+<!--pages/index/no_shop.wxml-->
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">浏览店铺</view>
+  </view>
+  <view class="weui-cell">
+    <view style='width:100%;text-align:center'><image style="width:150px;height:150px;" src="/images/shop.png"></image></view>
+  </view>
+    <view class="weui-cell">
+    <view style='width:100%;text-align:center'><text>您尚未领取门店会员卡</text></view>
+  </view>
+</view>
+
+<view class="footer" bindtap="open_intro">
+  <view><image src="/images/logo.png" style="width:25px;height:25px;"></image></view>
+  <view>随手惠管家提供技术支持</view>
+</view>

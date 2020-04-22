@@ -1,0 +1,47 @@
+/* pages/member/consumes.wxss */
+
+.tradeinfo {
+  text-align: center;
+  width: 33%;
+  margin-bottom: 10px;
+}
+
+.trade-tip {
+  background-color: #fff;
+  text-align: center;
+  font-size: 10px;
+  color: "#AAAAAA"；;
+}
+
+.trade-number {
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: "#f85f48";
+  margin-right: 20px;
+}
+
+.trade-card {
+  font-size: 15px;
+  color: darkgray;
+}
+
+.tradeinfo-name {
+  font-size: 15px;
+  color: "#f85f48";
+}
+
+.trade-time {
+  font-size: 10px;
+  color: "#AAAAAA";
+}
+
+.trade-type {
+  font-size: 10px;
+  background-color: "#CCFF99";
+}
+
+.trade-amount {
+  text-align: left;
+  color: red;
+}

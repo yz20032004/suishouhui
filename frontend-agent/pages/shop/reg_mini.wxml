@@ -1,0 +1,63 @@
+<!--pages/shop/reg_mini.wxml-->
+<form bindsubmit="submit" report-submit="true">
+	<view class="weui-cells__title">申请后微信将向企业法人下发一条模板消息来采集法人人脸信息完成注册，注册后即为认证状态，让商户拥有自己品牌名的独立小程序</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell" wx:if="{{'teyue' != mch_type}}">
+			<view class="weui-cell__bd">
+				<view class="weui-uploader">
+					<view class="weui-uploader__hd">
+						<view class="weui-uploader__title">请上传个体工商户或企业营业执照</view>
+					</view>
+					<view class="weui-uploader__bd">
+						<view class="weui-uploader__files">
+							<block wx:for="{{licenseImageList}}" wx:for-item="image">
+								<view class="weui-uploader__file">
+									<image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewLicenseImage"></image>
+								</view>
+							</block>
+						</view>
+						<view class="weui-uploader__input-box" style="">
+							<view class="weui-uploader__input" bindtap="chooseLicenseImage"></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">法人微信号</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" placeholder="请填写营法人个人微信号" type="text" name="legal_persona_wechat" value="" />
+				</view>
+			</view>
+		</view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">商户一级类目</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindFatherChange" value="{{fathers[fatherIndex].id}}" range="{{fathers}}" range-key="name" name="first">
+          <view class="weui-select weui-select_in-select-after">{{fathers[fatherIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+		<view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">商户二级类目</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindChildChange" value="{{childs[childIndex].id}}" range="{{childs}}" range-key="name" name="second">
+          <view class="weui-select weui-select_in-select-after">{{childs[childIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+	</view>
+
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit" disabled="{{true == btn_disabled}}">下一步</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>
+<view class="weui-cells__title" bindtap="previewImage" class="preview-title">点此可查看申请效果</view>

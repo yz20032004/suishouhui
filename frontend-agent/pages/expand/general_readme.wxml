@@ -1,0 +1,18 @@
+<!--pages/expand/general_readme.wxml-->
+<view class='readme'>
+  <view class='register_title'>
+    开通前准备
+  </view>
+  <view class='register_item'>1、请拍摄商户的门头照</view>
+  <view class='register_item'>2、请准备商户的品牌logo(非必须项）</view>
+</view>
+<view class="readme">
+  <view class='register_title'>
+    开通须知
+  </view>
+  <view class='register_item'>1、创建成功后，请将已申请好的微信支付商户号绑定该商户，以便开通在线支付功能;</view>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="register">现在去申请</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

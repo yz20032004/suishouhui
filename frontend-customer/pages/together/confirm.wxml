@@ -1,0 +1,42 @@
+<!--pages/together/confirm.wxml-->
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <image style="width:60px;height:60px;margin-right:10px;" src="{{together.icon_image}}"></image>
+    <view class="weui-cell__bd">
+      <text class="shop_name">【{{together.shop.business_name}}】{{together.title}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      购买数量<text wx:if="{{together.single_limit > 0}}">（限购{{together.single_limit}}份）</text>
+    </view>
+    <view class="weui-cell__ft">
+    <image src="/images/{{image_reduce}}.png" style="width:20px;height:20px;margin-right:5px;vertical-align:middle;" bindtap="reduce_total"></image>
+    <text class="buy-total">{{buy_total}}</text>
+    <image src="/images/{{image_add}}.png" style="width:20px;height:20px;margin-left:5px;vertical-align:middle; " bindtap="add_total"></image>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">单价</view>
+    <view class="weui-cell__ft">{{together.price}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">小计</view>
+    <view class="weui-cell__ft">{{consume}}</view>
+  </view>
+</view>
+
+<view class="together-tip">
+  <text>拼团有效期{{expire_times}}小时，有效期内未拼满自动全额退款，拼团成功后券到期未使用则过期作废不会退款。</text>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+  <button class="btn-left" hover-class="weui-form-preview__btn_active">
+    合计：
+      <text class='consume'> ¥{{consume}} </text>
+  </button>
+  <button class="btn-right" hover-class="weui-form-preview__btn_active" disabled='{{pay_disabled}}' bindtap="pay" wx:if="{{is_follow}}">立即支付</button>
+  <button class="btn-right" hover-class="weui-form-preview__btn_active" disabled='{{pay_disabled}}' lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser" wx:else>立即支付</button>
+</view>

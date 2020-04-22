@@ -1,0 +1,11 @@
+/* pages/marketing/point_exchange.wxss */
+.limit {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:5px;
+  margin-right: 10px;
+  background-color: #B452CD;
+  font-size: 13px;
+  color: white;
+  border-radius: 5%;
+}

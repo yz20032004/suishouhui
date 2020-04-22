@@ -1,0 +1,29 @@
+/* pages/index/shop_dashboard.wxss */
+.link_arrow {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.campaign-name {
+    margin:15px
+}
+
+.campaign-tip {
+    color: "#C0C0C0";
+    font-size: 12px
+}
+
+.campaign-type {
+    font-size: 10px;
+    color:"#AAAAAA";
+}
+
+.create-time {
+    font-size: 10px;
+    color:"#AAAAAA";
+}
+
+.campaign-status {
+    color: red;
+    font-size:15px
+}

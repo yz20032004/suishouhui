@@ -1,0 +1,41 @@
+<!--pages/point/detail.wxml-->
+<view class="headimg-box">
+  <image src="{{detail.image_url}}" style="height:170px;width:100%;"></image>
+</view>
+<view class="head-box">
+  <view class="price-box">
+    <text class="price">{{detail.point}}积分</text>
+  </view>
+  <view class="title-box">
+    <text>【{{shop.business_name}}】{{detail.coupon_name}}</text>
+  </view>
+  <view class="count-box">
+    <view class="balance">
+      <text wx:if="{{detail.is_limit>0 && detail.single_limit >0}}">每人限兑{{detail.single_limit}}份</text>
+      <text wx:if="{{detail.is_limit > 0}}">剩余{{detail.exchange_limit - detail.exchanged}}份</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">有效期</view>
+    <view class="weui-cell__ft member-right">
+        <view class='gift'>{{detail.validity_days}}</view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">使用须知</view>
+    <view class="weui-cell__ft member-right">
+      <text>{{detail.description}}</text>
+    </view>
+  </view>
+</view>
+<form bindsubmit="submit" report-submit="true">
+  <view class="weui-cell">
+   <button class="opencard-btn" hover-class="weui-form-preview__btn_active" wx:if="{{detail.is_limit && detail.exchange_limit == '0'}}" disabled>兑换结束</button>
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" form-type='submit' wx:else>立即兑换</button>
+  </view>
+</form>

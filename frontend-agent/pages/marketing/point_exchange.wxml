@@ -1,0 +1,17 @@
+<view class="weui-cells__title" wx:if="{{exchangeData.length > 0}}">积分兑换</view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{exchangeData.length > 0}}">
+  <block wx:for="{{exchangeData}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>{{item.point}}积分兑换{{item.coupon_name}}</view>
+        <view class='limit' wx:if="{{item.is_limit == '1'}}">库存:{{item.exchange_limit}}, 每人最多可兑{{item.single_limit}}张</view>
+      </view>
+      <button class="mini-btn" type="warn" size="mini" bindtap='del' data-id='{{item.id}}'>删除</button>
+    </view>
+  </block>
+</view>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="add_exchange">增加兑换内容</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

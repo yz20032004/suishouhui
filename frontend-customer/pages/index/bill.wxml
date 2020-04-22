@@ -1,0 +1,67 @@
+<!--pages/index/bill.wxml-->
+<view class='content'>
+  <block wx:for="{{list}}">
+    <view class='consume_item'>
+      <view class='trade'>
+        {{item.detail}} ￥{{item.trade}}
+      </view>
+      <view class='line'></view>
+      <view class='detail'>
+        <view class='title'>实付</view>
+        <view class='bill'>￥{{item.consume}}</view>
+        <block wx:if="{{'0' != item.coupon_fee}}">
+          <view class='title'>微信支付券立减</view>
+          <view class='bill'>-￥{{item.coupon_fee/100}}</view>
+        </block>
+        <block wx:if="{{'0' != item.get_point}}">
+          <view class='title'>返积分</view>
+          <view class='bill'>+{{item.get_point}}</view>
+        </block>
+        <block wx:if="{{'' != item.use_coupon_name}}">
+          <view class='title'>使用优惠券</view>
+          <view class='bill'>{{item.use_coupon_name}}</view>
+        </block>
+        <block wx:if="{{'0.00' != item.use_coupon_amount}}">
+          <view class='title'>优惠券抵扣</view>
+          <view class='bill'>-￥{{item.use_coupon_amount}}</view>
+        </block>
+        <block wx:if="{{'0' != item.point_amount}}">
+          <view class='title'>积分抵扣</view>
+          <view class='bill'>-￥{{item.point_amount}}</view>
+        </block>
+        <block wx:if="{{'0.00' != item.use_recharge}}">
+          <view class='title'>使用储值</view>
+          <view class='bill'>-￥{{item.use_recharge}}</view>
+        </block>
+        <block wx:if="{{'0.00' != item.use_reduce}}">
+          <view class='title'>参与消费立减</view>
+          <view class='bill'>-￥{{item.use_reduce}}</view>
+        </block>
+        <block wx:if="{{'0.00' != item.use_discount}}">
+          <view class='title'>参与消费折扣</view>
+          <view class='bill'>-￥{{item.use_discount}}</view>
+        </block>
+        <block wx:if="{{'0.00' != item.member_discount}}">
+          <view class='title'>会员折扣</view>
+          <view class='bill'>-￥{{item.member_discount}}</view>
+        </block>
+        <block wx:if="{{'0' != item.refund_fee}}">
+          <view class='title'>退款</view>
+          <view class='bill'>-￥{{item.refund_fee/100}}</view>
+        </block>
+      </view>
+      <view class='line'></view>
+      <view class='date'>
+        <text>{{item.created_at}}</text>
+        <text wx:if="{{'waimai' == item.pay_from}}" data-id="{{item.out_trade_no}}" bindtap="waimai_detail" class="detail_btn">订单详情</text>
+        <text wx:if="{{'在线点单' == item.detail}}" data-id="{{item.out_trade_no}}" bindtap="ordering_detail" class="detail_btn">点单详情</text>
+        <text wx:if="{{'商城消费' == item.detail}}" data-id="{{item.out_trade_no}}" bindtap="mall_detail" class="detail_btn">订单详情</text>
+      </view>
+    </view>
+  </block>
+</view>
+<block wx:if="{{list.length == '0'}}">
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

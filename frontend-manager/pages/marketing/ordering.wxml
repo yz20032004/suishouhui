@@ -1,0 +1,54 @@
+<!--pages/marketing/waimai.wxml-->
+
+<form bindsubmit="submit">
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_switch">
+			<view class="weui-cell__bd">打开在线点餐功能</view>
+			<view class="weui-cell__ft">
+				<switch bindchange="exchangeOpenSwitch" value="1" name="is_open" wx:if="{{ordering_config.is_open == '1'}}" checked />
+				<switch bindchange="exchangeOpenSwitch" value="1" name="is_open" wx:else />
+			</view>
+		</view>
+	</view>
+
+	<view style="display:{{ordering_display}}">
+		<view class="weui-cells__title">在线点餐配置</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell weui-cell_switch">
+				<view class="weui-cell__bd">先支付后享用</view>
+				<view class="weui-cell__ft">
+					<switch value="1" name="pay_first" wx:if="{{ordering_config.pay_first == '1'}}" checked />
+					<switch value="1" name="pay_first" wx:else />
+				</view>
+			</view>
+		</view>
+		<view class="weui-cells__title">可点餐时间段</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">开始时间</view>
+				</view>
+				<view class="weui-cell__bd">
+					<picker mode="time" value="{{ordering_config.time_start}}" start="07:00" end="23:59" bindchange="bindTimeStartChange">
+						<view class="weui-input">{{time_start}}</view>
+					</picker>
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">结束时间</view>
+				</view>
+				<view class="weui-cell__bd">
+					<picker mode="time" value="{{ordering_config.time_end}}" start="07:00" end="23:59" bindchange="bindTimeEndChange">
+						<view class="weui-input">{{time_end}}</view>
+					</picker>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit">确定</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

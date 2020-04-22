@@ -1,0 +1,8 @@
+/* pages/member/detail.wxss */
+.memberinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle
+}

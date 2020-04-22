@@ -1,0 +1,41 @@
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <navigator url="#" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>短信剩余条数</view>
+    </view>
+    <view class="weui-cell__ft">{{sms_total}}条</view>
+  </navigator>
+</view>
+
+<view class="weui-cells__title">请选择充值</view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-grids">
+      <view url="#" class="weui-grid" hover-class="weui-grid_active" data-trade="5" data-total="60" bindtap="requestPayment">
+        <view class="weui-grid__label">5元</view>
+        <view class="weui-grid__label">60条短信</view>
+      </view>
+      <view url="#" class="weui-grid" hover-class="weui-grid_active" data-trade="10" data-total="120" bindtap="requestPayment">
+        <view class="weui-grid__label">10元</view>
+        <view class="weui-grid__label">120条短信</view>
+      </view>
+      <view class="weui-grid" hover-class="weui-grid_active" data-trade="20" data-total="250" bindtap="requestPayment">
+        <view class="weui-grid__label">20元</view>
+        <view class="weui-grid__label">250条短信</view>
+      </view>
+      <view class="weui-grid" hover-class="weui-grid_active" data-trade="50" data-total="700" bindtap="requestPayment">
+        <view class="weui-grid__label">50元</view>
+        <view class="weui-grid__label">700条短信</view>
+      </view>
+      <view class="weui-grid" hover-class="weui-grid_active" data-trade="100" data-total="1500" bindtap="requestPayment">
+        <view class="weui-grid__label">100元</view>
+        <view class="weui-grid__label">1500条短信</view>
+      </view>
+      <view class="weui-grid" hover-class="weui-grid_active" data-trade="200" data-total="3000" bindtap="requestPayment">
+        <view class="weui-grid__label">200元</view>
+        <view class="weui-grid__label">3000条短信</view>
+      </view>
+    </view>
+  </view>
+</view>

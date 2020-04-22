@@ -1,0 +1,70 @@
+/* pages/coupon/preview.wxss */
+
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 20rpx 0;
+    width: 80%;
+    background: #FFFFFF;
+    margin: 10% auto;
+    border-radius: 20rpx;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.ruleHide{
+    height: 60rpx!important;
+    width: 60rpx!important;
+    position: absolute;
+    top: 0rpx;
+    right: 0rpx;
+}
+.rule{
+    display: block;
+    border: 1px solid #fff;
+    width: 100rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
+.closeButton {
+  margin-top: 30px;
+}
+.input-area{
+  width: 80%;
+  margin-left: 10%;
+  border: 1px solid #6B8E23;
+}
+.add_balance_title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+  color:#63B8FF;
+}
+.add_balance_btn{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.icon_url{
+  width: 100%;
+  text-align: center;
+  height:100px;
+}

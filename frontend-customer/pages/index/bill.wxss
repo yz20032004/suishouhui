@@ -1,0 +1,102 @@
+/* pages/index/bill.wxss */
+.consume_info {
+  background-color: red;
+  color: white;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.consume_item {
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 5%;
+  border-radius:10px;
+  background-color: white;
+}
+.trade {
+  color: black;
+  padding-top: 5px;
+  padding-right: 10px;
+  font-size: 18px;
+  text-align: right;
+  font-weight: bold;
+}
+.detail {
+  margin-left:20px;
+  margin-right:10px;
+  font-size: 15px;
+  overflow: hidden;
+}
+.title {
+  float: left;
+  width:50%;
+  color: gray;
+  text-align: left;
+}
+.bill {
+  float: left;
+  width: 50%;
+  color:gray;
+  text-align: right;
+}
+.date {
+  margin-left:20px;
+  color: gray;
+  text-align: left;
+  font-size: 15px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+.line {
+  padding-top: 10px;
+  width:90%;
+  height:0;
+  margin-left: 5%;
+  border-bottom: #EAEAEA 1px dashed;
+}
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}
+
+
+.shoptype-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: 10%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.general {
+  float: left;
+  font-size: 15px;
+  text-align: center;
+}
+
+.recharge {
+  float: left;
+  font-size: 15px;
+  text-align: center;
+}
+.waimai {
+  float: left;
+  font-size: 15px;
+  text-align: center;
+}
+.detail_btn {
+  color: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  float: right;
+  padding: 3px;
+  font-size: 13px;
+}
+.clear {
+  clear: both;
+}

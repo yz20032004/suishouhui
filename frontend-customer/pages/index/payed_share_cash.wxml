@@ -1,0 +1,41 @@
+<!--pages/index/payed_share_cash.wxml-->
+<view class='content'>
+  <view class="share-master">
+    <view class="master-avatar">
+      <image src="{{merchant_logo}}" class="memberinfo-avatar"></image>
+    </view>
+    <view class="master-name">
+      <text>{{merchant_name}}</text>
+    </view>
+  </view>
+</view>
+<view class="clear"></view>
+<form bindsubmit="submit">
+  <view class="btn-area">
+    <button class="btn" type="primary" bindtap="use_coupon" wx:if="{{member_get}}">使用优惠</button>
+    <button class="btn" type="primary" wx:elif="{{payed_share == memberList.length}}">已抢完</button>
+    <button class="btn" type="primary" form-type="submit" wx:elif="{{is_member}}">试试手气</button>
+    <button class="btn" type="primary"  lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser" wx:else>试试手气</button>
+  </view>
+</form>
+<view class="weui-cells__title">共{{payed_share}}份红包，已抢{{memberList.length}}份</view>
+  <view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{memberList}}">
+  <view class="weui-flex  weui-cell">
+    <view style="width:18%;">
+      <image class="memberinfo-avatar" src="{{item.headimgurl}} " background-size="cover"></image>
+    </view>
+    <view style="width:32%">
+      <text class="memberinfo-name">{{item.nickname}}</text>
+    </view>
+    <view style="width:50%;text-align:right ">
+      <text class="coupon-name">{{item.coupon_name}}</text>
+    </view>
+    <view class="clear"></view>
+  </view>
+</block>
+</view>
+<view class="bottom-info">
+  <view class="wechat-icon" style="display:none"><image src="/images/wechat_pay.png" style="width:25px;height:25px;"></image></view>
+  <view class="wechat-info"><text>{{merchant_name}}</text></view>
+</view>

@@ -1,0 +1,15 @@
+/* pages/campaign/list.wxss */
+.campaign-type {
+    font-size: 10px;
+    color:#AAAAAA;
+}
+
+.create-time {
+    font-size: 10px;
+    color: #bfbfbf;
+}
+
+.campaign-status {
+    color: red;
+    font-size:15px
+}

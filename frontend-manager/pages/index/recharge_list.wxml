@@ -1,0 +1,45 @@
+<!--pages/index/recharge_list.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <image src="{{member.headimgurl}}" class="member-avatar"></image>
+      <text class="member-name">{{member.name}}</text>
+    </view>
+    <view class="weui-cell__ft">
+      <text>储值余额</text>
+      <text class="money_trade">¥{{member.recharge}}</text>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<block wx:for="{{list}}">
+  <view class="tab-panel">
+    <view class="tab-panel-item tab-active" bindtap='detail' data-id="{{item.id}}">
+      <view class="aui-flex">
+        <view class="aui-price-nub">
+          <view class="aui-digit">
+            <h1>充 {{item.touch}}元</h1>
+          </view>
+          <view class="aui-full">
+            <p>得 {{item.touch}}元</p>
+          </view>
+        </view>
+        <view class="aui-flex-box">
+          <h2 wx:if="{{'money_percent' == item.award_type}}">赠 {{item.touch * item.percent / 100}}元</h2>
+          <h2 wx:elif="{{'money_constant' == item.award_type}}">赠 {{item.amount}}元 </h2>
+          <h2 wx:else>
+            <block wx:for="{{item.coupons}}" wx:for-item="c">
+              <text class='award_coupon'>赠 {{c.coupon_name}} {{c.total}}张 </text>
+            </block>
+          </h2>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:if="{{list.length == 0}}">
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>
+<image src="/images/index2.png" type="index" size="50" class="backtoindex" bindtap="backtoindex" wx:if="{{show_index}}"></image>

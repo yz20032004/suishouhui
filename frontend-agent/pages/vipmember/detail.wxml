@@ -1,0 +1,64 @@
+<!--pages/vipmember/detail.wxml-->
+<view class="weui-cells__title">详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">付费卡名称</view>
+    <view class="weui-cell__ft">{{vipcard.grade_name}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{grade.discount > 0}}">
+    <view class="weui-cell__bd">卡等级折扣</view>
+    <view class="weui-cell__ft">{{grade.discount}}折</view>
+  </view>
+  <view class="weui-cell" wx:if="{{grade.point_speed > 0}}">
+    <view class="weui-cell__bd">卡等级积分加速</view>
+    <view class="weui-cell__ft">{{grade.point_speed}}倍</view>
+  </view>
+  <view class="weui-cell" wx:if="{{grade.privilege}}">
+    <view class="weui-cell__bd">卡等级特权</view>
+    <view class="weui-cell__ft">{{grade.privilege}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">开卡礼</view>
+    <view class="weui-cell__ft">
+      <text>
+          <block wx:for="{{opengifts}}">
+            {{item.coupon_name}}{{item.coupon_total}}张 <p></p>
+          </block>
+        </text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>售价</text>
+    </view>
+    <view class="weui-cell__ft">{{vipcard.price}}元</view>
+  </view>
+  <block wx:if="{{'0' != vipcard.is_limit}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>限购数量</text>
+      </view>
+      <view class="weui-cell__ft">{{vipcard.total_limit}}张</view>
+    </view>
+  </block>
+</view>
+
+<view class="weui-cells__title">销售情况</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell" bindtap="open_sold_list">
+    <view class="weui-cell__bd">已售卖</view>
+    <view class="weui-cell__ft">{{vipcard.sold}}张</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">收益</view>
+    <view class="weui-cell__ft">{{vipcard.revenue}}元</view>
+  </view>
+</view>
+
+<view class="weui-btn-area">
+  <button wx:if="{{'0'==vipcard.is_stop}}" class=" weui-btn" type="warn" bindtap="stop" data-id="{{vipcard.id}}">停止售卖</button>
+  <button wx:else class=" weui-btn" type="primary" bindtap="start" data-id="{{vipcard.id}}">启动售卖</button>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

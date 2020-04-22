@@ -1,0 +1,138 @@
+<!--pages/marketing/member_day.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">设置会员日</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindMemberDayChange" value="{{days[dayIndex].day}}" range="{{days}}" range-key="title" name="day">
+          <view class="weui-select weui-select_in-select-after">{{days[dayIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择优惠活动</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCampaignChange" value="{{campaigns[campaignIndex].type}}" range="{{campaigns}}" range-key="title" name="campaign">
+          <view class="weui-select weui-select_in-select-after">{{campaigns[campaignIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{'point' == campaignType}}">
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">积分加速</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPointSpeedChange" value="{{point_speed_range[speedIndex].speed}}" range="{{point_speed_range}}" range-key="title" name="point_speed">
+            <view class="weui-select weui-select_in-select-after">{{point_speed_range[speedIndex].title}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{'reduce' == campaignType}}">
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">每消费满</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写金额" type="number" name="consume" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">立减</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写金额" type="number" name="reduce" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">最高优惠</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="选填" type="number" name="reduce_max" />
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+  <block wx:if="{{'discount' == campaignType}}">
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">设置折扣</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写1~9.9" type="digit" name="discount" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">最高优惠</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="选填" type="number" name="reduce_max" />
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{'rebate' == campaignType}}">
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">消费每满</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="元" type="number" name="consume" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">返优惠券</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindCouponChange" value="{{coupons[couponIndex].id}}" range="{{coupons}}" range-key="name" name="coupon_id">
+            <view class="weui-select weui-select_in-select-after">{{coupons[couponIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">最多返</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCountChange" value="{{countIndex}}" range="{{counts}}" name="coupon_total">
+          <view class="weui-select weui-select_in-select-after">{{limit}}</view>
+        </picker>
+      </view>
+    </view>
+    </view>
+  </block>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" wx:if="{{'assistant' != user.role}}">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

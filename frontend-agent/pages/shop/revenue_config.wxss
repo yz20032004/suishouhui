@@ -1,0 +1,15 @@
+/* pages/shop/revenue_config.wxss */
+.weui-cell__hd{
+  width:60%;
+}
+.weui-cell__bd{
+  width:30%;
+  padding-left:10px;
+}
+.percent_title{
+  width: 10%;
+  text-align: left;
+}
+.weui-label{
+  width:100%;
+}

@@ -1,0 +1,144 @@
+/**index.wxss**/
+
+.shoptype-box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: 10%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.xiaowei {
+  width: 33%;
+  float: left;
+  font-size: 15px;
+  text-align: center;
+}
+
+.teyue {
+  width: 33%;
+  float: left;
+  font-size: 15px;
+  text-align: center;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+.general {
+  font-size: 15px;
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.title-box {
+  width: 96%;
+  margin-left: 2%;
+}
+
+.expand-select {
+  float: left;
+  width: 30%;
+  color: gray;
+  font-size: 12px;
+}
+
+.status-select {
+  float: left;
+  width: 40%;
+  color: gray;
+  font-size: 12px;
+}
+
+.total {
+  float: right;
+  color: gray;
+  text-align: right;
+  font-size: 12px;
+}
+
+.expand-new {
+  width: 96%;
+  margin-left: 2%;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.expand-title {
+  margin-left: 7%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: green;
+}
+
+.shop-box {
+  width: 96%;
+  margin-left: 2%;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.shop-left {
+  width: 90%;
+  float: left;
+}
+
+.shop-right {
+  width: 10%;
+  float: right;
+}
+
+.shop-title {
+  margin-left: 7%;
+  padding-top: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+.expand-time {
+  margin-left: 7%;
+  font-size: 12px;
+  color: gray;
+  padding-bottom: 10px;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+}
+
+.name {
+  font-size: 20px;
+  float: left;
+}
+
+.tip {
+  color: darkgrey;
+  font-size: 12px;
+  float: left;
+}
+
+.state {
+  color: darkgrey;
+  font-size: 12px;
+  float: left;
+  margin-left: 5px;
+}
+
+.merchant-name{
+  height: 30px;
+}
+.merchant-state{
+  height: 15px;
+}

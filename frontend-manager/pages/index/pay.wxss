@@ -1,0 +1,17 @@
+/* pages/index/pay.wxss */
+
+.center {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.cancel {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.trade-title {
+  font-size: 30px;
+  margin-top: 10px;
+}

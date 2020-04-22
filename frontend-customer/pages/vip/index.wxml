@@ -1,0 +1,80 @@
+<!--pages/vip/index.wxml-->
+<view class="weui-cells weui-cells_after-title member-background">
+  <view class="weui-flex  weui-cell memberinfo-box">
+    <view style="width:20%">
+      <open-data type="userAvatarUrl" class="memberinfo-avatar"></open-data>
+    </view>
+    <view style="width:70%">
+      <view>
+        <open-data type="userNickName" class="memberinfo-name"></open-data>
+      </view>
+      <view class="clear"></view>
+      <view class='memberinfo-grade' bindtap='open_grades'>
+        <text wx:if="{{member.grade_title}}">等级：{{member.grade_title}}</text>
+        <text wx:else>未开卡</text>
+      </view>
+    </view>
+    <view style="width:10%">
+      <view wx:if="{{!member.mobile}}">
+        <view bindtap="getmembercard">
+          <image src="/images/qrcode1.png" class="card-qrcode"></image>
+        </view>
+      </view>
+      <view wx:else bindtap="opencard">
+          <image src="/images/qrcode1.png" class="card-qrcode"></image>
+      </view>
+    </view>
+  </view>
+  <view class="weui-flex account-box">
+    <view class="memberinfo" bindtap="openPoint">
+      <view>
+        <text class="member-number">{{member.point}}分</text>
+      </view>
+      <view>
+        <text class="member-tip">积分</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openBill">
+      <view>
+        <text class="member-number">{{member.recharge}}元</text>
+      </view>
+      <view>
+        <text class="member-tip">余额</text>
+      </view>
+    </view>
+    <view class="memberinfo_coupon" bindtap="openCouponList">
+      <view>
+        <text class="member-number">{{member.coupons}}张</text>
+      </view>
+      <view>
+        <text class="member-tip">优惠券</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <navigator url="../coupon/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/coupon1.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>我的优惠券</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator url="groupon_history" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/list1.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>团购订单</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator url="grade" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/card.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>我的特权</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+</view>

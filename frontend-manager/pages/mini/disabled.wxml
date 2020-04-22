@@ -1,0 +1,27 @@
+<!--pages/mini/disabled.wxml-->
+<view style="text-align: center; margin-top: 5px; border: none; padding: 10px;" class="wxParse-section">
+  <view style="display: inline-block; padding: 0.5em; font-size: 1em; border-color: rgb(0, 187, 12); color: rgb(0, 187, 12);" class="wxParse-section">
+    <view style="line-height: 22px; font-size: 15px;" class=" wxParse-p">
+      <view class="trade-title">您的账户已被暂停使用</view>
+    </view>
+  </view>
+</view>
+<view style="width:95%;margin-left:10px;margin-top:20px;margin-bottom:50px">
+  <view class="wxParse-p">
+    <view class="wxParse-br"></view>
+  </view>
+  <view class="wxParse-p" style="text-align:center">
+    <image src="/images/stop.png" data-from="article" style="width:200px;height:200px"></image>
+  </view>
+  <view class="wxParse-p">
+    <view class="wxParse-br"></view>
+  </view>
+  <view class="wxParse-p">
+    <view class="center">
+      <text style="font-size:14px">请联系您的店长</text>
+    </view>
+  </view>
+  <view class="wxParse-p">
+    <view class="wxParse-br"></view>
+  </view>
+</view>

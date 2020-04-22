@@ -1,0 +1,28 @@
+/* pages/marketing/buy_list.wxss */
+
+.weui-cell {
+  padding: 5px 5px;
+}
+
+.avatar {
+  width: 120px;
+  height: 80px;
+  margin: 10rpx;
+}
+
+.name {
+  font-size: 18px;
+  float: left;
+  font-weight: bold;
+}
+
+.tip {
+  color: gray;
+  font-size: 14px;
+  float: left;
+}
+
+.revenue {
+  color: gray;
+  float: left;
+}

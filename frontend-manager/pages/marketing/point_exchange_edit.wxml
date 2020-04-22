@@ -1,0 +1,29 @@
+<form bindsubmit="submit">
+<input type="number" name="rule_id" value="{{rule.id}}" style="display:none" />
+<view class="weui-cells__title">修改积分兑换规则</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">积分数量</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写" type="number" name="point" value="{{rule.point}}" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">兑换物品</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写" type="text" name="product" value="{{rule.product}}" />
+        </view>
+    </view>
+</view>
+
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">保存</button>
+    <button class="weui-btn" type="warn" data-id="{{rule.id}}" bindtap="delete">删除</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>
+</form>

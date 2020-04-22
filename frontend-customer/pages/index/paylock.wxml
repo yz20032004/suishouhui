@@ -1,0 +1,83 @@
+<!--pages/index/paylock.wxml-->
+<view class="shop-box">
+  <view class="shop-avatar">
+    <image src="{{shop.logo_url}}" style="width:50px;height:50px;border-radius:50%"></image>
+  </view>
+  <view class="shop-name"><text>{{merchant.merchant_name}}消费有礼</text></view>
+  <view class="clear"></view>
+</view>
+
+<view class="lock-box">
+  <view class="lock-item" bindtap="opencard">
+    <view class="lock-icon">
+      <image src="/images/vip.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">加会员享优惠</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+  <view class="lock-item" bindtap="getcoupon">
+    <view class="lock-icon">
+      <image src="/images/gift1.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">领优惠券</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+  <view class="lock-item" bindtap="sharecoupon">
+    <view class="lock-icon">
+      <image src="/images/share.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">给好友发优惠</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+  <view class="lock-item" bindtap="groupon">
+    <view class="lock-icon">
+      <image src="/images/order.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">超低折扣团购</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+  <view class="lock-item" bindtap="recharge">
+    <view class="lock-icon">
+      <image src="/images/recharge.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">充值返现</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+  <view class="lock-item" bindtap="toindex">
+    <view class="lock-icon">
+      <image src="/images/index1.png" style="width:50px;height:50px;"></image>
+    </view>
+    <view class="lock-title">
+      <text class="title">回到首页</text>
+    </view>
+    <view class="lock-to">
+        <image src="/images/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+/* pages/recharge/detail.wxss */
+.card-head {
+  background-color: #A0522D;
+  height: 120px;
+  margin-top:5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.opencard-tip {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.opencard-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  background-color: green;
+  color: white;
+  width: 80%;
+}
+
+.member-left {
+  vertical-align: text-top;
+  width: 25%;
+}
+
+.member-right {
+  width: 75%;
+  text-align: left;
+}
+
+.recharge {
+  margin-left: 10px;
+  font-size: 50px;
+  color: white;
+}
+
+.gift {
+  float: left;
+}
+.backtoindex {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border-radius: 500px;
+    width: 35px;
+    height: 35px;
+}

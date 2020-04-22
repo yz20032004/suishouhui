@@ -1,0 +1,32 @@
+<!--pages/staff/list.wxml-->
+<block wx:for="{{staffData}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="edit?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+      <view style="width:20%">
+        <view style="width:20%">
+          <image class="memberinfo-avatar" src="{{item.head_img}}" background-size="cover"></image>
+        </view>
+      </view>
+      <view style="width:80%">
+        <view>
+          <text class="campaign-name">{{item.branch_name}}{{item.name}}</text>
+          <text wx:if="{{'0' == item.status}}" style="color:red;margin-left:10px" class="status">已禁用</text>
+          <text wx:if="{{'' == item.openid}}" style="color:red;margin-left:10px" class="status">未激活</text>
+        </view>
+        <view style="margin-top:5px;">
+          <text class="shop"></text>
+        </view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</block>
+<block wx:if="{{!staffData.length}}">
+  <view style="text-align:center;margin-top:30px;margin-bottom:50px;font-size:15px;color:#bfbfbf">
+    还没有员工账号
+  </view>
+</block>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" open-type="share" disabled='{{disabled}}'>添加</button>
+</view>

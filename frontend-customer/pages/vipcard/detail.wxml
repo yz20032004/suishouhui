@@ -1,0 +1,132 @@
+<!--pages/vipcard/detail.wxml-->
+
+<view class="headimg-box">
+  <image src="{{vipcard.pic_url}}" style="height:170px;width:100%;"></image>
+</view>
+<view class="head-box">
+  <view class="price-box">
+    <text class="price">￥{{vipcard.price}}</text>
+  </view>
+  <view class="title-box">
+    <text>【{{vipcard.merchant_name}}】{{vipcard.grade_name}}</text>
+  </view>
+  <view class="count-box">
+    <view class="balance">
+      <text wx:if="{{vipcard.total_limit > 0}}">剩余{{vipcard.total_limit - vipcard.sold}}份/</text>
+      <text>已售{{vipcard.sold}}份</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="need-look">
+  <view class="look-title">会员特权</view>
+  <view class="rule-row" wx:if="{{grade_data.discount > 0}}">
+    <view class="tip-title">享受折扣</view>
+    <view class="look-info">
+      <text>{{grade_data.discount}}折</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row" wx:if="{{grade_data.point_speed > 1}}">
+    <view class="tip-title">积分权益</view>
+    <view class="look-info">
+      <text>享受{{grade_data.point_speed}}倍加速返积分</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row" wx:if="{{grade_data.privilege}}">
+    <view class="tip-title">其它特权</view>
+    <view class="look-info">
+      <text>{{grade_data.privilege}}</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">有效日期</view>
+    <view class="look-info">
+      <text wx:if="{{vipcard.valid_days > 0}}">自购买之日起{{vipcard.valid_days}}天有效</text>
+      <text wx:else>永久有效</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="shop-info" wx:if="{{opengifts.length > 0}}">
+  <view class="deal-title">权益卡礼包</view>
+  <block wx:for="{{opengifts}}">
+    <view class="weui-cell">
+      <image style="width:20px;height:20px;margin-right:10px;" src="/images/gift1.png"></image>
+      <view>
+        <text class="shop_time">{{item.coupon_name}}{{item.coupon_total}}张</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="footer"></view>
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+  <view class="btn-left" hover-class="weui-form-preview__btn_active">
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' bindtap="more">
+          <image src="/images/more.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn' bindtap="more">更多</button>
+      </view>
+    </view>
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' wx:if="{{member.nickname}}" bindtap="share"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+        <button class='share-btn' wx:else lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUserFromShare"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>分享</button>
+      </view>
+    </view>
+    <view class="footer-func-box" bindtap="backtoindex">
+      <view class="footer-box-image">
+        <button class='share-btn'>
+          <image src="/images/index2.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>首页</button>
+      </view>
+    </view>
+  </view>
+  <button class="btn-right" hover-class="weui-form-preview__btn_active" bindtap="pay" disabled="{{buy_disable}}" wx:if="{{is_follow}}">{{buy_title}}</button>
+  <button class="btn-right" hover-class="weui-form-preview__btn_active" disabled='{{buy_disable}}' lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUserFromBuy" wx:else>{{buy_title}}</button>
+</view>
+<mp-halfScreenDialog show="{{show_share_box}}">
+  <view slot="title">分享</view>
+  <view slot="footer">
+    <view class="share-box">
+      <view class="share-image">
+        <button class='half-share-btn' open-type="share">
+          <image src="/images/wechat.png" style="width:60px;height:60px"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">
+          <view class="share-text-title">推荐好友</view>
+        </view>
+        <view class="share-text-tip">或微信群</view>
+      </view>
+    </view>
+    <view class="share-box">
+      <view class="share-image" bindtap="shareimage">
+        <button class='half-share-btn'>
+        <image src="/images/download.png" style="width:60px;height:60px;line-height:2"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">保存海报</view>
+        <view class="share-text-tip">推荐到朋友圈</view>
+      </view>
+    </view>
+  </view>
+</mp-halfScreenDialog>

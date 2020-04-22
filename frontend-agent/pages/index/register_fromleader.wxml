@@ -1,0 +1,52 @@
+<!--pages/index/register_fromleader.wxml-->
+<view>
+  <view class="userinfo">
+    <image class="avatar" src="/images/hui.png" background-size="cover"></image>
+    <text class="nickname">随手惠推推</text>
+    <text class="tip">帮助服务商更好的拓展商户，指导商户进行会员管理和智慧经营，获得支付分润和营销奖励。</text>
+  </view>
+</view>
+
+<view class="leader-box">
+  <view class="avatar-box">
+    <image class="leader-avatar" src="{{leader.headimgurl}}" background-size="cover"></image>
+  </view>
+  <view class="leader-intro"><text class="leader-tip">我是{{leader.name}},欢迎加入我的战队</text></view>
+  <view class="clear"></view>
+</view>
+
+<view class="weui-cells__title">推手注册</view>
+<form class="page-body">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="请输入您的姓名" name="name" bindinput="bindNameInput" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入手机号" name="mobile" bindinput="bindMobileInput" />
+      </view>
+      <view class="weui-cell__ft" bindtap="getCode">
+        <view class="weui-vcode-btn" style="font-size:15px">{{getCodeStatus}}</view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">验证码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入4位数字验证码" name="code" bindinput="bindCodeInput" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser">注册</button>
+  </view>
+</form>

@@ -1,0 +1,16 @@
+/* pages/mini/disabled.wxss */
+.center {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.cancel {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.trade-title {
+  font-size: 25px;
+  margin-top: 10px;
+}

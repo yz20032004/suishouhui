@@ -1,0 +1,161 @@
+/* pages/recharge/list.wxss */
+.award_coupon {
+  float: left;
+}
+.aui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+}
+
+.aui-flex-box {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.tab-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-panel .tab-panel-item {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.tab-panel .tab-panel-item.tab-active ~ .tab-panel-item {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.tab-panel .tab-panel-item.tab-active {
+  position: relative;
+  -webkit-transition: -webkit-transform 0.15s;
+  transition: -webkit-transform 0.15s;
+  transition: transform 0.15s, -webkit-transform 0.15s;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.aui-price-nub {
+  background-image: -webkit-gradient(linear, left top, right top, from(#f63f5d), to(#ec2546));
+  background-image: -webkit-linear-gradient(left, #f63f5d, #ec2546);
+  background-image: -moz-linear-gradient(left, #f63f5d, #ec2546);
+  background-image: linear-gradient(to right, #f63f5d, #ec2546);
+  background-color: #ec2546;
+  border-radius: 3px 0 0 3px;
+  overflow: hidden;
+  width: 35%;
+}
+
+.tab-panel-item .aui-flex {
+  background: #fff;
+  margin: 0px 5px 5px 5px;
+  border-radius: 3px;
+  border: 1px solid #efefef;
+  padding: 0;
+  -webkit-box-align: initial;
+  -webkit-align-items: initial;
+  align-items: initial;
+  position: relative;
+}
+
+.tab-panel-item .aui-flex:before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 73.999%;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background: #f6f6f6;
+  margin-top: -10px;
+}
+
+.tab-panel-item .aui-flex:after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 73.999%;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background: #f6f6f6;
+  margin-top: -10px;
+}
+
+.aui-digit {
+  height: 3rem;
+  text-align: center;
+}
+
+.aui-full {
+  height: 2rem;
+  line-height: 2.3rem;
+  background: #d01c39;
+  color: #f3c1ca;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.aui-digit h1 {
+  color: #fefefe;
+  font-size: 20px;
+  line-height: 3rem;
+}
+
+.aui-digit h1 em {
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.tab-panel-item .aui-flex .aui-flex-box {
+  border-bottom: 1px dashed #eaeaea;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  position: relative;
+}
+
+.tab-panel-item .aui-flex .aui-flex-box button {
+  background-color: #ef0f82;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.7rem;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.aui-flex h2 {
+  font-size: 17px;
+}
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}
+.backtoindex {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border-radius: 500px;
+    width: 35px;
+    height: 35px;
+}

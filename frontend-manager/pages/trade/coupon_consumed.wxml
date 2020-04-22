@@ -1,0 +1,55 @@
+<!--pages/trade/coupon_consumed.wxml-->
+ <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">选择日期</view>
+      </view>
+      <view class="weui-cell__bd picker_group">
+        <picker mode="date" value="{{date_start}}" start="2019-01-01" end="{{date_start}}" bindchange="bindDateStartChange">
+          <view class="picker">
+            {{date_start}}
+          </view>
+        </picker>
+        至
+        <picker mode="date" value="{{date_end}}" start="2019-01-01" end="date_end" bindchange="bindDateEndChange">
+          <view class="picker">
+            {{date_end}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select" wx:if="{{shops.length > 2}}">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择门店</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindShopChange" value="{{shops[shopIndex].id}}" range="{{shops}}" range-key="branch_name" name="shop_id">
+          <view class="weui-select weui-select_in-select-after">{{shops[shopIndex].branch_name}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{usedData.length > 0}}">
+  <block wx:for="{{usedData}}">
+    <view class="weui-flex  weui-cell" data-openid="{{item.openid}}" bindtap="previewMember">
+      <view style="width:20%">
+        <image class="memberinfo-avatar" src="{{item.headimgurl}}" background-size="cover"></image>
+      </view>
+      <view style="width:70%">
+        <view class="memberinfo-name">{{item.coupon_name}}
+          <text class="coupon_amount">{{item.amount}}元</text>
+        </view>
+        <view class="buy-time">{{item.created_by_uname}}核销于{{item.created_at}}</view>
+      </view>
+      <view style="width:10%;text-align:right">
+        <image src="/images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view wx:else>
+  <view class="no-trade">
+    <text>暂无核销记录</text>
+  </view>
+</view>

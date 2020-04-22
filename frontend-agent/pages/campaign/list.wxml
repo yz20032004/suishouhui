@@ -1,0 +1,129 @@
+<!--pages/campaign/list.wxml-->
+<!--pages/campaign/list.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{campaignData['doing']}}">
+              <navigator url="../campaign/detail?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="campaign-type">
+                    <text wx:if="{{'send_coupon'==item.campaign_type}}">群发优惠券</text>
+                    <text wx:elif="{{'send_sms'==item.campaign_type}}">群发短信</text>
+                    <text wx:elif="{{'opengift'==item.campaign_type}}">开卡礼</text>
+                    <text wx:elif="{{'rebate'==item.campaign_type}}">消费满返</text>
+                    <text wx:elif="{{'birthday'==item.campaign_type}}">生日优惠</text>
+                    <text wx:elif="{{'awaken'==item.campaign_type}}">沉睡会员唤醒</text>
+                    <text wx:elif="{{'reduce'==item.campaign_type}}">消费满减</text>
+                    <text wx:elif="{{'discount'==item.campaign_type}}">买单折扣</text>
+                    <text wx:elif="{{'member_day'==item.campaign_type}}">会员日</text>
+                    <text wx:elif="{{'wakeup'==item.campaign_type}}">沉睡唤醒</text>
+                    <text wx:elif="{{'pay_gift'==item.campaign_type}}">支付有礼</text>
+                    <text wx:elif="{{'payed_share'==item.campaign_type}}">分享有礼</text>
+                    <text wx:elif="{{'lbs_coupon'==item.campaign_type}}">附近发券</text>
+                    <text wx:elif="{{'paybuycoupon'==item.campaign_type}}">加价购券</text>
+                    <text wx:else="{{'rechargenopay'==item.campaign_type}}">储值N倍免单</text>
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="campaign-name">{{item.title}}</text>
+                  </view>
+                  <view>
+                    <text class="create-time">创建时间：{{item.created_at}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{campaignData['notstart']}}">
+              <navigator url="../campaign/detail?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="campaign-type">
+                    <text wx:if="{{'send_coupon'==item.campaign_type}}">群发优惠券</text>
+                    <text wx:elif="{{'send_sms'==item.campaign_type}}">群发短信</text>
+                    <text wx:elif="{{'opengift'==item.campaign_type}}">开卡礼</text>
+                    <text wx:elif="{{'rebate'==item.campaign_type}}">消费满返</text>
+                    <text wx:elif="{{'birthday'==item.campaign_type}}">生日优惠</text>
+                    <text wx:elif="{{'awaken'==item.campaign_type}}">沉睡会员唤醒</text>
+                    <text wx:elif="{{'reduce'==item.campaign_type}}">消费满减</text>
+                    <text wx:elif="{{'discount'==item.campaign_type}}">买单折扣</text>
+                    <text wx:elif="{{'member_day'==item.campaign_type}}">会员日</text>
+                    <text wx:elif="{{'wakeup'==item.campaign_type}}">沉睡唤醒</text>
+                    <text wx:elif="{{'pay_gift'==item.campaign_type}}">支付有礼</text>
+                    <text wx:elif="{{'payed_share'==item.campaign_type}}">分享有礼</text>
+                    <text wx:elif="{{'lbs_coupon'==item.campaign_type}}">附近发券</text>
+                    <text wx:elif="{{'paybuycoupon'==item.campaign_type}}">加价购券</text>
+                    <text wx:else="{{'rechargenopay'==item.campaign_type}}">储值N倍免单</text>
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="campaign-name">{{item.title}}</text>
+                  </view>
+                  <view>
+                    <text class="create-time">创建时间：{{item.created_at}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{campaignData['end']}}">
+              <navigator url="../campaign/detail?id={{item.id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+                <view style="width:25%">
+                  <view class="campaign-type">
+                    <text wx:if="{{'send_coupon'==item.campaign_type}}">群发优惠券</text>
+                    <text wx:elif="{{'send_sms'==item.campaign_type}}">群发短信</text>
+                    <text wx:elif="{{'opengift'==item.campaign_type}}">开卡礼</text>
+                    <text wx:elif="{{'rebate'==item.campaign_type}}">消费满返</text>
+                    <text wx:elif="{{'birthday'==item.campaign_type}}">生日优惠</text>
+                    <text wx:elif="{{'awaken'==item.campaign_type}}">沉睡会员唤醒</text>
+                    <text wx:elif="{{'reduce'==item.campaign_type}}">消费满减</text>
+                    <text wx:elif="{{'discount'==item.campaign_type}}">买单折扣</text>
+                    <text wx:elif="{{'member_day'==item.campaign_type}}">会员日</text>
+                    <text wx:elif="{{'wakeup'==item.campaign_type}}">沉睡唤醒</text>
+                    <text wx:elif="{{'pay_gift'==item.campaign_type}}">支付有礼</text>
+                    <text wx:elif="{{'payed_share'==item.campaign_type}}">分享有礼</text>
+                    <text wx:elif="{{'lbs_coupon'==item.campaign_type}}">附近发券</text>
+                    <text wx:elif="{{'paybuycoupon'==item.campaign_type}}">加价购券</text>
+                    <text wx:else="{{'rechargenopay'==item.campaign_type}}">储值N倍免单</text>
+                  </view>
+                </view>
+                <view style="width:75%">
+                  <view>
+                    <text class="campaign-name">{{item.title}}</text>
+                  </view>
+                  <view>
+                    <text class="create-time">创建时间：{{item.created_at}}</text>
+                  </view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

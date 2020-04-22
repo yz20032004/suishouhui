@@ -1,0 +1,20 @@
+<!--pages/order/index.wxml-->
+<view class="weui-grids">
+  <block wx:for="{{tables}}">
+    <view bindtap="touch_used_table" class="weui-grid has_seat" hover-class="weui-grid_active" data-id="{{item.table_id}}" wx:if="{{'1' == item.is_seat}}">
+      <view class="weui-grid__label">
+        <view class="table_name">{{item.table_name}}</view>
+      </view>
+    </view>
+    <view bindtap="touch_free_table" class="weui-grid" hover-class="weui-grid_active" data-id="{{item.table_id}}" wx:else>
+      <view class="weui-grid__label">
+        <view class="table_name">{{item.table_name}}</view>
+      </view>
+    </view>
+  </block>
+    <view bindtap="add_table" class="weui-grid add_table" hover-class="weui-grid_active">
+      <view class="weui-grid__label">
+        <view>+</view>
+      </view>
+    </view>
+</view>

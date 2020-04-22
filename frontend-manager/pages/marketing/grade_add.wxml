@@ -1,0 +1,99 @@
+<!--pages/marketing/grade_add.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">添加会员等级</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">等级名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写，不超过4个汉字" type="text" name="name" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">有效期天数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindDaysChange" value="{{valid_days[daysIndex].days}}" range="{{valid_days}}" range-key="title" name="valid_days">
+          <view class="weui-select weui-select_in-select-after">{{valid_days[daysIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">特权</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">消费折扣</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="1~9.9之间，无则留空" type="digit" name="discount" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">积分加速</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindPointSpeedChange" value="{{point_speed_range[speedIndex].speed}}" range="{{point_speed_range}}" range-key="title" name="point_speed">
+          <view class="weui-select weui-select_in-select-after">{{point_speed_range[speedIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">请填写其它特权</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="没有则留空" style="height: 4.3em" name="detail" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">升级规则</view>
+  <view class="weui-cells weui-cells_after-title">
+    <radio-group class="radio-group" name="condition" bindchange="conditionSwitch">
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__hd">
+          <radio value="recharge" checked="" />
+        </view>
+        <view class="weui-cell__bd">充值满一定金额</view>
+      </label>
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__hd">
+          <radio value="frequency" checked="" />
+        </view>
+        <view class="weui-cell__bd">消费达到一定次数</view>
+      </label>
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__hd">
+          <radio value="amount" checked="" />
+        </view>
+        <view class="weui-cell__bd">消费达到一定金额</view>
+      </label>
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__hd">
+          <radio value="pay" checked="" />
+        </view>
+        <view class="weui-cell__bd">支付一定金额购买</view>
+      </label>
+    </radio-group>
+    <view class="weui-cells weui-cells_after-title" style="display:{{display}}">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">请输入{{catch_title}}</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写数字" type="number" name="catch" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">保存</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

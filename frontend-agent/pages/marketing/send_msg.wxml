@@ -1,0 +1,65 @@
+<!--pages/marketing/send_msg.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">选择发送短信的会员人群</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择会员</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindGradeChange" value="{{grades[gradeIndex].grade}}" range="{{grades}}" range-key="name" name="grade">
+          <view class="weui-select weui-select_in-select-after">{{grades[gradeIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class='member_total'>有手机号会员共{{mobile_total}}人</view>
+
+  <view class="weui-cells__title">选择群发时间</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">发送日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date}}" start="{{date_start}}" bindchange="bindDateChange" name="senddate">
+          <view class="weui-input">{{date}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">发送时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" value="{{time}}" start="09:00" end="17:59" bindchange="bindTimeChange" name="sendtime">
+          <view class="weui-input">{{time}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">群发短信内容</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" style="height: 3.5em" name="detail" value=""  bindinput="set_sms"/>
+        <view class="weui-textarea-counter">{{textcount}}字/{{smscount}}条短信</view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">短信也发送给我自己</view>
+      <view class="weui-cell__ft">
+        <switch checked="true" name="is_send_me" value="1" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title" style="display:{{display}}">共计发送{{sms_total}}条短信</view>
+
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" disabled="{{disabled}}">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

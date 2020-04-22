@@ -1,0 +1,49 @@
+<!--pages/coupon/get.wxml-->
+<block wx:if="{{!is_member}}">
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell card-head">
+    <view style="width:20%;">
+      <image src="{{detail.logo_url}}" class="membercard-avatar"></image>
+    </view>
+    <view style="width:80%;">
+      <view>
+        <text class="membercard-name">{{detail.business_name}}</text>
+      </view>
+      <view class='coupon-name'>
+        <text>{{detail.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">优惠券详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">最低消费</view>
+    <view class="weui-cell__ft member-right">
+      <text wx:if="{{!detail.consume_limit}}">{{detail.consume_limit}}元</text>
+      <text wx:else>不限消费金额</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">有效期</view>
+    <view class="weui-cell__ft member-right">
+        <view class='gift' wx:if="{{'relative' == detail.validity_type}}">自领取日起{{detail.total_days}}天</view>
+        <view class='gift' wx:else>{{detail.date_start}}至{{detail.date_end}}</view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">使用须知</view>
+    <view class="weui-cell__ft member-right">
+      <text>{{detail.description}}</text>
+    </view>
+  </view>
+</view>
+<form bindsubmit="submit" report-submit="true">
+  <view class="weui-cell">
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" open-type="getUserInfo" bindgetuserinfo="getUser" wx:if="{{!is_member}}">立即领取</button>
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" bindtap="get_coupon_ext" wx:else>立即领取</button>
+  </view>
+</form>
+</block>

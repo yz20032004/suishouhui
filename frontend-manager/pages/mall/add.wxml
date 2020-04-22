@@ -1,0 +1,156 @@
+<!--pages/mall/add.wxml-->
+<form bindsubmit="submit">
+	<view class="weui-cells__title">添加商品</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">商品名称</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="限30个字" type="text" name="title" value="" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">原价</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" type="digit" name="amount" placeholder="请填写价格" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">售价</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写价格" type="digit" name="price" />
+			</view>
+		</view>
+	</view>
+
+  <view class="weui-cells__title">详情</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入商品详情，可以不填" style="height: 5.3em" name="detail" />
+      </view>
+    </view>
+  </view>
+
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells">
+		<view class="weui-cell">
+			<view class="weui-cell__bd">
+				<view class="weui-uploader">
+					<view class="weui-uploader__hd">
+						<view class="weui-uploader__title">商品封面图片，横图最佳,上传1张即可</view>
+					</view>
+					<view class="weui-uploader__bd">
+						<view class="weui-uploader__files">
+							<block wx:for="{{imageList}}" wx:for-item="image">
+								<view class="weui-uploader__file">
+									<image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+								</view>
+							</block>
+						</view>
+						<view class="weui-uploader__input-box" style="display:{{upload_display}}">
+							<view class="weui-uploader__input" bindtap="chooseImage"></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells">
+		<view class="weui-cell">
+			<view class="weui-cell__bd">
+				<view class="weui-uploader">
+					<view class="weui-uploader__hd">
+						<view class="weui-uploader__title">上传商品详情图片，最多可上传9张（也可不上传）</view>
+					</view>
+					<view class="weui-uploader__bd">
+						<view class="weui-uploader__files">
+							<block wx:for="{{textImageList}}" wx:for-item="image">
+								<view class="weui-uploader__file">
+									<image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewDetailImage"></image>
+								</view>
+							</block>
+						</view>
+						<view class="weui-uploader__input-box" style="display:{{upload_display}}">
+							<view class="weui-uploader__input" bindtap="chooseTextImage"></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">总库存</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写数字" type="number" name="total_limit" value="" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">每人最多购买</view>
+			</view>
+			<view class="weui-cell__bd">
+				<picker bindchange="bindCountChange" value="{{counts[countIndex]}}" range="{{counts}}" name="single_limit">
+					<view class="weui-select weui-select_in-select-after">{{single_limit}}</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+
+  <view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title" wx:if="{{'marketing' == merchant.marketing_type}}">
+		<view class="weui-cell weui-cell_switch">
+			<view class="weui-cell__bd">是否仅限会员购买</view>
+			<view class="weui-cell__ft">
+				<switch checked="" name="is_member_limit" value="1" />
+			</view>
+		</view>
+	</view>
+
+
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title" wx:if="{{'1' == merchant.is_distribute}}">
+		<view class="weui-cell weui-cell_switch">
+			<view class="weui-cell__bd">是否开启分销</view>
+			<view class="weui-cell__ft">
+				<switch bindchange="distributeSwitch" checked="" name="is_distribute" value="1" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_select" style='display:{{distribute_display}}'>
+			<view class="weui-cell__hd weui-cell__hd_in-select-after">
+				<view class="weui-label">分销权限</view>
+			</view>
+			<view class="weui-cell__bd">
+				<picker bindchange="bindGradeChange" value="{{grades[gradeIndex].grade}}" range="{{grades}}" range-key="name" name="grade">
+					<view class="weui-select weui-select_in-select-after">{{distribute_grade_title}}</view>
+				</picker>
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input" style='display:{{distribute_display}}'>
+			<view class="weui-cell__hd">
+				<view class="weui-label">分销一单提成</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写金额" type="digit" name="bonus" value="" />
+			</view>
+		</view>
+	</view>
+
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" form-type="submit">添加</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

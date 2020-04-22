@@ -1,0 +1,45 @@
+<!--pages/waimai/address.wxml-->
+<form bindsubmit="submit">
+	<view class="content">
+		<view class="weui-cells__title">完善收货地址</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">姓名</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" placeholder="请填写" type="text" name="contact_name" value="{{name}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">手机号</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" placeholder="请填写" type="number" name="contact_mobile" value="{{mobile}}" />
+				</view>
+			</view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">地址</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写" type="text" name="address" value="{{address}}" bindtap="selectAddress" disabled />
+        </view>
+      </view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">门牌号</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" placeholder="请填写" type="text" name="address_no" value="{{address_no}}" />
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit">保存</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

@@ -1,0 +1,6 @@
+/* pages/shop/reg_mini.wxss */
+.preview-title{
+  margin-top: 10px;
+  text-align: center;
+  color: gainsboro;
+}

@@ -1,0 +1,105 @@
+<!--pages/coupon/list.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title coupon_nav_title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:for="{{cards['timing']}}" wx:for-index="idx">
+            <view class="stamp stamp0{{idx%4}}" bindtap='open_card' data-id="{{item.id}}" data-type="{{item.coupon_type}}">
+              <view class="par">
+                <view class="sign">{{item.coupon_name}}</view>
+                <p>{{item.date_start}}至{{item.date_end}}</p>
+              </view>
+              <view class="copy">
+                <view class='consume'>剩{{item.times}}次</view>
+              </view>
+              <i></i>
+            </view>
+          </block>
+          <block wx:for="{{cards['enable']}}" wx:for-index="idx">
+            <view class="stamp stamp0{{idx%4}}" bindtap='open_card' data-id="{{item.id}}" data-type="{{item.coupon_type}}">
+              <view class="par">
+                <view class="sign">{{item.coupon_name}}</view>
+                <p>{{item.date_start}}至{{item.date_end}}</p>
+              </view>
+              <view class="copy">
+                <view class='consume'>去使用</view>
+              </view>
+              <i></i>
+            </view>
+          </block>
+          <block wx:if="{{cards['enable'].length == 0 && cards['timing'].length == 0}}">
+            <view class='empty'>
+              <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:for="{{cards['unenable']}}" wx:for-index="idx">
+            <view class="stamp stamp00">
+              <view class="par">
+                <view class="sign">{{item.coupon_name}}</view>
+                <p>{{item.date_start}}至{{item.date_end}}</p>
+              </view>
+              <view class="copy">
+                <view class='consume'>未生效</view>
+              </view>
+              <i></i>
+            </view>
+          </block>
+          <block wx:if="{{cards['unenable'].length == 0}}">
+            <view class='empty'>
+              <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <block wx:for="{{cards['expire']}}" wx:for-index="idx">
+            <view class="stamp stamp04">
+              <view class="par">
+                <view class="sign">{{item.coupon_name}}</view>
+                <p>{{item.date_start}}至{{item.date_end}}</p>
+              </view>
+              <view class="copy">
+                <view class='consume'>已过期</view>
+              </view>
+              <i></i>
+            </view>
+          </block>
+          <block wx:if="{{cards['expire'].length == 0}}">
+            <view class='empty'>
+              <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <block wx:for="{{cards['used']}}" wx:for-index="idx">
+            <view class="stamp stamp04">
+              <view class="par">
+                <view class="sign">{{item.coupon_name}}</view>
+                <p>使用日期：{{item.updated_at}}</p>
+              </view>
+              <view class="copy">
+                <view class='consume'>已使用</view>
+              </view>
+              <i></i>
+            </view>
+          </block>
+          <block wx:if="{{cards['used'].length == 0}}">
+            <view class='empty'>
+              <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

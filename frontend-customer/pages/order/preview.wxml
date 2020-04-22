@@ -1,0 +1,18 @@
+<!--pages/order/preview.wxml-->
+<view class="page" wx:if="{{'0' == order.pay_first}}">
+    <mp-msg type="success" title="下单成功">
+        <view slot="desc">订单已飞到后厨，请您耐心等待</view>
+        <view slot="extend">
+
+        </view>
+        <view slot="handle">
+            <button class="weui-btn" type="primary" bindtap="opencard" wx:if="{{!member.mobile}}">加入会员</button>
+        </view>
+        <view slot="footer" style="display:none">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link">底部链接文本</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+    </mp-msg>
+</view>

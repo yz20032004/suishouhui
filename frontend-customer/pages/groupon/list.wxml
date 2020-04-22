@@ -1,0 +1,30 @@
+<!--pages/item/list.wxml-->
+<block wx:if="{{grouponData.length > 0}}">
+  <block wx:for="{{grouponData}}">
+    <view class="headimg-box" bindtap="open_detail" data-id="{{item.id}}">
+      <image src="{{item.image_url}}" style="height:170px;width:100%;"></image>
+    </view>
+    <view class="head-box" bindtap="open_detail" data-id="{{item.id}}">
+      <view class="price-box">
+        <text class="price">￥{{item.price}}</text>
+        <text class="amount">{{item.amount}}</text>
+      </view>
+      <view class="title-box">
+        <text>{{item.title}}</text>
+        <text wx:if="{{item.single_limit>0}}">(每人限购{{item.single_limit}}份)</text>
+      </view>
+      <view class="count-box">
+        <view class="balance">
+          <text wx:if="{{item.total_limit > 0}}">剩余{{item.total_limit - item.sold}}份/</text>
+          <text>已售{{item.sold}}份</text>
+        </view>
+      </view>
+      <view class="clear"></view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

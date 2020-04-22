@@ -1,0 +1,57 @@
+<!--pages/coupon/add_pic.wxml-->
+<view class="weui-cells__title">{{coupon_name}}</view>
+<form class="page-body" bindsubmit="submit" report-submit="true">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">优惠券封面图片，横图最佳,上传1张即可</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{imageList}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" style="display:{{upload_display}}">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">上传优惠券详情图片，最多可上传9张（也可不上传）</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{textImageList}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewDetailImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" style="display:{{upload_display}}">
+              <view class="weui-uploader__input" bindtap="chooseTextImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">提交</button>
+  </view>
+</form>

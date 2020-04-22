@@ -1,0 +1,66 @@
+/* pages/vip/switch_shop.wxss */
+
+.card-head {
+  background-image: url(https://keyoucrmcard.oss-cn-hangzhou.aliyuncs.com/images/wxback.jpeg);
+  height: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.opencard-tip {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.opencard-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  background-color: green;
+  color: white;
+  width: 80%;
+}
+
+.member-left {
+  vertical-align: text-top;
+  width: 25%;
+}
+
+.member-right {
+  width: 75%;
+  text-align: left;
+}
+
+.membercard-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.membercard-name {
+  margin-left: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.membercard-grade {
+  margin-left: 10px;
+  font-size: 13px;
+  color: white;
+}

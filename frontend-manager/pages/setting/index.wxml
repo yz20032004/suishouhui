@@ -1,0 +1,129 @@
+<!--index.wxml-->
+<view>
+	<view class="userinfo">
+		<view class="btn-area" wx:if="{{true == user.is_demo}}">
+			<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type='primary'>商户注册</button>
+		</view>
+		<view wx:else>
+			<view class='userinfo-image'>
+				<image class="userinfo-avatar" src="{{user.logo_url}}" background-size="cover"></image>
+			</view>
+			<view class="userinfo-nickname"><text>{{user.merchant_name}}</text></view>
+			<view class="userinfo-expired"><text>使用期限至{{merchant.expired_at}}</text></view>
+		</view>
+	</view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<navigator url="../trade/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'marketing'==merchant.marketing_type}}">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/bill.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>收款记录</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+	</navigator>
+	<navigator url="../member/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/member.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>会员列表</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+	</navigator>
+	<navigator url="../trade/coupon_consumed" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<image style="width:20px;height:20px;margin-right:10px;" src="/images/coupon.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>券核销记录</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+	</navigator>
+	<navigator url="../staff/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'admin' == user.role && 'general' != merchant.mch_type}}">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/set_staff.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>员工管理</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">设置</view>
+	</navigator>
+	<navigator url="selfpay_detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active" style="display:none">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/scan.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>收款码</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+	</navigator>
+	<navigator url="sms" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'marketing' == merchant.marketing_type}}">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/bean.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>短信余额</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">
+			<text class='beans'>{{user.sms_total}}</text>条</view>
+	</navigator>
+	<navigator url="lookbinds" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'marketing'==merchant.marketing_type}}">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/binds.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>收款硬件设备</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">
+			查看</view>
+	</navigator>
+	<navigator url="add_function" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'admin' == user.role}}">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/functions.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>添加营销功能</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">去添加</view>
+	</navigator>
+</view>
+<block wx:if="{{false}}">
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="cashout" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			<image style="width:20px;height:20px;margin-right:10px;" src="../../images/cashout.png"></image>
+			<view class="weui-cell__bd weui-cell_primary">
+				<view>团购收益</view>
+			</view>
+			<view class="weui-cell__ft weui-cell__ft_in-access">
+				去提现</view>
+		</navigator>
+	</view>
+</block>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'marketing'==merchant.marketing_type}}">
+	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="export">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/download.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>导出会员数据</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">去下载</view>
+	</view>
+	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="remind">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/remind.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>业务提醒</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">去添加</view>
+	</view>
+	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="campaign">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/campaigns.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>餐饮营销大全</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">
+			案例库</view>
+	</view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" bindtap="tuitui" style="display:none">
+	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<image style="width:20px;height:20px;margin-right:10px;" src="../../images/promotion.png"></image>
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>我要推广</view>
+		</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access">
+			去赚钱</view>
+	</view>
+</view>
+
+<cell bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='6b08271505f2e5c00d9d62632fa152de' styleType="2" blockStyle="button" class="contact-btn" bubbleColor="8A8A8A" buttonText="4" />

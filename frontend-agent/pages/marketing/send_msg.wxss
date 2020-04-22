@@ -1,0 +1,6 @@
+/* pages/marketing/send_msg.wxss */
+.member_total {
+  text-align: right;
+  padding-right: 5px;
+  color: green;
+}

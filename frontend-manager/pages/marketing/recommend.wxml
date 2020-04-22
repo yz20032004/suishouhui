@@ -1,0 +1,46 @@
+<!--pages/marketing/recommend.wxml-->
+<block wx:if="{{recommend.title}}">
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">已推荐活动</view>
+    <view class="weui-cell__ft">{{recommend.title}}</view>
+  </view>
+</view>
+</block>
+
+<form bindsubmit="submit">
+  <view class="weui-cells__title">推荐活动将展示在顾客微信支付成功的消息里，顾客点击消息便可查看活动详情</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">推荐活动类型</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCampaignTypeChange" value="{{campaignTypes[campaignTypeIndex].type}}" range="{{campaignTypes}}" range-key="title" name="campaign_type">
+          <view class="weui-select weui-select_in-select-after">{{campaignTypes[campaignTypeIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择推荐活动</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCampaignChange" value="{{campaigns[campaignIndex].id}}" range="{{campaigns}}" range-key="title" name="campaign_id">
+          <view class="weui-select weui-select_in-select-after">{{campaigns[campaignIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title" wx:if="{{campaignTypeIndex != 0}}">若不选择推荐某个具体活动，则向顾客随机推荐一个{{campaignTypes[campaignTypeIndex].title}}</view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" wx:if="{{'assistant' != user.role}}">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

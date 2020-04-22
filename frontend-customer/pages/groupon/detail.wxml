@@ -1,0 +1,150 @@
+<!--pages/groupon/detail.wxml-->
+<view class="headimg-box">
+  <image src="{{groupon.icon_image}}" style="height:170px;width:100%;"></image>
+</view>
+<view class="head-box">
+  <view class="price-box">
+    <text class="price">￥{{groupon.price}}</text>
+    <text class="amount">{{groupon.amount}}</text>
+  </view>
+  <view class="title-box">
+    <text>【{{groupon.shop.business_name}}】{{groupon.title}}</text>
+    <text wx:if="{{groupon.single_limit>0}}">(每人限购{{groupon.single_limit}}份)</text>
+    <text wx:if="{{groupon.is_member_limit == '1'}}">(仅限会员购买)</text>
+  </view>
+  <view class="count-box">
+    <view class="balance">
+      <text wx:if="{{groupon.total_limit > 0}}">剩余{{balance}}份/</text>
+      <text>已售{{groupon.sold}}份</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="need-look">
+  <view class="look-title">购买须知</view>
+  <view class="rule-row">
+    <view class="tip-title">有效日期</view>
+    <view class="look-info">
+      <text wx:if="{{groupon.coupon_data.validity_type == 'relative'}}">自购买之日起{{groupon.coupon_data.total_days}}天有效</text>
+      <text wx:else>{{groupon.coupon_data.date_start}}至{{groupon.coupon_data.date_end}} 23:59</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">使用规则</view>
+    <view class="look-info">
+      <text>{{groupon.coupon_data.description}}</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row">
+    <view class="tip-title">退款须知</view>
+    <view class="look-info">
+      <text>本券过期不退款，请在券有效期内使用</text>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>
+<view class="deal_detail" wx:if="{{groupon.coupon_data.deal_detail}}">
+  <view class="deal-title">详情内容</view>
+  <view class="deal-info">{{groupon.coupon_data.deal_detail}}</view>
+</view>
+
+<view class="detail-box">
+  <block wx:for="{{groupon.image_list}}">
+    <view class="detail-image">
+      <image src="{{item.image_url}}" mode="widthFix" style="width:100%"></image>
+    </view>
+  </block>
+</view>
+
+
+<view class="shop-info">
+  <view class="deal-title"></view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/shop.png"></image>
+    <view>
+      <text class="shop_name">{{shop.business_name}}{{shop.branch_name}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/time.png"></image>
+    <view>
+      <text class="shop_time">营业时间: {{shop.open_time}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/location.png"></image>
+    <view class="address" bindtap='open_location'>
+      <text class="shop_time">地址: {{shop.city}}{{shop.district}}{{shop.address}}</text>
+    </view>
+    <image style="width:20px;height:20px;margin-left:10px;margin-right:10px;" src="/images/phone.png" data-phone="{{shop.telephone}}" bindtap='call'></image>
+  </view>
+</view>
+<view class="footer"></view>
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+  <view class="btn-left" hover-class="weui-form-preview__btn_active">
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' bindtap="more">
+          <image src="/images/more.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn' bindtap="more">更多</button>
+      </view>
+    </view>
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' wx:if="{{member.nickname}}" bindtap="share"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+        <button class='share-btn' wx:else lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>分享</button>
+      </view>
+    </view>
+    <view class="footer-func-box" bindtap="backtoindex">
+      <view class="footer-box-image">
+        <button class='share-btn'>
+          <image src="/images/index2.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>首页</button>
+      </view>
+    </view>
+  </view>
+  <view class="btn-right" hover-class="weui-form-preview__btn_active" bindtap="buy">{{buy_title}}</view>
+</view>
+
+<mp-halfScreenDialog show="{{show_share_box}}">
+  <view slot="title">分享</view>
+  <view slot="footer">
+    <view class="share-box">
+      <view class="share-image">
+        <button class='half-share-btn' open-type="share">
+          <image src="/images/wechat.png" style="width:60px;height:60px"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">
+          <view class="share-text-title">推荐好友</view>
+        </view>
+        <view class="share-text-tip">或微信群</view>
+      </view>
+    </view>
+    <view class="share-box">
+      <view class="share-image" bindtap="shareimage">
+        <button class='half-share-btn'>
+        <image src="/images/download.png" style="width:60px;height:60px;line-height:2"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">保存海报</view>
+        <view class="share-text-tip">推荐到朋友圈</view>
+      </view>
+    </view>
+  </view>
+</mp-halfScreenDialog>

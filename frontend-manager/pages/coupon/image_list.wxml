@@ -1,0 +1,9 @@
+<!--pages/coupon/image_list.wxml-->
+<view class="weui-cells__title">券图片详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{image_list}}">
+    <view class="weui-cell">
+        <image class="image_url" src="{{item.image_url}}" background-size="cover" mode="widthFix"></image>
+    </view>
+  </block>
+</view>

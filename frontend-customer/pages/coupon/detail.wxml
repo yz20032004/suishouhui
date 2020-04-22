@@ -1,0 +1,25 @@
+<!--pages/coupon/detail.wxml-->
+<view class='content'>
+  <view class="coupon_box">
+    <view class='shop_name'>
+      <text>{{detail.business_name}}</text>
+    </view>
+    <view class='coupon_name'>
+      <text>{{detail.coupon_name}}</text>
+    </view>
+  </view>
+  <view class='split_line'></view>
+  <view class="coupon_qrcode">
+    <canvas canvas-id="qrcode" style='width:70%;height:{{code_height}}px;margin-left:{{margin_left}}px' />
+  </view>
+  <view class="coupon_code">
+    <text>{{code_display}}</text>
+  </view>
+  <view class='split_line'></view>
+  <view class='detail'>
+    <view class='detail-info'>有效日期：{{detail.date_start}} 至 {{detail.date_end}}</view>
+    <view wx:if="{{detail.consume_limit > 0}}" class='detail-info'>最低消费：满{{detail.consume_limit}}元可用</view>
+    <view wx:if="{{detail.detail}}" class='detail-info'>使用须知：{{detail.detail}}</view>
+  </view>
+  <view class='clear'></view>
+</view>

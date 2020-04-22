@@ -1,0 +1,2 @@
+<!--pages/waimai/index.wxml-->
+<web-view src="{{order_url}}"></web-view>

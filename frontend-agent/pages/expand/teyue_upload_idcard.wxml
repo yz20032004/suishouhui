@@ -1,0 +1,79 @@
+<!--pages/expand/teyue_upload_idcard.wxml-->
+<view class="weui-cells__title">请各上传一张照片</view>
+<form class="page-body" bindsubmit="submit" report-submit="true">
+  <input type="text" name="head_photo_media" value="{{head_photo_media}}" style="display:none" />
+  <input type="text" name="country_photo_media" value="{{country_photo_media}}" style="display:none" />
+  <view class="weui-cells__title"></view>
+
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">请上传法人身份证人像面照片</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{headImageList}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" style="display:{{head_upload_display}}">
+              <view class="weui-uploader__input" bindtap="chooseHeadImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">请上传法人身份证国徽面照片</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{countryImageList}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewCountryImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" style="display:{{country_upload_display}}">
+              <view class="weui-uploader__input" bindtap="chooseCountryImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">请填写法人收款银行卡号，开户姓名须与身份证姓名一致</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">银行卡开户行</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindAccountbankChange" value="{{accountbanks[bankIndex]}}" range="{{accountbanks}}" range-key="" name="account_bank">
+          <view class="weui-select weui-select_in-select-after">{{accountbanks[bankIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">银行卡号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="请输入卡号" name="account_number" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">下一步</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

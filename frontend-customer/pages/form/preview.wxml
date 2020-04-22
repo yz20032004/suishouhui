@@ -1,0 +1,18 @@
+<!--pages/form/preview.wxml-->
+<view class="page">
+    <mp-msg type="success" title="">
+        <view slot="desc">感谢您的参与！</view>
+        <view slot="extend">
+
+        </view>
+        <view slot="handle">
+            <button class="weui-btn" type="primary" bindtap="opencard" wx:if="{{!member.mobile}}">加入会员</button>
+        </view>
+        <view slot="footer" style="display:none">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link">底部链接文本</navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+    </mp-msg>
+</view>

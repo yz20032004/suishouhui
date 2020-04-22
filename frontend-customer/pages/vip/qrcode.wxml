@@ -1,0 +1,16 @@
+<!--pages/vip/qrcode.wxml-->
+<view class="head-box">
+  <view class="avatar">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+</view>
+<view class="qrcode-box">
+  <canvas canvas-id="qrcode" class="er_code"  style="margin-left:{{margin_left}}px" />
+</view>
+<view class="mobile-box">
+  <text>{{member.mobile}}</text>
+</view>
+<view class="tip-box">
+  <text wx:if="{{'0000-00-00 00:00:00' != member.expired_at}}">有效期至：{{member.expired_at}}</text>
+  <text wx:else>有效期至：永久</text>
+</view>

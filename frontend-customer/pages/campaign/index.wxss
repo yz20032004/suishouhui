@@ -1,0 +1,46 @@
+/* pages/campaign/index.wxss */
+.groupon-title {
+  font-size: 15px;
+  display: block;
+}
+.groupon-price{
+  color:red;
+  font-size: 15px;
+}
+.groupon-price-yuan{
+  color: red;
+  font-size: 12px;
+}
+.groupon-amount{
+  color:gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.groupon-amount-yuan{
+  color: gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.groupon-img{
+  width:35%;
+}
+.groupon-info{
+  margin-left:10px;
+  width:45%;
+}
+.groupon-click{
+  width:20%;
+  margin-left:5px;
+}
+.buy-btn{
+  color: white;
+  background-color: red;
+  font-size: 12px;
+  padding-left:10px;
+  padding-right:10px;
+}
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}

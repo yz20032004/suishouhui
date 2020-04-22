@@ -1,0 +1,143 @@
+<!--pages/buy/detail.wxml-->
+<view class="weui-cells__title">抢购活动详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动名称</view>
+    <view class="weui-cell__ft">{{grouponData.title}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">团购券名称</view>
+    <view class="weui-cell__ft">{{grouponData.coupon_name}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">一次团购张数</view>
+    <view class="weui-cell__ft">{{grouponData.coupon_total}}张</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>团购原价</text>
+    </view>
+    <view class="weui-cell__ft">{{grouponData.amount}}元</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>抢购价</text>
+    </view>
+    <view class="weui-cell__ft">{{grouponData.price}}元</view>
+  </view>
+  <block wx:if="{{'0' != grouponData.total_limit}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>限购数量</text>
+      </view>
+      <view class="weui-cell__ft">{{grouponData.total_limit}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>每人限购</text>
+      </view>
+      <view class="weui-cell__ft">
+        <text wx:if="{{'0' == grouponData.single_limit}}">不限购</text>
+        <text wx:else>{{grouponData.single_limit}}份</text>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>限购人群</text>
+      </view>
+      <view class="weui-cell__ft">
+        <text wx:if="{{'0' == grouponData.is_member_limit}}">不限购</text>
+        <text wx:else>仅限会员购买</text>
+      </view>
+    </view>
+  </block>
+  <view class="weui-cell" wx:if="{{'1' == grouponData.is_distribute}}">
+    <view class="weui-cell__bd">
+      <text>分销每单提成</text>
+    </view>
+    <view class="weui-cell__ft">{{grouponData.distribute_bonus}}元</view>
+  </view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动开始日期</view>
+    <view class="weui-cell__ft">{{grouponData.date_start}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动结束日期</view>
+    <view class="weui-cell__ft">{{grouponData.date_end}}</view>
+  </view>
+</view>
+
+<view class="weui-cells__title">销售情况</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell" bindtap="open_sold_list">
+    <view class="weui-cell__bd">已售卖</view>
+    <view class="weui-cell__ft">{{grouponData.sold}}份</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell" bindtap="open_consumed_list">
+    <view class="weui-cell__bd">已使用</view>
+    <view class="weui-cell__ft">{{grouponData.consumed}}张</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell" bindtap="open_expired_list">
+    <view class="weui-cell__bd">已过期</view>
+    <view class="weui-cell__ft">{{grouponData.expired}}张</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">收益</view>
+    <view class="weui-cell__ft">{{grouponData.revenue}}元</view>
+  </view>
+</view>
+
+<block wx:if="{{'1' == grouponData.is_distribute}}">
+<view class="weui-cells__title">分销情况</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">分销笔数</view>
+    <view class="weui-cell__ft">{{grouponData.distribute_sold}}份</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">分销收益</view>
+    <view class="weui-cell__ft">{{grouponData.distribute_revenue}}元</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">分销发放提成</view>
+    <view class="weui-cell__ft">{{grouponData.distribute_bonus_total}}元</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+</view>
+</block>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动状态</view>
+    <view class="weui-cell__ft">{{grouponData.status_title}}</view>
+  </view>
+  <view class="weui-cell" bindtap="copydata">
+    <view class="weui-cell__bd">小程序路径</view>
+    <view class="weui-cell__ft">pages/groupon/detail?id={{grouponData.id}}</view>
+  </view>
+  <view class="weui-cell" bindtap="getqrcode">
+    <view class="weui-cell__bd">导出二维码</view>
+    <view class="weui-cell__ft">点此查看</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">创建时间</view>
+    <view class="weui-cell__ft">{{grouponData.created_at}}</view>
+  </view>
+</view>
+
+<view class="weui-btn-area" wx:if="{{'进行中'==grouponData.status_title || '未开始' == grouponData.status_title}}">
+  <button class="weui-btn" type="warn" bindtap="stop" data-id="{{grouponData.id}}">终止</button>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

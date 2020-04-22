@@ -1,0 +1,23 @@
+<!--pages/expand/teyue_readme.wxml-->
+<view class='readme'>
+  <view class='register_title'>
+    开通前准备
+  </view>
+  <view class='register_item'>1、请拍摄商户的身份证正反面照片各一张;</view>
+  <view class='register_item'>2、请拍摄商户的门头照、个体工商户营业执照，若是餐饮类型还须提供餐饮经营许可证;</view>
+  <view class='register_item'>3、请准备商户的法人银行卡号，微信收款金额将自动提现至该卡;</view>
+</view>
+<view class="readme">
+  <view class='register_title'>
+    开通须知
+  </view>
+  <view class='register_item'>1、本系统接入官方微信和支付宝支付，支付手续费率均为0.38%;</view>
+  <view class='register_item'>2、微信收款金额T+1日自动提现至商户的法人账户;</view>
+  <view class='register_item'>3、支付宝收款金额实时到商户的个人支付宝账户;</view>
+  <view class='register_item'>4、特约商户微信收款信用卡支付不限金额;</view>
+  <view class='register_item'>5、特约商户会打款给商户验证，审核约为两个工作日;</view>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="register">现在去申请</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

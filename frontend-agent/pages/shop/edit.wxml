@@ -1,0 +1,33 @@
+<!--pages/shop/edit.wxml-->
+<form bindsubmit="submit" report-submit="true">
+	<view class="content">
+    <view class="weui-cells__title">修改门店信息</view>
+    <view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">门店地址</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写" type="text" name="address" value="{{address}}" bindtap="selectAddress" disabled />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">门店电话</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写" type="number" name="telephone" value="{{shop.telephone}}" />
+			</view>
+		</view>
+	</view>
+  <view class="weui-cells__title">门店营业时间</view>
+    <view class="weui-cells weui-cells_after-title">
+        <textarea style="margin-left:10px;height:50px" placeholder="请填写" value="{{shop.open_time}}" name="open_time" />
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">保存</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

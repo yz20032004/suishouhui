@@ -1,0 +1,60 @@
+<!--pages/shop/add.wxml-->
+<form bindsubmit="submit" report-submit="true">
+  <view class="content">
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">分店名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写" type="text" name="name" value="" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">门店所在地区</view>
+        <view class="weui-cell__ft">
+          <picker mode="region" bindchange="bindRegionChange" value="">
+            <view class="picker">
+              {{region[1]}}{{region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">门店地址</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写" type="text" name="address" value="{{address}}" bindtap="selectAddress" disabled />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">请上传门头照</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{storeEntranceImageList}}" wx:for-item="image">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewStoreEntranceImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseStoreEntranceImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">下一步</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

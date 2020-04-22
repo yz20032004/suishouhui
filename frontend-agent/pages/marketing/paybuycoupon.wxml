@@ -1,0 +1,76 @@
+<!--pages/marketing/paybuycoupon.wxml-->
+<!--pages/marketing/paybuycoupon.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">创建加价购买规则</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">最低买单金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写金额" type="number" name="consume" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">加价金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字，1~5元最佳" type="digit" name="amount" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">购买优惠券</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCouponChange" value="{{coupons[couponIndex].id}}" range="{{coupons}}" range-key="name" name="coupon_id">
+          <view class="weui-select weui-select_in-select-after">{{coupons[couponIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">张数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCountChange" value="{{counts[countIndex]}}" range="{{counts}}" name="count">
+          <view class="weui-select weui-select_in-select-after">{{counts[countIndex]}}张</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+    <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动开始日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+          <view class="weui-input">{{date_start}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动结束日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+          <view class="weui-input">{{date_end}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">保存</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>
+
+<view class="function-demo" bindtap="previewDemoImage">
+  <text>点此查看加价购演示</text>
+</view>

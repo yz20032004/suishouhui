@@ -1,0 +1,44 @@
+<!--pages/buy/coupon_list.wxml-->
+<block wx:if="{{'consumed' == type}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">选择日期</view>
+      </view>
+      <view class="weui-cell__bd picker_group">
+        <picker mode="date" value="{{date_start}}" start="2019-01-01" end="date_end" bindchange="bindDateStartChange">
+          <view class="picker">
+            {{date_start}}
+          </view>
+        </picker>
+        至
+        <picker mode="date" value="{{date_end}}" start="2019-01-01" end="date_end" bindchange="bindDateEndChange">
+          <view class="picker">
+            {{date_end}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  </block>
+<view class="weui-cells weui-cells_after-title" wx:if="{{couponData.length > 0}}">
+  <block wx:for="{{couponData}}">
+    <view class="weui-flex  weui-cell" data-openid="{{item.openid}}" bindtap="previewMember">
+      <view style="width:20%">
+        <image class="memberinfo-avatar" src="{{item.headimgurl}}" background-size="cover"></image>
+      </view>
+      <view style="width:60%">
+        <view class="memberinfo-name">{{item.nickname}}</view>
+        <view class="buy-time" wx:if="{{'consumed' == type}}">使用时间：{{item.updated_at}}</view>
+        <view class="buy-time" wx:else>过期时间：{{item.updated_at}}</view>
+      </view>
+      <view style="width:20%;text-align:right">
+        <image src="/images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+      </view>
+    </view>
+  </block>
+</view>
+<view wx:else>
+  <view class="no-record">暂无记录</view>
+</view>

@@ -1,0 +1,61 @@
+<!--pages/marketing/point.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">顾客实付</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindRebatePointChange" value="{{rebatePointIndex}}" range="{{counts}}" name="award_need_consume">
+          <view class="weui-select weui-select_in-select-after">{{counts[rebatePointIndex]}}元返1积分</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{'pay' != marketing_type}}">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">使用储值消费</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindRechargePointChange" value="{{point_speed_range[rechargePointIndex].speed}}" range="{{point_speed_range}}" name="recharge_point_speed" range-key='title'>
+          <view class="weui-select weui-select_in-select-after">{{point_speed_range[rechargePointIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">积分抵现</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">积分可抵扣现金使用</view>
+      <view class="weui-cell__ft">
+        <switch bindchange="exchangePointSwitch" value="1" name="can_cash" wx:if="{{can_cash == true}}" checked />
+        <switch bindchange="exchangePointSwitch" value="1" name="can_cash" wx:else />
+      </view>
+    </view>
+  </view>
+
+  <view style="display:{{exchange_display}}">
+    <view class="weui-cells__title">积分抵扣现金设置</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">顾客使用</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindUsePointChange" value="{{usePointIndex}}" range="{{counts}}" name="exchange_need_points">
+            <view class="weui-select weui-select_in-select-after">{{counts[usePointIndex]}}积分可抵扣1元</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

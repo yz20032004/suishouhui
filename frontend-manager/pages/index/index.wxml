@@ -1,0 +1,118 @@
+<!--pages/index/shop_dashboard.wxml-->
+<view wx:if="{{shops.length > 1}}" class="switch-shop-area">
+  <picker bindchange="bindShopChange" value="{{shopIndex}}" range="{{shops}}" range-key="branch_name" name="shop_id">
+    <view>
+      <text class="shop-name">{{merchant_name}}{{shops[shopIndex].branch_name}} >></text>
+    </view>
+  </picker>
+</view>
+<view class="top-area">
+  <view class="top-icon-area" bindtap="validate_coupon">
+    <view style="height:50px">
+      <image src="/images/consume.png" style="width:50px;height:50px"></image>
+    </view>
+    <view>
+      <text class="operator-title">核销券</text>
+    </view>
+  </view>
+  <view class="top-icon-area" bindtap="search_member" wx:if="{{'pay' != merchant.marketing_type}}">
+    <view style="height:50px">
+      <image src="/images/member_search.png" style="width:50px;height:50px"></image>
+    </view>
+    <view>
+      <text class="operator-title">查会员</text>
+    </view>
+  </view>
+  <view class="top-icon-area" bindtap="consume" wx:else>
+    <view style="height:50px">
+      <image src="/images/point_white.png" style="width:50px;height:50px"></image>
+    </view>
+    <view>
+      <text class="operator-title">返积分</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<form bindsubmit="inputSearch" wx:if="{{search_member_display}}">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入会员手机号" value="{{mobile}}" bindinput="bindInput" name="mobile" focus="true"></input>
+      </view>
+      <view class="btn-area" id="buttonContainer">
+        <button class="mini-btn" type="primary" size="mini" disabled="{{search_disabled}}" style="background-color:#d81e06" formType="submit">查询</button>
+        <button class="mini-btn" type="primary" size="mini" style="background-color:#d81e06;margin-left:10px" bindtap="scanSearch">扫会员码</button>
+      </view>
+    </view>
+  </view>
+</form>
+
+<view class="weui-grids" wx:if="{{'marketing' == merchant.marketing_type}}">
+  <view bindtap="consume" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/points.png" />
+    <view class="weui-grid__label">
+      <view>消费返积分</view>
+    </view>
+  </view>
+  <view bindtap="recharge" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/index_recharge.png" />
+    <view class="weui-grid__label">会员充值</view>
+  </view>
+  <view bindtap="trade" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/index_bill.png" />
+    <view class="weui-grid__label">订单</view>
+  </view>
+  <view bindtap="campaigns" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/campaigns.png" />
+    <view class="weui-grid__label">营销活动</view>
+  </view>
+  <view bindtap="members" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/members.png" />
+    <view class="weui-grid__label">会员列表</view>
+  </view>
+  <block wx:if="{{'1' == merchant.is_tables}}">
+    <view bindtap="order_tables" class="weui-grid" hover-class="weui-grid_active">
+      <image class="weui-grid__icon" src="/images/order_black.png" />
+      <view class="weui-grid__label">桌台点单</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view bindtap="huishenghuo" class="weui-grid" hover-class="weui-grid_active">
+      <image class="weui-grid__icon" src="/images/huiicon.png" />
+      <view class="weui-grid__label">会员小程序</view>
+    </view>
+  </block>
+</view>
+<view class="weui-grids" wx:elif="{{'groupon' == merchant.marketing_type}}">
+  <view bindtap="groupon_trade" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/index_bill.png" />
+    <view class="weui-grid__label">团购订单</view>
+  </view>
+  <view bindtap="coupon_consumed" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/campaigns.png" />
+    <view class="weui-grid__label">券核销记录</view>
+  </view>
+  <view bindtap="huishenghuo" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/huiicon.png" />
+    <view class="weui-grid__label">会员小程序</view>
+  </view>
+</view>
+<view class="weui-grids" wx:else>
+  <navigator url="../trade/waimai_list"  class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/index_bill.png" />
+    <view class="weui-grid__label">订单管理</view>
+  </navigator>
+  <view bindtap="campaigns" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/campaigns.png" />
+    <view class="weui-grid__label">营销活动</view>
+  </view>
+  <view bindtap="huishenghuo" class="weui-grid" hover-class="weui-grid_active">
+    <image class="weui-grid__icon" src="/images/huiicon.png" />
+    <view class="weui-grid__label">会员小程序</view>
+  </view>
+</view>
+
+<view class="btn-area" style="margin-top:30px;width:40%;margin-left:30%;" wx:if="{{true == user.is_demo}}">
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type='warn'>商户注册</button>
+</view>

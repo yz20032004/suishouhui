@@ -1,0 +1,65 @@
+<!--pages/index/pay_result.wxml-->
+<view class="container">
+  <view class="icon-box">
+    <icon class="icon-box-img" type="success" size="90"></icon>
+    <view class="icon-box-ctn">
+      <view class="pay-box-title">收款成功</view>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">账单金额</view>
+    <view class="weui-cell__ft">¥ {{pay.trade}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.use_coupon_amount != '0'}}">
+    <view class="weui-cell__bd">使用券</view>
+    <view class="weui-cell__ft">{{pay.use_coupon_name}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.use_coupon_amount != '0'}}">
+    <view class="weui-cell__bd">券优惠金额</view>
+    <view class="weui-cell__ft">¥ {{pay.use_coupon_amount}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.consume_recharge != '0'}}">
+    <view class="weui-cell__bd">使用储值余额</view>
+    <view class="weui-cell__ft">¥ {{pay.consume_recharge}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.consume_point != '0'}}">
+    <view class="weui-cell__bd">使用积分</view>
+    <view class="weui-cell__ft">{{pay.consume_point}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.point_amount != '0'}}">
+    <view class="weui-cell__bd">积分抵扣金额</view>
+    <view class="weui-cell__ft">¥ {{pay.point_amount}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.reduce != '0'}}">
+    <view class="weui-cell__bd">参加消费立减活动</view>
+    <view class="weui-cell__ft">¥ {{pay.reduce}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.discount != '0'}}">
+    <view class="weui-cell__bd">参与买单折扣活动</view>
+    <view class="weui-cell__ft">¥ {{pay.discount}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.member_discount != '0'}}">
+    <view class="weui-cell__bd">会员等级折扣优惠</view>
+    <view class="weui-cell__ft">¥ {{pay.member_discount}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{pay.save}}">
+    <view class="weui-cell__bd">总共优惠</view>
+    <view class="weui-cell__ft">¥ {{pay.save}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{'0' != pay.get_point}}">
+    <view class="weui-cell__bd">返积分</view>
+    <view class="weui-cell__ft">{{pay.get_point}}积分</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">实收</view>
+    <view class="weui-cell__ft">¥ {{pay.consume}}</view>
+  </view>
+</view>
+<view class="btn-area complete">
+  <button type="primary" bindtap="complete">完成</button>
+</view>

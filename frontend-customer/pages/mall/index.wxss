@@ -1,0 +1,66 @@
+/* pages/mall/index.wxss */
+.weui-cell{
+  padding:6px;
+}
+.product-title {
+  font-size: 15px;
+  display: block;
+}
+.product-price{
+  color:red;
+  font-size: 15px;
+}
+.product-price-yuan{
+  color: red;
+  font-size: 12px;
+}
+.product-amount{
+  color:gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.product-amount-yuan{
+  color: gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.product-img{
+  width:50%;
+}
+.product-info{
+  margin-left:10px;
+  width:50%;
+}
+.product-click{
+  float: right;
+  width:30%;
+  margin-right:5px;
+}
+.buy-btn{
+  color: white;
+  background-color: red;
+  font-size: 12px;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}
+.backtoindex {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border-radius: 500px;
+    width: 35px;
+    height: 35px;
+}
+.product-right-top{
+  padding-top: 5px;
+}
+.product-right-bottom{
+  margin-top: 20px;
+}

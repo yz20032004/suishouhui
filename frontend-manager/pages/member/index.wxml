@@ -1,0 +1,146 @@
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-flex  weui-cell" bindtap="previewMember">
+    <view style="width:20%">
+      <image class="memberinfo-avatar" src="{{userInfo.headimgurl}}" background-size="cover"></image>
+    </view>
+    <view style="width:60%">
+      <text class="memberinfo-name">{{userInfo.name}}  ({{userInfo.grade_title}})
+        <p></p> {{userInfo.mobile}}</text>
+    </view>
+    <view style="width:20%;text-align:right">
+      <image src="/images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+  <view class="weui-flex weui-cell">
+    <view class="memberinfo" bindtap="openPoint">
+      <view>
+        <text class="member-number">{{userInfo.point}}</text>
+      </view>
+      <view>
+        <text class="member-tip">积分</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openBalanceList">
+      <view>
+        <text class="member-number">{{userInfo.recharge}}</text>
+      </view>
+      <view>
+        <text class="member-tip">储值余额(元)</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openBalanceList">
+      <view>
+        <text class="member-number">{{userInfo.amount_total}}</text>
+      </view>
+      <view>
+        <text class="member-tip">累积消费(元)</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openTradeList">
+      <view>
+        <text class="member-number">{{userInfo.consumes}}</text>
+      </view>
+      <view>
+        <text class="member-tip">消费次数</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openCouponList">
+      <view>
+        <text class="member-number">{{userInfo.coupons}}</text>
+      </view>
+      <view>
+        <text class="member-tip">优惠券(张)</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != '2'}}">
+      <form bindsubmit="recharge">
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+          <radio-group class="radio-group" bindchange="bindRechargeChange" name="recharge_id">
+            <label class="weui-cell weui-check__label" wx:for="{{rechargeData}}">
+              <view class="weui-cell__hd">
+                <radio value="{{item.id}}" checked="" />
+              </view>
+              <view class="weui-cell__bd">储值{{item.touch}}元返{{item.award_title}}</view>
+            </label>
+            <label class="weui-cell weui-check__label">
+              <view class="weui-cell__hd">
+                <radio value="0" checked="" />
+              </view>
+              <view class="weui-cell__bd">储值其它金额</view>
+            </label>
+          </radio-group>
+        </view>
+        <view class="weui-cells__title" style="display:{{custom_recharge_amount_display}}"></view>
+        <view class="weui-cells weui-cells_after-title" style="display:{{custom_recharge_amount_display}}">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">储值金额</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入储值金额" type="number" name="amount" />
+            </view>
+          </view>
+        </view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" form-type="submit">确定</button>
+        </view>
+      </form>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != '1'}}">
+      <block wx:if="{{'0' == exchangeData.length}}">
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells__title" style="margin-top:50px;text-align:center">未设置积分兑换规则</view>
+      </block>
+      <block wx:else>
+        <form bindsubmit="exchange">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <radio-group class="radio-group" bindchange="bindExchangeChange" name="exchange_id">
+              <label class="weui-cell weui-check__label" wx:for="{{exchangeData}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{item.id}}" checked="" />
+                </view>
+                <view class="weui-cell__bd">{{item.point}}积分兑换{{item.product}}</view>
+              </label>
+            </radio-group>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" form-type="submit">确定</button>
+          </view>
+        </form>
+      </block>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != '0'}}">
+      <form bindsubmit="changeGrade">
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+          <radio-group class="radio-group" name="grade">
+            <label class="weui-cell weui-check__label" wx:for="{{gradeData}}">
+              <view class="weui-cell__hd">
+                <radio value="{{item.grade}}" checked="{{item.grade == userInfo.grade ? 'checked' : ''}}" />
+              </view>
+              <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+          </radio-group>
+        </view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" form-type="submit">确定</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>

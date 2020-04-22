@@ -1,0 +1,16 @@
+/* pages/marketing/index.wxss */
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin: 10rpx;
+}
+
+.name {
+    font-size: 20px;
+    float:left;
+}
+.tip {
+    color: darkgrey;
+    font-size: 12px;
+    float:left;
+}

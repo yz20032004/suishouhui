@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="shoptype-box">
+	<view class="xiaowei" data-type="xiaowei" bindtap="showMerchantList" style="background-color:{{xiaowei_back_color}};color:{{xiaowei_color}}">小微商户</view>
+	<view class="teyue" data-type="teyue" bindtap="showMerchantList" style="background-color:{{teyue_back_color}};color:{{teyue_color}}">特约商户</view>
+	<view class="general" data-type="general" bindtap="showMerchantList" style="background-color:{{general_back_color}};color:{{general_color}}">普通商户</view>
+	<view class="clear"></view>
+</view>
+
+<view class="title-box">
+	<view class="total">{{total}}家商户</view>
+	<view class="clear"></view>
+</view>
+
+<view class="expand-new" bindtap="expand">
+	<text class="expand-title">+ 拓展商户</text>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<block wx:for="{{list}}">
+		<view class="weui-flex  weui-cell" bindtap="preview_shop" data-id="{{item.mch_id}}">
+			<view style="width:20%">
+				<image class="avatar" src="/images/shop.png" background-size="cover"></image>
+			</view>
+			<view style="width:74%">
+				<view class="merchant-name"><text class="name">{{item.merchant_name}}</text></view>
+				<view class="merchant-state">
+					<text class="tip">{{item.created_at}}</text>
+					<text class="state" wx:if="{{'FINISH' == item.applyment_state}}">已营业</text>
+					<text class="state" wx:elif="{{'TO_BE_SIGNED' == item.applyment_state}}">待签约</text>
+					<text class="state" wx:elif="{{'AUDIT' == item.applyment_state}}">待审核</text>
+				</view>
+			</view>
+			<view style="width:6%;text-align:right">
+				<image src="/images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+			</view>
+			<view class="clear"></view>
+		</view>
+	</block>
+</view>

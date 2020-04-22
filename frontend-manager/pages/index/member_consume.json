@@ -1,0 +1,8 @@
+{
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#eee",
+  "navigationBarBackgroundColor": "#d81e06",
+  "navigationBarTitleText": "确认订单",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

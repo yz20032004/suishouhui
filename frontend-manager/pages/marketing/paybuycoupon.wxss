@@ -1,0 +1,7 @@
+/* pages/marketing/paybuycoupon.wxss */
+.function-demo {
+  margin-top: 20px;
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+<!--pages/setting/beans.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{list}}">
+    <view class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+      <view style="width:20%">
+        <view class="coupon-type">
+          <text wx:if="{{'1'==item.is_get}}" class='get'>奖励</text>
+          <text  class='consume' wx:else>消耗</text>
+        </view>
+      </view>
+      <view style="width:45%">
+        <view>
+          <text class="number">{{item.beans}}金币</text>
+        </view>
+        <view class="detail">
+          <text>{{item.detail}}</text>
+        </view>
+      </view>
+      <view class="weui-cell__ft">{{item.created_date}}</view>
+    </view>
+  </block>
+</view>

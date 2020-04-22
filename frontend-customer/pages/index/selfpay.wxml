@@ -1,0 +1,36 @@
+<!--pages/index/selfpay.wxml-->
+<form bindsubmit="submit" class="edit_cash">
+  <view class="wrap">
+    <view class='shop'>付款给{{merchant_name}}{{branch_name}}</view>
+    <view class="shuru">
+      <view class='symbol'>￥</view>
+      <view class="money-input">
+        <input type='digit' maxlength='7' focus='true' name="trade" bindinput="monitor" value="{{trade}}" disabled="{{input_disabled}}"></input>
+      </view>
+    </view>
+    <view wx:if="{{!show_rechargenopay}}"><p>请询问店员应付金额</p></view>
+    <checkbox-group bindchange="checkRechargeNopayChange" wx:if="{{show_rechargenopay}}" data-recharge="{{recharge_total}}" data-discount="{{recharge_discount}}">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__ft">
+          <label class="checkbox">
+            <checkbox name="" value='use_recharge' />
+            <text class="recharge-tip">储值{{recharge_total}}倍立享</text>
+            <text class="recharge-tip" wx:if="{{recharge_discount > 0}}">{{recharge_discount}}折</text>
+            <text class="recharge-tip" wx:else>免单</text>
+          </label>
+        </view>
+      </view>
+    </checkbox-group>
+    <checkbox-group bindchange="checkPayBuyCouponChange" wx:if="{{show_paybuycoupon}}" data-coupon_id="{{coupon_id}}" data-coupon_amount="{{coupon_amount}}">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__ft">
+          <label class="checkbox">
+            <checkbox name="" value='use_paybuycoupon' />
+            <text class="recharge-tip">{{title}}</text>
+          </label>
+        </view>
+      </view>
+    </checkbox-group>
+    <button class="weui-btn button" type="primary" form-type="submit" disabled="{{disabled}}">立即支付</button>
+  </view>
+</form>

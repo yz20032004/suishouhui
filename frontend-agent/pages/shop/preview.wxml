@@ -1,0 +1,104 @@
+<!--pages/index/preview_shop.wxml-->
+<view class="content-box">
+  <view class="shop-title-box">
+    <view class="shop-title">{{shop.business_name}}</view>
+  </view>
+  <view class="detail-box">
+    <view class="detail-row">
+      <view class="row-title">商户类型</view>
+      <view class="row-info">
+        <text wx:if="{{'xiaowei' == mch.mch_type}}">小微商户</text>
+        <text wx:elif="{{'getihu' == mch.mch_type}}">特约商户</text>
+        <text wx:else>普通商户</text>
+      </view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row" wx:if="{{'general' != mch.mch_type}}">
+      <view class="row-title">商户号</view>
+      <view class="row-info">{{merchant.mch_id}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">营销版本</view>
+      <view class="row-info">
+        <text wx:if="{{'pay' == merchant.marketing_type}}" class="marketing-type">（支付版）</text>
+        <text wx:elif="{{'marketing' == merchant.marketing_type}}" class="marketing-type">（会员营销版）</text>
+        <text wx:elif="{{'groupon' == merchant.marketing_type}}" class="marketing-type">（团购版）</text>
+      </view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">经营行业</view>
+      <view class="row-info">{{mch.category}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">联系人</view>
+      <view class="row-info">{{mch.account_name}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">联系电话</view>
+      <view class="row-info">{{mch.mobile}}</view>
+      <view class="clear"></view>
+    </view>
+    <block wx:if="{{'general' != mch.mch_type}}">
+      <view class="detail-row">
+        <view class="row-title">银行卡</view>
+        <view class="row-info">{{mch.account_number}}</view>
+        <view class="clear"></view>
+      </view>
+      <view class="detail-row">
+        <view class="row-title">微信费率</view>
+        <view class="row-info">{{merchant.wechat_fee_rate*100}}%</view>
+        <view class="clear"></view>
+      </view>
+      <view class="detail-row">
+        <view class="row-title">支付宝费率</view>
+        <view class="row-info">{{merchant.ali_fee_rate*100}}%</view>
+        <view class="clear"></view>
+      </view>
+
+      <view class="detail-row">
+        <view class="row-title">支付宝</view>
+        <view class="row-info">
+          <text wx:if="{{merchant.alipay_app_id}}">已绑定</text>
+          <text wx:else>未绑定</text>
+        </view>
+        <view class="clear"></view>
+      </view>
+      <view class="detail-row">
+        <view class="row-title">收款码</view>
+        <view class="row-info">
+          <text wx:if="{{paycounter.qrcode_url}}">已绑定</text>
+          <text wx:else>未绑定</text>
+        </view>
+        <view class="clear"></view>
+      </view>
+    </block>
+    <view class="detail-row">
+      <view class="row-title">门店地址</view>
+      <view class="row-info">{{shop.province}}{{shop.city}}{{shop.district}}{{shop.address}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">门店营业时间</view>
+      <view class="row-info">{{shop.open_time}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">门店联系电话</view>
+      <view class="row-info">{{shop.telephone}}</view>
+      <view class="clear"></view>
+    </view>
+    <view class="detail-row">
+      <view class="row-title">申请时间</view>
+      <view class="row-info">{{shop.created_at}}</view>
+      <view class="clear"></view>
+    </view>
+  </view>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="config">配置</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

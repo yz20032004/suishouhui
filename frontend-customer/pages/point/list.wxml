@@ -1,0 +1,27 @@
+<!--pages/point/list.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{list}}">
+    <view class="weui-cell" bindtap='exchange' data-id="{{item.id}}">
+      <view class="groupon-img">
+        <image style="width:100%;height:60px;" src="{{item.image_url}}"></image>
+      </view>
+      <view class="groupon-info">
+        <view class="groupon-title">{{item.coupon_name}}</view>
+        <view class="groupon-cost">
+          <text class="groupon-price">{{item.point}}</text>
+          <text class="groupon-price-yuan">积分</text>
+        </view>
+      </view>
+      <view class="groupon-click">
+        <button class='buy-btn'>兑换</button>
+      </view>
+    </view>
+  </block>
+</view>
+
+<block wx:if="{{list.length == 0}}">
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

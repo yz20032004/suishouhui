@@ -1,0 +1,26 @@
+<!--pages/order/index.wxml-->
+<web-view src="{{order_url}}" wx:if="{{enter_order}}"></web-view>
+<view class="page" wx:else>
+    <view class="page__hd">
+    </view>
+	<view class="page__bd">
+		<view class="weui-form-preview">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__label">【{{order.table_name}}】付款金额</view>
+				<view class="weui-form-preview__value_in-hd">¥{{order.amount}}</view>
+			</view>
+			<view class="weui-form-preview__bd">
+        <block wx:for="{{dishes}}">
+				<view class="weui-form-preview__item">
+					<view class="weui-form-preview__label">{{item.dish}}</view>
+					<view class="weui-form-preview__value">{{item.total}}份</view>
+				</view>
+        </block>
+			</view>
+			<view class="weui-form-preview__ft">
+				<navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap="order_append">加菜</navigator>
+				<navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="order_pay">买单</navigator>
+			</view>
+		</view>
+	</view>
+</view>

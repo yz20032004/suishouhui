@@ -1,0 +1,78 @@
+<!--pages/campaign/index.wxml-->
+
+<block wx:if="{{grouponData.length > 0}}">
+  <view class="weui-cells__title">超值抢购</view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{grouponData}}">
+      <view class="weui-cell" bindtap='buy' data-id="{{item.id}}">
+        <view class="groupon-img">
+          <image style="width:100%;height:60px;" src="{{item.image_url}}"></image>
+        </view>
+        <view class="groupon-info">
+          <view class="groupon-title">{{item.title}}</view>
+          <view class="groupon-cost">
+            <text class="groupon-price">{{item.price}}</text>
+            <text class="groupon-price-yuan">元</text>
+            <text class="groupon-amount">{{item.amount}}</text>
+            <text class="groupon-amount-yuan">元</text>
+          </view>
+        </view>
+        <view class="groupon-click">
+          <button class='buy-btn'>抢购</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+
+<block wx:if="{{togetherData.length > 0}}">
+  <view class="weui-cells__title">拼团专区</view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{togetherData}}">
+      <view class="weui-cell" bindtap='together' data-id="{{item.id}}">
+        <view class="groupon-img">
+          <image style="width:100%;height:60px;" src="{{item.image_url}}"></image>
+        </view>
+        <view class="groupon-info">
+          <view class="groupon-title">{{item.title}}</view>
+          <view class="groupon-cost">
+            <text class="groupon-price">{{item.price}}</text>
+            <text class="groupon-price-yuan">元</text>
+            <text class="groupon-amount">{{item.amount}}</text>
+            <text class="groupon-amount-yuan">元</text>
+          </view>
+        </view>
+        <view class="groupon-click">
+          <button class='buy-btn'>拼团</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:if="{{vipcardData.length > 0}}">
+  <view class="weui-cells__title">权益卡购买</view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{vipcardData}}">
+      <view class="weui-cell" bindtap='buy_vipcard' data-id="{{item.id}}">
+        <view class="groupon-img">
+          <image style="width:100%;height:60px;" src="{{item.pic_url}}"></image>
+        </view>
+        <view class="groupon-info">
+          <view class="groupon-title">{{item.grade_name}}</view>
+          <view class="groupon-cost">
+            <text class="groupon-price">{{item.price}}</text>
+            <text class="groupon-price-yuan">元</text>
+          </view>
+        </view>
+        <view class="groupon-click">
+          <button class='buy-btn'>抢购</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:if="{{vipcardData.length == 0 && togetherData.length == 0 && grouponData.length == 0}}">
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

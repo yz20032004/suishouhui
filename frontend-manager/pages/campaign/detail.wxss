@@ -1,0 +1,7 @@
+/* pages/campaign/detail.wxss */
+.weui-cell__bd {
+  width:35%;
+}
+.weui-cell__ft {
+  width:65%;
+}

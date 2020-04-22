@@ -1,0 +1,87 @@
+<!--pages/setting/cashout.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="out-box">
+    <view class="cash_out_box">
+      <text style="font-size:15px;">待提现</text>
+      <text style="font-size:20px;color:red;margin-left:5px;">{{cashout.wait_cash_out}}</text>
+    </view>
+    <view class="btn-box">
+      <button class="weui-btn" type="primary" bindtap="cashout">提现</button>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-flex weui-cell">
+    <view class="statview">
+      <view>
+        <text class="todaystat-tip">团购收益</text>
+      </view>
+      <view>
+        <text class="todaystat-number">{{cashout.groupon_revenue}}</text>
+      </view>
+    </view>
+    <view class="statview">
+      <view>
+        <text class="todaystat-tip">已提现</text>
+      </view>
+      <view>
+        <text class="todaystat-number">{{cashout.cash_out}}</text>
+      </view>
+    </view>
+    <view class="statview">
+      <view>
+        <text class="todaystat-tip">手续费</text>
+      </view>
+      <view>
+        <text class="todaystat-number">{{cashout.service_fee}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">提现日期</view>
+    </view>
+    <view class="weui-cell__bd picker_group">
+      <picker mode="date" value="{{date_start}}" start="2019-01-01" end="{{date_start}}" bindchange="bindDateStartChange">
+        <view class="picker">
+          {{date_start}}
+        </view>
+      </picker>
+      至
+      <picker mode="date" value="{{date_end}}" start="2019-01-01" end="date_end" bindchange="bindDateEndChange">
+        <view class="picker">
+          {{date_end}}
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
+
+<block wx:if="{{tradeData.length > 0}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{tradeData}}">
+      <view class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+        <view style="width:50%">
+          <text class="trade-amount">提现{{item.cash_out}}元</text>
+        </view>
+        <view style="width:50%">
+          <view>
+            <text class="trade-time">{{item.created_at}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="no-trade">
+    <text>暂无提现记录</text>
+  </view>
+</block>

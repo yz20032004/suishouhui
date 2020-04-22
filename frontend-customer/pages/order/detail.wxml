@@ -1,0 +1,85 @@
+<!--pages/order/detail.wxml-->
+<view class='content'>
+	<view class='consume_item' wx:if="{{order.get_no}}">
+		<view class="get_no_title">
+      取餐号
+		</view>
+    <view class="get_no">
+      #{{order.get_no}}
+    </view>
+		<view class='line'></view>
+	</view>
+
+	<view class='consume_item'>
+		<view class='trade' wx:if="{{'0' != order.table_id}}">桌号：{{order.table_name}}
+		</view>
+		<view class='line'></view>
+		<view class='detail'>
+			<block wx:for="{{dishes}}">
+				<view class='title'>{{item.dish}}</view>
+				<view class='bill'>{{item.total}}份</view>
+			</block>
+			<view class='title'>餐费</view>
+			<view class='bill'>￥{{order.amount}}</view>
+		</view>
+		<view class='line'></view>
+	</view>
+	<view class='consume_item'>
+		<view class='detail'>
+			<block wx:if="{{'0' != pay.coupon_fee}}">
+				<view class='title'>微信支付券立减</view>
+				<view class='bill'>-￥{{pay.coupon_fee/100}}</view>
+			</block>
+			<block wx:if="{{'0' != pay.get_point}}">
+				<view class='title'>返积分</view>
+				<view class='bill'>+{{pay.get_point}}</view>
+			</block>
+			<block wx:if="{{'' != pay.use_coupon_name}}">
+				<view class='title'>使用优惠券</view>
+				<view class='bill'>{{pay.use_coupon_name}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_coupon_amount}}">
+				<view class='title'>优惠券抵扣</view>
+				<view class='bill'>-￥{{pay.use_coupon_amount}}</view>
+			</block>
+			<block wx:if="{{'0' != pay.point_amount}}">
+				<view class='title'>积分抵扣</view>
+				<view class='bill'>-￥{{pay.point_amount}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_recharge}}">
+				<view class='title'>使用储值</view>
+				<view class='bill'>-￥{{pay.use_recharge}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_reduce}}">
+				<view class='title'>参与消费立减</view>
+				<view class='bill'>-￥{{pay.use_reduce}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_discount}}">
+				<view class='title'>参与消费折扣</view>
+				<view class='bill'>-￥{{pay.use_discount}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.member_discount}}">
+				<view class='title'>会员折扣</view>
+				<view class='bill'>-￥{{pay.member_discount}}</view>
+			</block>
+      <view class='title'>实付</view>
+			<view class='bill'>￥{{pay.consume}}</view>
+			<block wx:if="{{'0' != pay.refund_fee}}">
+				<view class='title'>退款</view>
+				<view class='bill'>-￥{{pay.refund_fee/100}}</view>
+			</block>
+		</view>
+	</view>
+	<view class='consume_item'>
+		<view class='line'></view>
+		<view class='detail'>
+			<view class='order_title'>订单号</view>
+			<view class='order_bill'>{{order.out_trade_no}}</view>
+			<view class='order_title'>下单时间</view>
+			<view class='order_bill'>{{order.created_at}}</view>
+			<view class='order_title'>备注</view>
+			<view class='order_bill'>{{order.remark}}</view>
+		</view>
+		<view class='line'></view>
+	</view>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/order/add_table.wxml-->
+<form bindsubmit="submit">
+	<view class="weui-cells__title">增加桌台</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">桌台名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写名称" type="text" name="table_name" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">座位数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="number" name="seats" />
+      </view>
+    </view>
+  </view>
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit">确定</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

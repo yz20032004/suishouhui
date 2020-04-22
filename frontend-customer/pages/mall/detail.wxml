@@ -1,0 +1,140 @@
+<!--pages/mall/detail.wxml-->
+<view class="headimg-box">
+  <image src="{{product.icon_url}}" style="height:200px;width:100%;"></image>
+</view>
+<view class="head-box">
+  <view class="price-box">
+    <text class="price">￥{{product.price}}</text>
+    <text class="amount">{{product.amount}}</text>
+  </view>
+  <view class="title-box">
+    <text>【{{shop.business_name}}】{{product.title}}</text>
+    <text wx:if="{{product.single_limit>0}}">(每人限购{{product.single_limit}}份)</text>
+    <text wx:if="{{product.is_member_limit == '1'}}">(仅限会员购买)</text>
+  </view>
+  <view class="count-box">
+    <view class="balance">
+      <text wx:if="{{product.total_limit > 0}}">剩余{{balance}}份/</text>
+      <text>已售{{product.sold}}份</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="need-look">
+  <view class="look-title"></view>
+  <view class="rule-row" wx:if="{{delivery_tip}}">
+    <view class="tip-title">购买须知</view>
+    <view class="look-info">
+      <text>{{delivery_tip}}</text>
+    </view>
+  </view>
+  <view class="clear"></view>
+  <view class="rule-row" wx:if="{{product.detail}}">
+    <view class="tip-title">产品详情</view>
+    <view class="look-info">
+      <view>{{product.detail}}</view>
+    </view>
+  </view>
+  <view class="clear"></view>
+</view>
+
+<view class="detail-box">
+  <block wx:for="{{image_list}}">
+    <view class="detail-image">
+      <image src="{{item}}" mode="widthFix" style="width:100%" bindtap="previewImage" data-src="{{item}}"></image>
+    </view>
+  </block>
+</view>
+
+
+<view class="shop-info">
+  <view class="deal-title"></view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/shop.png"></image>
+    <view>
+      <text class="shop_name">{{shop.business_name}}{{shop.branch_name}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/time.png"></image>
+    <view>
+      <text class="shop_time">营业时间: {{shop.open_time}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <image style="width:20px;height:20px;margin-right:10px;" src="/images/location.png"></image>
+    <view class="address" bindtap='open_location'>
+      <text class="shop_time">地址: {{shop.city}}{{shop.district}}{{shop.address}}</text>
+    </view>
+    <image style="width:20px;height:20px;margin-left:10px;margin-right:10px;" src="/images/phone.png" data-phone="{{shop.telephone}}" bindtap='call'></image>
+  </view>
+</view>
+<view class="footer"></view>
+<view class="weui-cells__title"></view>
+<view class="bottom-box">
+  <view class="btn-left" hover-class="weui-form-preview__btn_active">
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' bindtap="more">
+          <image src="/images/more.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn' bindtap="more">更多</button>
+      </view>
+    </view>
+    <view class="footer-func-box">
+      <view class="footer-box-image">
+        <button class='share-btn' wx:if="{{member.nickname}}" bindtap="share"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+        <button class='share-btn' wx:else lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser"><image src="/images/share.png" style="width:20px;height:20px"></image></button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>分享</button>
+      </view>
+    </view>
+    <view class="footer-func-box" bindtap="open_cart">
+      <view class="footer-box-image">
+        <button class='share-btn'>
+          <image src="/images/mall.png" style="width:20px;height:20px"></image>
+        </button>
+      </view>
+      <view class="footer-box-text">
+        <button class='share-btn'>购物车</button>
+      </view>
+    </view>
+  </view>
+  <view class="btn-middle" hover-class="weui-form-preview__btn_active" bindtap="put_to_cart">加入购买车</view>
+  <view class="btn-right" hover-class="weui-form-preview__btn_active" bindtap="buy">{{buy_title}}</view>
+</view>
+
+<mp-halfScreenDialog show="{{show_share_box}}">
+  <view slot="title">分享</view>
+  <view slot="desc" wx:if="{{distribute_bonus > 0}}">邀请好友下单，您可获得{{distribute_bonus}}元现金奖励</view>
+  <view slot="footer">
+    <view class="share-box">
+      <view class="share-image">
+        <button class='half-share-btn' open-type="share">
+          <image src="/images/wechat.png" style="width:60px;height:60px"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">
+          <view class="share-text-title">推荐好友</view>
+        </view>
+        <view class="share-text-tip">或微信群</view>
+      </view>
+    </view>
+    <view class="share-box">
+      <view class="share-image" bindtap="shareimage">
+        <button class='half-share-btn'>
+        <image src="/images/download.png" style="width:60px;height:60px;line-height:2"></image>
+        </button>
+      </view>
+      <view class="share-text">
+        <view class="share-text-title">保存海报</view>
+        <view class="share-text-tip">推荐到朋友圈</view>
+      </view>
+    </view>
+  </view>
+</mp-halfScreenDialog>

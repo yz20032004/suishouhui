@@ -1,0 +1,49 @@
+/* pages/staff/list.wxss */
+/* pages/setting/staff.wxss */
+.link_arrow {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.rule {
+    font-size: 12px;
+    padding:3px 4px;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #fff;
+    background-color: #F88E8B;
+    text-align: center;
+    transition: .2s ease-out;
+    white-space: nowrap;
+}
+
+.shop {
+  font-size:15px;
+  color:darkgrey;
+  margin-top:15px;
+}
+
+.status {
+    font-size: 12px;
+    padding:3px 4px;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    transition: .2s ease-out;
+    white-space: nowrap;
+    border-style:solid;
+    border-width:1px
+}
+
+.memberinfo-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin: 10rpx;
+    border-radius: 50%;
+    vertical-align: middle
+}

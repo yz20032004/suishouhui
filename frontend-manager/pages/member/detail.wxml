@@ -1,0 +1,75 @@
+<view class="weui-cells__title">会员个人信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd"><image src="{{member.headimgurl}}" class="memberinfo-avatar"></image>
+    {{member.nickname}}</view>
+    <view class="weui-cell__ft">{{member.province}}{{member.city}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">姓名</view>
+    <view class="weui-cell__ft">{{member.name}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">等级</view>
+    <view class="weui-cell__ft">{{member.grade_title}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">性别</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'1' == member.gender}}">男</text>
+      <text wx:else>女</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">手机号码</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{false == user.is_demo}}">{{member.mobile ? member.mobile : '未填写'}}</text>
+      <text wx:else>体验账号不展示</text>  
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">开卡时间</view>
+    <view class="weui-cell__ft">{{member.created_at}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">上次消费时间</view>
+    <view class="weui-cell__ft">{{member.last_consume_at}}</view>
+  </view>
+</view>
+
+<view class="weui-cells__title">会员消费信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">积分数量</view>
+    <view class="weui-cell__ft">{{member.point}}个</view>
+  </view>
+  <view class="weui-cell" bindtap='coupon' data-openid="{{member.sub_openid}}">
+    <view class="weui-cell__bd">优惠券</view>
+    <view class="weui-cell__ft">{{member.coupons}}张</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">储值余额</view>
+    <view class="weui-cell__ft">{{member.recharge}}元</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">累计储值</view>
+    <view class="weui-cell__ft">{{member.recharge_total}}元</view>
+  </view>
+  <view class="weui-cell" bindtap='consumes' data-openid="{{member.sub_openid}}">
+    <view class="weui-cell__bd">累计消费次数</view>
+    <view class="weui-cell__ft">{{member.consumes}}次</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">累计消费金额</view>
+    <view class="weui-cell__ft">{{member.amount_total}}元</view>
+  </view>
+</view>
+
+<view class="weui-btn-area">
+  <picker bindchange="bindEditChange" value="{{editIndex}}" range="{{member_edits}}" >
+    <button class="weui-btn" type="primary">操作</button>
+  </picker>
+  <button class="weui-btn" type="plain" bindtap="back">返回</button>
+</view>

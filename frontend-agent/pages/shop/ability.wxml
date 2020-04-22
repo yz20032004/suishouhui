@@ -1,0 +1,198 @@
+<!--pages/shop/ability.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">基础功能</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">消费返积分</view>
+      <view class="weui-cell__ft">
+        <radio value="1" checked disabled/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">积分抵扣现金</view>
+      <view class="weui-cell__ft">
+        <radio value="1" checked disabled/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">积分兑换</view>
+      <view class="weui-cell__ft">
+        <radio value="1" checked disabled/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">创建/投放/核销优惠券</view>
+      <view class="weui-cell__ft">
+        <radio value="1" checked disabled/>
+      </view>
+    </view>
+    <block wx:if="{{'marketing' == marketing_type}}">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">外卖/外送</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_waimai" wx:if="{{mch.is_waimai == '1'}}" checked />
+          <switch value="1" name="is_waimai" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">扫码点餐</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_ordering" wx:if="{{mch.is_ordering == '1'}}" checked />
+          <switch value="1" name="is_ordering" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">商城</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_mall" wx:if="{{mch.is_mall == '1'}}" checked />
+          <switch value="1" name="is_mall" wx:else />
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{'pay' != marketing_type}}">
+    <view class="weui-cells__title">基础会员营销功能</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">开卡礼</view>
+        <view class="weui-cell__ft">
+          <radio value="1" checked disabled/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">群发优惠券</view>
+        <view class="weui-cell__ft">
+          <radio value="1" checked disabled/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">群发短信</view>
+        <view class="weui-cell__ft">
+          <radio value="1" checked disabled/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">等级特权</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_grade" wx:if="{{mch.is_grade == '1'}}" checked />
+          <switch value="1" name="is_grade" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">会员日</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_memberday" wx:if="{{mch.is_memberday == '1'}}" checked />
+          <switch value="1" name="is_memberday" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">储值优惠</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_recharge" wx:if="{{mch.is_recharge == '1'}}" checked />
+          <switch value="1" name="is_recharge" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">沉睡唤醒</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_wakeup" wx:if="{{mch.is_wakeup == '1'}}" checked />
+          <switch value="1" name="is_wakeup" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">好友赠券</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_sharecoupon" wx:if="{{mch.is_sharecoupon == '1'}}" checked />
+          <switch value="1" name="is_sharecoupon" wx:else />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch" wx:if="{{'general' != mch.mch_type}}">
+      <view class="weui-cell__bd">付费卡</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_vipcard" wx:if="{{mch.is_vipcard == '1'}}" checked />
+        <switch value="1" name="is_vipcard" wx:else />
+      </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">加微信群</view>
+        <view class="weui-cell__ft">
+          <switch value="1" name="is_wechatgroup" wx:if="{{mch.is_wechatgroup == '1'}}" checked />
+          <switch value="1" name="is_wechatgroup" wx:else />
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{'general' != mch.mch_type}}">
+  <view class="weui-cells__title">支付营销功能</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">团购</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_groupon" wx:if="{{mch.is_groupon == '1'}}" checked />
+        <switch value="1" name="is_groupon" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch" wx:if="{{'pay'==user.agent_type}}">
+      <view class="weui-cell__bd">团购分销</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_distribute" wx:if="{{mch.is_distribute == '1'}}" checked />
+        <switch value="1" name="is_distribute" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">次卡</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_timing" wx:if="{{mch.is_timing == '1'}}" checked />
+        <switch value="1" name="is_timing" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch" wx:if="{{'pay'==user.agent_type}}">
+      <view class="weui-cell__bd">拼团</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_together" wx:if="{{mch.is_together == '1'}}" checked />
+        <switch value="1" name="is_together" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">外卖消费立减</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_reduce" wx:if="{{mch.is_reduce == '1'}}" checked />
+        <switch value="1" name="is_reduce" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">激励储值</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_rechargenopay" wx:if="{{mch.is_rechargenopay == '1'}}" checked />
+        <switch value="1" name="is_rechargenopay" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">加价购券</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_paybuycoupon" wx:if="{{mch.is_paybuycoupon == '1'}}" checked />
+        <switch value="1" name="is_paybuycoupon" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">支付裂变券</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_payed_share" wx:if="{{mch.is_payed_share == '1'}}" checked />
+        <switch value="1" name="is_payed_share" wx:else />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">支付返券</view>
+      <view class="weui-cell__ft">
+        <switch value="1" name="is_pay_gift" wx:if="{{mch.is_pay_gift == '1'}}" checked />
+        <switch value="1" name="is_pay_gift" wx:else />
+      </view>
+    </view>
+  </view>
+  </block>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

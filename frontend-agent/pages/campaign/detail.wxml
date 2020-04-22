@@ -1,0 +1,172 @@
+<!--pages/campaign/detail.wxml-->
+<view class="weui-cells__title">活动详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动名称</view>
+    <view class="weui-cell__ft">{{campaignData.title}}</view>
+  </view>
+  <block wx:if="{{campaignData.campaign_type == 'rebate' || campaignData.campaign_type == 'rechargenopay'}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text wx:if="{{campaignData.award_condition=='egt'}}">消费达到</text>
+        <text wx:else>消费每满</text>
+      </view>
+      <view class="weui-cell__ft">{{campaignData.consume}}元</view>
+    </view>
+  </block>
+  <block wx:if="{{campaignData.campaign_type == 'discount'}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>折扣</text>
+      </view>
+      <view class="weui-cell__ft">{{campaignData.discount}}折</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">最高优惠</view>
+      <view class="weui-cell__ft">
+        <text wx:if="{{campaignData.reduce_max == '0'}}">无限制</text>
+        <text wx:else>{{campaignData.reduce_max}}元</text>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{campaignData.campaign_type == 'reduce'}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>消费每满</text>
+      </view>
+      <view class="weui-cell__ft">{{campaignData.consume}}元</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">立减</view>
+      <view class="weui-cell__ft">{{campaignData.reduce}}元</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">最高优惠</view>
+      <view class="weui-cell__ft">
+        <text wx:if="{{campaignData.reduce_max == '0'}}">无限制</text>
+        <text wx:else>{{campaignData.reduce_max}}元</text>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{campaignData.campaign_type == 'member_day'}}">
+    <block wx:if="{{'1.0' != campaignData.point_speed}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>积分加速</text>
+        </view>
+        <view class="weui-cell__ft">{{campaignData.point_speed}}倍返积分</view>
+      </view>
+    </block>
+    <block wx:if="{{'0.0' != campaignData.discount}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>消费折扣</text>
+        </view>
+        <view class="weui-cell__ft">{{campaignData.discount}}折</view>
+      </view>
+      <view class="weui-cell" wx:if="{{'0' != campaignData.reduce_max}}">
+        <view class="weui-cell__bd">
+          <text>最高优惠</text>
+        </view>
+        <view class="weui-cell__ft">{{campaignData.reduce_max}}元</view>
+      </view>
+    </block>
+    <block wx:if="{{'0' != campaignData.reduce}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>消费立减</text>
+        </view>
+        <view class="weui-cell__ft">消费每满{{campaignData.consume}}立减{{campaignData.reduce}}元</view>
+      </view>
+      <view class="weui-cell" wx:if="{{'0' != campaignData.reduce_max}}">
+        <view class="weui-cell__bd">
+          <text>最高立减</text>
+        </view>
+        <view class="weui-cell__ft">{{campaignData.reduce_max}}元</view>
+      </view>
+    </block>
+    <block wx:if="{{'0' != campaignData.coupon_id}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>消费返券</text>
+        </view>
+        <view class="weui-cell__ft">消费每满{{campaignData.consume}}元返{{campaignData.coupon_name}}1张</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <text>最多返</text>
+        </view>
+        <view class="weui-cell__ft">{{campaignData.coupon_total}}张</view>
+      </view>
+    </block>
+  </block>
+  <view class="weui-cell" wx:if="{{campaignData.campaign_type == 'rebate' || campaignData.campaign_type == 'wakeup' || 'lbs_coupon' == campaignData.campaign_type}}">
+    <view class="weui-cell__bd">发送优惠券</view>
+    <view class="weui-cell__ft">{{campaignData.coupon_name}}{{campaignData.coupon_total}}张</view>
+  </view>
+  <view class="weui-cell" wx:if="{{campaignData.campaign_type == 'opengift'}}">
+    <view class="weui-cell__bd">发送优惠券</view>
+    <view class="weui-cell__ft">
+      <block wx:for="{{campaignData.opengifts}}">
+        <view>{{item.coupon_name}}{{item.coupon_total}}张</view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<block wx:if="{{campaignData.campaign_type == 'send_coupon' || campaignData.campaign_type == 'send_sms'}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">发送时间</view>
+      <view class="weui-cell__ft">{{campaignData.send_at}}</view>
+    </view>
+  </view>
+</block>
+<block wx:if="{{campaignData.campaign_type == 'reduce' || campaignData.campaign_type == 'rebate' || campaignData.campaign_type == 'discount' || campaignData.campaign_type == 'pay_gift' ||  campaignData.campaign_type == 'rechargenopay'}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">活动开始日期</view>
+      <view class="weui-cell__ft">{{campaignData.date_start}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">活动结束日期</view>
+      <view class="weui-cell__ft">{{campaignData.date_end}}</view>
+    </view>
+  </view>
+</block>
+
+<block wx:if="{{campaignData.detail != ''}}">
+  <view class="weui-cells__title">
+    <text wx:if="{{'send_sms' == campaignData.campaign_type}}">群发短信内容</text>
+    <text wx:else>活动内容</text>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" style="height: 5em" value="{{campaignData.detail}}" disabled/>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动状态</view>
+    <view class="weui-cell__ft">{{campaignData.status_title}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">创建时间</view>
+    <view class="weui-cell__ft">{{campaignData.created_at}}</view>
+  </view>
+</view>
+
+
+<view class="weui-btn-area" wx:if="{{'进行中'==campaignData.status_title || '未开始' == campaignData.status_title}}">
+  <button class="weui-btn" type="warn" bindtap="stop" data-id="{{campaignData.id}}">终止</button>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

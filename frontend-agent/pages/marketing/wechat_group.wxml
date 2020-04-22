@@ -1,0 +1,49 @@
+<!--pages/marketing/wechat_group.wxml-->
+<form class="page-body" bindsubmit="submit" report-submit="true">
+  <input type="text" name="group_photo_media" value="{{group_photo_media}}" style="display:none" />
+  <view class="weui-cells__title">微信群二维码只有7天有效期，请在二维码失效前上传新的群二维码</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">群二维码有效期至</view>
+      <view class="weui-cell__ft">{{expire_at}}</view>
+    </view>
+  </view>
+  <view class="weui-cells__title">入群须知</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" name="guide" value="{{guide}}" />
+        <view class="weui-textarea-counter">0/100</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">请上传微信群二维码</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{groupImageList}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box" style="display:{{group_upload_display}}">
+              <view class="weui-uploader__input" bindtap="chooseGroupImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">提交</button>
+  </view>
+</form>

@@ -1,0 +1,19 @@
+<!--pages/shop/bind_tenpay.wxml-->
+<view class="weui-cells__title">请确定您是腾讯云支付服务商</view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell weui-cell_input">
+		<view class="weui-cell__hd">
+			<view class="weui-label">微信支付商户号</view>
+		</view>
+		<view class="weui-cell__bd">
+			<input class="weui-input" placeholder="请填写商家微信支付商户号" type="number" name="mch_id" bindinput="mch_input" />
+		</view>
+	</view>
+</view>
+
+<view class="weui-cells__title">请准备好商户配置码（腾讯云支付公众号-管理后台-商户后台-选择网上门店-添加设备：设备名称填写小程序，设备类型选择智能POS-生成配置二维码)</view>
+
+<view class="weui-btn-area">
+	<button class="weui-btn" type="primary" bindtap="scan">扫商户配置码</button>
+	<button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

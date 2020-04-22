@@ -1,0 +1,62 @@
+/* pages/index/register_fromleader.wxss */
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 30rpx;
+    border-radius:50%
+}
+
+.nickname {
+    font-size: 20px;
+    color: #300e0e;
+}
+
+.tip {
+  font-size:14px;
+  color: indianred;
+  margin-left: 3%;
+  width: 94%;
+}
+
+.weui-label {
+  width:80px;
+}
+
+.contact {
+  text-align: center;
+  margin-top: 20px
+}
+.leader-box{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+.leader-avatar {
+    width: 98rpx;
+    height: 98rpx;
+    border-radius:50%
+}
+.leader-tip{
+  font-size: 15px;
+  font-weight: bold;
+}
+.avatar-box{
+  width: 20%;
+  float: left;
+}
+.leader-intro{
+  width: 80%;
+  float: right;
+  padding-top: 5px;
+}
+.clear{
+  clear: both;
+}

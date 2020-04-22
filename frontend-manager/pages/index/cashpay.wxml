@@ -1,0 +1,14 @@
+<!--pages/index/cashpay.wxml-->
+<form bindsubmit="submit" class="edit_cash">
+  <view class="wrap">
+    <view class='shop'>{{merchant.merchant_name}}{{branch_name}}</view>
+    <view class="shuru">
+      <view class='symbol'>￥</view>
+      <view class="money-input">
+        <input type='digit' maxlength='7' focus='true' name="trade" bindinput="monitor"></input>
+      </view>
+    </view>
+    <p>请输入金额,给会员返积分或使用储值</p>
+    <button class="weui-btn button" type="primary" form-type="submit" disabled="{{disabled}}">确认</button>
+  </view>
+</form>

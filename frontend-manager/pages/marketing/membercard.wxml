@@ -1,0 +1,26 @@
+<!--pages/marketing/membercard.wxml-->
+<!--pages/coupon/publish.wxml-->
+<view style="text-align: center; margin-top: 5px; border: none; padding: 10px;" class="wxParse-section">
+  <view style="display: inline-block; padding: 0.5em; font-size: 1em; border-bottom-width: 3px; border-bottom-style: solid; border-color: rgb(0, 187, 12); color: rgb(0, 187, 12);" class="wxParse-section">
+    <view style="line-height: 22px; font-size: 18px;" class=" wxParse-p">
+      <view class="WxEmojiView wxParse-inline">{{shop.business_name}}会员二维码</view>
+    </view>
+  </view>
+</view>
+<view style="width:95%;margin-left:10px;margin-top:20px;margin-bottom:50px">
+  <view class="wxParse-p">
+    <view class="wxParse-br"></view>
+  </view>
+  <view class="wxParse-p" style="text-align:center">
+    <image src="{{shop.card_url}}" data-src="{{shop.card_url}}" data-from="article" style="width:200px;height:200px" bindtap="previewQrcode"></image>
+  </view>
+  <view class="wxParse-p">
+    <view class="wxParse-br mini-path"></view>
+  </view>
+  <view class="wxParse-p">
+    <view class="detail"><text>扫码即可加入会员、您可将此二维码制作成会员招募海报，张贴于门店。</text></view>
+  </view>
+  <view class="wxParse-p">
+    <view class="wxParse-br"></view>
+  </view>
+</view>

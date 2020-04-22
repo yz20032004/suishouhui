@@ -1,0 +1,331 @@
+<!--pages/stat/index.wxml-->
+<view class="page">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">选择日期</view>
+      </view>
+      <view class="weui-cell__bd picker_group">
+        <picker mode="date" value="{{date_start}}" start="2019-01-01" end="{{date_end}}" bindchange="bindDateStartChange">
+          <view class="picker">
+            {{date_start}}
+          </view>
+        </picker>
+        至
+        <picker mode="date" value="{{date_end}}" start="{{date_start}}" end="{{select_date_start}}" bindchange="bindDateEndChange">
+          <view class="picker">
+            {{date_end}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <view style="text-align:center;margin-bottom:10px;padding-top:10px">
+              <view>
+                <text style="font-size:15px;">实收总金额（元）</text>
+              </view>
+              <view>
+                <text style="font-size:30px;font-weight:bold">{{statData.consumes}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-flex weui-cell">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">新增商户数</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.apply_shops}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">交易笔数</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.trade_total}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">交易总金额</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.trade_amount}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-flex weui-cell">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">微信实收</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.consumes_wechat}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">支付宝实收</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.consumes_alipay}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">支付手续费</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.service_fee}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-flex weui-cell" wx:if="{{'pay' != user.agent_type}}">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">新增储值</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.recharges}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">团购收入</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.groupon_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">外卖收入</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{statData.waimai_revenue}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-cells__title"></view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:if="{{'1' == user.is_leader}}">
+            <view class="weui-cells__title"></view>
+            <view class="weui-cells weui-cells_after-title">
+              <view style="text-align:center;margin-bottom:10px;padding-top:10px">
+                <view>
+                  <text style="font-size:15px;">实收总金额（元）</text>
+                </view>
+                <view>
+                  <text style="font-size:30px;font-weight:bold">{{teamStatData.consumes}}</text>
+                </view>
+              </view>
+            </view>
+
+            <view class="weui-cells__title"></view>
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-flex weui-cell">
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">新增商户数</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.apply_shops}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">交易笔数</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.trade_total}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">交易总金额</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.trade_amount}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="weui-flex weui-cell">
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">微信实收</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.consumes_wechat}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">支付宝实收</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.consumes_alipay}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">支付手续费</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.service_fee}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="weui-flex weui-cell">
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">新增储值</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.recharges}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">团购收入</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.groupon_revenue}}</text>
+                  </view>
+                </view>
+                <view class="statview">
+                  <view>
+                    <text class="todaystat-tip">外卖收入</text>
+                  </view>
+                  <view>
+                    <text class="todaystat-number">{{teamStatData.waimai_revenue}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="no-merchant">
+              <text>您还不是团长</text>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <view style="text-align:center;margin-bottom:10px;padding-top:10px">
+              <view>
+                <text style="font-size:15px;">佣金</text>
+              </view>
+              <view>
+                <text style="font-size:30px;font-weight:bold">{{revenueData.day_revenue}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="weui-cells__title"></view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-flex weui-cell">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">微信支付返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.wechat_pay_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">支付宝返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.alipay_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">超值抢购返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.groupon_revenue}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-flex weui-cell" wx:if="{{'1' == user.is_leader}}">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">新增推手</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.expand_user_total}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">招募收入</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.expand_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">推手提成</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.expand_reward}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-flex weui-cell" wx:if="{{'1' == user.is_leader}}">
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">团队返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.team_pay_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">团队支付返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.team_wechat_pay_coupon_revenue}}</text>
+                </view>
+              </view>
+              <view class="statview">
+                <view>
+                  <text class="todaystat-tip">团队营销返佣</text>
+                </view>
+                <view>
+                  <text class="todaystat-number">{{revenueData.team_groupon_revenue}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="weui-cells__title"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

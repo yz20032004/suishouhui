@@ -1,0 +1,72 @@
+<!--pages/marketing/paygift.wxml-->
+<form bindsubmit="{{bindsubmit}}">
+  <view class="weui-cells__title" bindtap="previewPayGiftImage">点此可查看支付有礼效果图</view>
+  <view class="weui-cells__title" wx:if="{{gift_coupons.length > 0}}">{{payed_gifts.date_start}}到{{payed_gifts.date_end}}微信支付满{{payed_gifts.consume}}元赠送以下代金券</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{gift_coupons.length > 0}}">
+    <block wx:for="{{gift_coupons}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          {{item.coupon_name}}1张
+        </view>
+        <button class="mini-btn" type="warn" size="mini" bindtap='del' data-id='{{item.coupon_id}}'>删除</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="weui-cells__title" bindtap="previewPayGiftImage">添加支付有礼代金券</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input" wx:if="{{gift_coupons.length == 0}}">
+      <view class="weui-cell__hd">
+        <view class="weui-label">消费满(元)</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写金额" type="number" name="consume" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">赠送优惠券</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCouponChange" value="{{coupons[couponIndex].id}}" range="{{coupons}}" range-key="name" name="coupon_id">
+          <view class="weui-select weui-select_in-select-after">{{coupons[couponIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{gift_coupons.length == '0'}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动开始日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+          <view class="weui-input">{{date_start}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动结束日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+          <view class="weui-input">{{date_end}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  </block>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" disabled="{{btn_disabled}}">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>
+
+<view wx:if="{{btn_disabled}}" class="disable_box">
+  <text class="disable_info">您的商户类型是微信小微商户（申请时未提交营业执照），无法创建本活动，请联系您的业务员升级账户。</text>
+</view>

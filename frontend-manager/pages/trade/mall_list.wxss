@@ -1,0 +1,74 @@
+/* pages/trade/mall_list.wxss */
+
+.tradeinfo {
+  text-align: center;
+  width: 33%;
+  margin-bottom: 10px;
+}
+
+.trade-tip {
+  background-color: #fff;
+  text-align: center;
+  font-size:10px;
+  color: "#AAAAAA"；
+}
+
+.trade-number {
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: "#f85f48";
+  margin-right: 20px;
+}
+
+.trade-card {
+ font-size: 15px;
+ color: darkgray
+}
+
+.tradeinfo-name {
+  font-size: 15px;
+  color: "#f85f48"
+}
+
+.trade-time {
+  font-size: 12px;
+  color:"#AAAAAA";
+}
+
+.trade-type {
+  font-size: 12px;
+  background-color: "#CCFF99"
+}
+
+.trade-amount {
+  text-align: left;
+  color: red
+}
+
+
+.picker_group {
+height: 85rpx;
+line-height: 85rpx;
+justify-content: center;
+display: flex;
+align-items: center;
+font-size: 30rpx;
+color: #888;
+border-bottom: 1rpx solid #efefef;
+
+}
+
+.picker_group picker {
+color: #64bff1;
+height: 55rpx;
+line-height: 55rpx;
+margin: 0 2%;
+padding-left: 15px;
+border: 1rpx solid #64bff1;
+border-radius: 30rpx;
+width: 50%;
+}
+.weui-label {
+width:80px;
+}

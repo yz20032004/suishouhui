@@ -1,0 +1,13 @@
+/* pages/setting/beans.wxss */
+.get {
+  color: green;
+}
+
+.consume {
+  color: red
+}
+
+.detail {
+    font-size: 12px;
+    color: #bfbfbf;
+}

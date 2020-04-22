@@ -1,0 +1,105 @@
+<!--pages/vip/mall_detail.wxml-->
+	<view class="consume_item">
+		<view class="process">
+			<view><image src="/images/complete.png" style="width:20px;height:20px"></image></view>
+			<view class="process_title_complete">已支付</view>
+		</view>
+		<view class="process">
+			<view><image src="/images/{{'0000-00-00 00:00:00' == order.delivery_at ? 'start' : 'complete'}}.png" style="width:20px;height:20px"></image></view>
+			<view class="process_title_{{'0000-00-00 00:00:00' == order.delivery_at ? 'start' : 'complete'}}">
+				<text>快递中</text>
+			</view>
+		</view>
+		<view class="process">
+			<view><image src="/images/{{'0000-00-00 00:00:00' == order.closed_at ? 'start' : 'complete'}}.png" style="width:20px;height:20px"></image></view>
+			<view class="process_title_{{'0000-00-00 00:00:00' == order.closed_at ? 'start' : 'complete'}}">完成</view>
+		</view>
+		<view class="clear"></view>
+	</view>
+<view class='content'>
+	<view class='consume_item'>
+		<view class='trade'>
+		</view>
+		<view class='line'></view>
+		<view class='detail'>
+			<block wx:for="{{products}}">
+				<view class='title'>{{item.title}}</view>
+				<view class='bill'>{{item.total}}份</view>
+			</block>
+			<view class='title'>商品费</view>
+			<view class='bill'>￥{{order.amount}}</view>
+			<view class='title'>快递费</view>
+			<view class='bill'>￥{{order.delivery_cost}}</view>
+      <view class='title'>应付</view>
+			<view class='bill'>￥{{order.total_amount}}</view>
+		</view>
+		<view class='line'></view>
+	</view>
+	<view class='consume_item'>
+		<view class='detail'>
+			<view class='title'>实付</view>
+			<view class='bill'>￥{{pay.consume}}</view>
+			<block wx:if="{{'0' != pay.get_point}}">
+				<view class='title'>返积分</view>
+				<view class='bill'>+{{pay.get_point}}</view>
+			</block>
+			<block wx:if="{{'' != pay.use_coupon_name}}">
+				<view class='title'>使用优惠券</view>
+				<view class='bill'>{{pay.use_coupon_name}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_coupon_amount}}">
+				<view class='title'>优惠券抵扣</view>
+				<view class='bill'>-￥{{pay.use_coupon_amount}}</view>
+			</block>
+			<block wx:if="{{'0' != pay.point_amount}}">
+				<view class='title'>积分抵扣</view>
+				<view class='bill'>-￥{{pay.point_amount}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_recharge}}">
+				<view class='title'>使用储值</view>
+				<view class='bill'>-￥{{pay.use_recharge}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_reduce}}">
+				<view class='title'>参与消费立减</view>
+				<view class='bill'>-￥{{pay.use_reduce}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.use_discount}}">
+				<view class='title'>参与消费折扣</view>
+				<view class='bill'>-￥{{pay.use_discount}}</view>
+			</block>
+			<block wx:if="{{'0.00' != pay.member_discount}}">
+				<view class='title'>会员折扣</view>
+				<view class='bill'>-￥{{pay.member_discount}}</view>
+			</block>
+			<block wx:if="{{'0' != pay.refund_fee}}">
+				<view class='title'>退款</view>
+				<view class='bill'>-￥{{pay.refund_fee/100}}</view>
+			</block>
+		</view>
+	</view>
+	<view class='consume_item'>
+		<view class='line'></view>
+		<view class='detail'>
+			<view class='order_title'>订单号</view>
+			<view class='order_bill'>{{order.out_trade_no}}</view>
+			<view class='order_title'>下单时间</view>
+			<view class='order_bill'>{{order.created_at}}</view>
+			<view class='order_title'>发货时间</view>
+			<view class='order_bill'>{{order.delivery_at > '1970-01-01' ? order.delivery_at : '未发货'}}</view>
+			<view class='order_title'>收货地址</view>
+			<view class='order_bill'>
+				<view>{{order.contact_name}} {{order.contact_mobile}}</view>
+				<view bindtap="copy_address">{{order.contact_address}}</view>
+			</view>
+			<view class='order_title'>备注</view>
+			<view class='order_bill'>{{order.remark ? order.remark : '无'}}</view>
+			<block  wx:if="{{order.delivery_no}}">
+				<view class='order_title'>快递信息</view>
+				<view class='order_bill'>
+					<view>{{order.delivery_type}} {{order.delivery_no}}</view>
+				</view>
+			</block>
+		</view>
+		<view class='line'></view>
+	</view>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/vipmember/index.wxml-->
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{vipData}}">
+      <navigator url="detail?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-flex  weui-cell">
+          <view style="width:45%">
+            <image class="avatar" src="{{item.pic_url}}" background-size="cover"></image>
+          </view>
+          <view style="width:50%">
+            <view class="name">{{item.grade_name}}{{item.price}}元抢购</view>
+            <view class="tip">已售：{{item.sold}}份</view>
+            <view class="revenue">收益：{{item.revenue}}元</view>
+          </view>
+          <view style="width:5%;text-align:right">
+            <image src="../../images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="add">添加付费会员卡</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

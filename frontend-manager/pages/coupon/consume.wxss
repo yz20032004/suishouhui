@@ -1,0 +1,11 @@
+/* pages/coupon/consume.wxss */
+.coupon_name {
+  font-size:20px
+}
+
+.consume-total {
+  padding-left:10px;
+  padding-right:10px;
+  font-size:25px;
+  vertical-align:middle; 
+}

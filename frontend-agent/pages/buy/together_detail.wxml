@@ -1,0 +1,110 @@
+<!--pages/buy/detail.wxml-->
+<view class="weui-cells__title">抢购活动详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动名称</view>
+    <view class="weui-cell__ft">{{togetherData.title}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">团购券名称</view>
+    <view class="weui-cell__ft">{{togetherData.coupon_name}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>原价</text>
+    </view>
+    <view class="weui-cell__ft">{{togetherData.amount}}元</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>拼团价</text>
+    </view>
+    <view class="weui-cell__ft">{{togetherData.price}}元</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>成团人数</text>
+    </view>
+    <view class="weui-cell__ft">{{togetherData.people}}人</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>成团过期时间</text>
+    </view>
+    <view class="weui-cell__ft">{{togetherData.expire_times}}小时</view>
+  </view>
+  <block wx:if="{{'0' != togetherData.total_limit}}">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>限购数量</text>
+      </view>
+      <view class="weui-cell__ft">{{togetherData.total_limit}}份</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <text>每人限购</text>
+      </view>
+      <view class="weui-cell__ft">
+        <text wx:if="{{'0' == togetherData.single_limit}}">不限购</text>
+        <text wx:else>{{togetherData.single_limit}}份</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="weui-cells__title">销售情况</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">正在开团</view>
+    <view class="weui-cell__ft">{{togetherData.opens}}个</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">已成团</view>
+    <view class="weui-cell__ft">{{togetherData.success}}个</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">已过期</view>
+    <view class="weui-cell__ft">{{togetherData.expires}}个</view>
+  </view>
+  <view class="weui-cell" bindtap="open_sold_list">
+    <view class="weui-cell__bd">已售卖(券)</view>
+    <view class="weui-cell__ft">{{togetherData.sold}}张</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell" bindtap="open_consumed_list">
+    <view class="weui-cell__bd">已使用(券)</view>
+    <view class="weui-cell__ft">{{togetherData.consumed}}张</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动状态</view>
+    <view class="weui-cell__ft">{{togetherData.status_title}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">活动日期</view>
+    <view class="weui-cell__ft">{{togetherData.date_start}}到{{togetherData.date_end}}</view>
+  </view>
+  <view class="weui-cell" bindtap="copydata">
+    <view class="weui-cell__bd">小程序路径</view>
+    <view class="weui-cell__ft">pages/together/detail?id={{togetherData.id}}</view>
+  </view>
+  <view class="weui-cell" bindtap="getqrcode">
+    <view class="weui-cell__bd">导出二维码</view>
+    <view class="weui-cell__ft">点此查看</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">创建时间</view>
+    <view class="weui-cell__ft">{{togetherData.created_at}}</view>
+  </view>
+</view>
+
+<view class="weui-btn-area" wx:if="{{'进行中'==togetherData.status_title || '未开始' == togetherData.status_title}}">
+  <button class="weui-btn" type="warn" bindtap="stop" data-id="{{togetherData.id}}">终止</button>
+</view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

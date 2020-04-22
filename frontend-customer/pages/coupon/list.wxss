@@ -1,0 +1,151 @@
+/* pages/coupon/list.wxss */
+page{
+  width:100%;
+  }
+.stamp {padding: 0;margin: 0;list-style:none;font-family:"Microsoft YaHei",'Source Code Pro', Menlo, Consolas, Monaco, monospace;}
+
+.stamp {
+padding: 0 10px;
+margin-top: 5px;
+position: relative;
+overflow: hidden;
+}
+.stamp:before {
+content: '';
+position: absolute;
+top:0;
+bottom:0;
+left:10px;
+right:10px;
+
+z-index: -1;
+}
+.stamp:after {
+content: '';
+position: absolute;
+left: 10px; 
+top: 10px; 
+right: 10px; 
+bottom: 10px;
+box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+z-index: -2;
+}
+
+.stamp i{
+position: absolute;
+left: 20%;
+top: 45px;
+height: 190px;
+width: 95%;
+background-color: rgba(255,255,255,.15);
+transform: rotate(-30deg);
+}
+.stamp .par{
+float: left;
+padding: 16px 5px;
+width: 70%;
+border-right:2px dashed rgba(255,255,255,.3);
+text-align: left;
+}
+.stamp .par p{color:#fff;font-size: 16px;
+    line-height: 21px;}
+.stamp .par span{
+font-size: 50px;
+color:#fff;
+margin-right: 5px;
+line-height: 65px;
+}
+.stamp .par .sign{font-size: 20px;}
+.stamp .par p{
+  position: relative;
+  top:-5px;
+  color:rgba(255,255,255,.8);
+  font-size: 12px;
+}
+.stamp .copy{
+display: inline-block;
+width:25%;
+vertical-align: text-bottom;
+font-size: 12px;
+color:rgb(255,255,255);
+text-align: center;
+line-height: initial;
+padding-top: 16px;
+}
+.stamp .copy p{font-size: 16px;margin-top: 15px;}
+.stamp01{
+background: #7EAB1E;
+background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, #7EAB1E 5px);
+background-size: 15px 15px;
+background-position: 9px 3px;
+}
+.stamp01:before{
+background-color:#7EAB1E;
+}
+.stamp02{
+background: #D24161;
+background: radial-gradient(transparent 0, transparent 5px, #D24161 5px);
+background-size: 15px 15px;
+background-position: 9px 3px;
+}
+.stamp02:before{
+background-color:#D24161;
+}
+.stamp03{
+background: #50ADD3;
+background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, #50ADD3 5px);
+background-size: 15px 15px;
+background-position: 9px 3px;
+}
+.stamp03:before{
+background-color:#50ADD3;
+}
+.stamp00{
+background: #F39B00;
+background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, #F39B00 5px);
+background-size: 15px 15px;
+background-position: 9px 3px;
+}
+.stamp00:before{
+background-color:#F39B00;
+}
+.stamp04{
+background: gray;
+background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, gray 5px);
+background-size: 15px 15px;
+background-position: 9px 3px;
+}
+.stamp04:before{
+background-color:gray;
+}
+.consume {
+  font-size: 15px;
+  border:1px solid white;
+  border-radius:15px;
+  width: 70%;
+  margin-left: 20%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.date {
+  margin-top: 10px;
+  padding-bottom: 5px;
+}
+
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}
+.backtoindex {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border-radius: 500px;
+    width: 35px;
+    height: 35px;
+}
+.coupon_nav_title{
+  font-size:13px;
+}

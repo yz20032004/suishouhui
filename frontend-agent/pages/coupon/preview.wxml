@@ -1,0 +1,107 @@
+<view class="weui-cells__title">
+</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">券名称</view>
+    <view class="weui-cell__ft">{{coupon.name}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{'discount' == coupon.coupon_type}}">
+    <view class="weui-cell__bd">折扣</view>
+    <view class="weui-cell__ft">
+      <text>{{coupon.discount}}折</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">起用金额</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'0'==coupon.consume_limit}}">无</text>
+      <text wx:else>{{coupon.consume_limit}}元</text>
+    </view>
+  </view>
+  <view class="weui-cell" wx:if="{{'discount' != coupon.coupon_type}}">
+    <view class="weui-cell__bd">券价值</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'0'==coupon.amount}}">未设置</text>
+      <text wx:else>{{coupon.amount}}元</text>
+    </view>
+  </view>
+  <view class="weui-cell" wx:if="{{'relative' == coupon.validity_type}}">
+    <view class="weui-cell__bd">当天可用</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'1'==coupon.is_usefully_sendday}}">是</text>
+      <text wx:else>否</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">适用范围</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'1' == coupon.is_single}}">指定商品可用</text>
+      <text wx:else>全场可用</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">券有效期</view>
+    <view class="weui-cell__ft">
+      <text wx:if="{{'relative'==coupon.validity_type}}">领取后{{coupon.total_days}}天</text>
+      <text wx:else>{{coupon.date_start}}至{{coupon.date_end}}</text>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">券库存</view>
+    <view class="weui-cell__ft">
+      <text>剩{{balance}}张</text>
+    </view>
+  </view>
+</view>
+<block wx:if="{{'groupon' == coupon.coupon_type || 'timing' == coupon.coupon_type}}">
+<view class="weui-cells__title">券详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="{{coupon.deal_detail}}" style="height: 5.3em" disabled/>
+    </view>
+  </view>
+</view>
+</block>
+
+<view class="weui-cells__title">券使用规则</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="{{coupon.description}}" style="height: 3.3em" disabled/>
+    </view>
+  </view>
+</view>
+
+<block wx:if="{{icon_url != ''}}">
+<view class="weui-cells__title">券封面图片</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell" bindtap="open_image_list">
+    <view style="width:100%">
+      <image class="icon_url" src="{{icon_url}}" background-size="cover"></image>
+    </view>
+  </view>
+</view>
+</block>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="edit">修改</button>
+  <button class="weui-btn" type="primary" plain="true" bindtap="back">返回</button>
+</view>
+
+<view class="ruleZhezhao" wx:if="{{showBalanceBox}}">
+  <form bindsubmit="submit">
+    <view class='ruleZhezhaoContent'>
+      <view class='add_balance_title'>
+        增加库存
+      </view>
+      <view class='input-area'>
+        <input class="weui-input" placeholder="请填写数量" type="number" name="balance" maxlength='4' />
+      </view>
+      <view class='add_balance_btn'>
+        <button formType="submit" class="weui-btn" type="primary">增加</button>
+        <image src='/images/close.png' class='ruleHide' bindtap='closeBalance'></image>
+      </view>
+    </view>
+  </form>
+</view>

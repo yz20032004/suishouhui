@@ -1,0 +1,43 @@
+/* pages/expand/xiaowei_ready.wxss */
+.content {
+  width: 96%;
+  margin-left:2%;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.title-box {
+  margin-top: 20px;
+}
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.title-tip{
+  margin-top: 10px;
+  font-size:15px;
+  text-align: center;
+}
+.need-info{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.need-info-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+.need-info-tip{
+  color: gray;
+  margin-top: 5px;
+}
+.need-info-image{
+  margin-top: 5px;
+}
+.btn-area{
+  text-align: center;
+  margin-bottom: 20px;
+  width: 40%;
+  margin-left: 29%;
+}

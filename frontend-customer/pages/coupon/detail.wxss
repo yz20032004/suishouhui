@@ -1,0 +1,68 @@
+/* pages/coupon/detail.wxss */
+page {
+  background-color: #d81e06;
+}
+
+.content {
+  border:1px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 90%;
+  margin-left: 5%;
+  border-radius:10px;
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+.coupon_box {
+  font-size: 20px;
+  margin-top:10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.shop_name {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color:gray;
+}
+
+.coupon_name {
+  text-align: center;
+  font-size: 25px;
+  color: black;
+  padding-top:10px;
+}
+
+.coupon_qrcode {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.coupon_code {
+  text-align: center;
+  color: black;
+  font-size: 25px;
+}
+
+.split_line {
+  margin-top: 15px;
+  width:90%;
+  height:0;
+  margin-left: 5%;
+  border-bottom: gray 1px dashed;
+}
+
+.detail {
+  color: gray;
+  font-size: 12px;
+  text-align: left;
+  margin-left:20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.clear {
+  clear:both
+}

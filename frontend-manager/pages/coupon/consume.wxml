@@ -1,0 +1,56 @@
+<!--pages/coupon/consume.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-form-preview">
+      <form bindsubmit="submit" bindreset="reset">
+        <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__label">优惠券名称</view>
+          <view class="coupon_name">{{coupon.coupon_name}}</view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">序列号</view>
+            <view class="weui-form-preview__value">{{coupon.code}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">有效期</view>
+            <view class="weui-form-preview__value">{{coupon.date_start}}至{{coupon.date_end}}</view>
+          </view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item" wx:if="{{coupon.consume_limit != '0'}}">
+            <view class="weui-form-preview__label">最低消费金额</view>
+            <view class="weui-form-preview__value">{{coupon.consume_limit}}元</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">使用说明</view>
+            <view class="weui-form-preview__value">{{coupon.detail}}</view>
+          </view>
+          <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">券优惠金额</view>
+            <view class="weui-form-preview__value">
+              <input wx:if="{{'0' == coupon.amount}}" class="weui-input" placeholder="请填写" type="digit" name="coupon_amount" value="" focus='true' />
+              <text wx:else>{{coupon.amount}}元</text>
+            </view>
+          </view>
+        </view>
+        <input type="text" name="code" value="{{coupon.code}}" style="display:none" />
+        <input wx:if="{{'0' != coupon.amount}}" type="text" name="coupon_amount" value="{{coupon.amount}}" style="display:none" />
+        <view class="weui-cell" wx:if="{{coupon.total > 1}}">
+          <view class="weui-cell__bd">
+            核销数量
+          </view>
+          <view class="weui-cell__ft">
+            <image src="/images/{{image_reduce}}.png" style="width:30px;height:30px;margin-right:5px;vertical-align:middle;" bindtap="reduce_total"></image>
+            <text class="consume-total">{{consume_total}}</text>
+            <image src="/images/{{image_add}}.png" style="width:30px;height:30px;margin-left:5px;vertical-align:middle; " bindtap="add_total"></image>
+          </view>
+        </view>
+        <view class="weui-form-preview__ft">
+          <button class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap="back">返回</button>
+          <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" formType="submit" disabled="{{disabled}}">核销</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<!--pages/vip/payed_share.wxml-->
+<view class="image-box">
+  <image src="{{shop.logo_url}}"></image>
+</view>
+
+<view class="share-box">
+  <view class="share-head">分享优惠，分享幸运</view>
+  <view class="share-tip">您可分享{{shareData.coupon_total}}张优惠券给好友</view>
+  <view class="share-button">
+    <button class="weui-btn button" type="primary" open-type="share" bindtap="create_share">立即分享</button>
+  </view>
+</view>

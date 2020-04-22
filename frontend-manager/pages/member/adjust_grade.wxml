@@ -1,0 +1,21 @@
+<!--pages/member/adjust_grade.wxml-->
+<view class="weui-cells__title">手工调整会员等级</view>
+<form bindsubmit="submit">
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_select">
+			<view class="weui-cell__hd weui-cell__hd_in-select-after">
+				<view class="weui-label">调整等级</view>
+			</view>
+			<view class="weui-cell__bd">
+				<picker bindchange="bindGradeChange" value="{{grades[gradeIndex].grade}}" range="{{grades}}" name="grade" range-key="name">
+					<view class="weui-select weui-select_in-select-after">{{grades[gradeIndex].name}}</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit">确定</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

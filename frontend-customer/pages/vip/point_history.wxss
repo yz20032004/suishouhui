@@ -1,0 +1,78 @@
+/* pages/vip/point_history.wxss */
+page {
+  background-color: white;
+}
+.head {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.head-top {
+  font-size: 20px;
+  margin-left: 5%;
+  margin-bottom: 30px;
+  float: left;
+}
+.head-point {
+  text-align: right;
+  font-size: 30px;
+  margin-right: 5%;
+  float: right;
+}
+.line {
+  margin:0px;
+  height:1px;
+  border:0px;
+  background-color:#D5D5D5;
+  color:#D5D5D5;
+  width: 90%;
+  margin-right: 0px;
+  margin-left: 10%;
+}
+.point-list {
+  width:98%;
+  margin-left: 1%;
+}
+.row {
+  margin-top:10px;
+}
+.row-left {
+  float: left;
+  font-size: 15px;
+  margin-left: 5%;
+}
+.row-right {
+  float: right;
+  margin-right: 5%;  
+  font-size: 18px;
+}
+.date {
+  color: gray;
+}
+.clear {
+  clear:both
+}
+.row_line {
+  margin:10px;
+  height:1px;
+  border-bottom: #D5D5D5 1px dashed;
+  width: 90%;
+  margin-left: 5%;
+}
+.end_line {
+  margin:10px;
+  height:1px;
+  border:0px;
+  background-color:#D5D5D5;
+  color:#D5D5D5;
+  width: 100%;
+}
+.backtoindex {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border-radius: 500px;
+    width: 35px;
+    height: 35px;
+}

@@ -1,0 +1,29 @@
+<view class="weui-cells__title">手工调整会员积分余额</view>
+<form bindsubmit="setPoint">
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">调整方法</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindOperateChange" value="{{operateIndex}}" range="{{operats}}" name="operate">
+                <view class="weui-select weui-select_in-select-after">{{operats[operateIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">调整数量</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写数字" type="number" name="amount"/>
+        </view>
+    </view>
+    </view>
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>
+</form>

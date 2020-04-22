@@ -1,0 +1,225 @@
+<view class="weui-cells  weui-cells_after-title">
+	<view style="text-align:center">
+		<text class="member-name" wx:if="{{tradeData.name}}">
+		{{tradeData.nickname}} {{tradeData.mobile}}
+		</text>
+	</view>
+	<view style="text-align:center">
+		<text style="font-size:30px;text-align:center">{{tradeData.trade}}</text>
+		<text style="font-size:15px">元</text>
+		<image src="/images/{{trade_image}}.png" style="width:30px;height:30px;margin-left:10px;"></image>
+	</view>
+	<view style="text-align:center;margin-bottom:20px">
+		<text style="font-size:15px;">交易成功</text>
+	</view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell">
+		<view class="weui-cell__bd">时间</view>
+		<view class="weui-cell__ft">{{tradeData.created_at}}</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">流水号</view>
+		<view class="weui-cell__ft">{{tradeData.out_trade_no}}</view>
+	</view>
+	<view class="weui-cell" wx:if="{{'waimai' != tradeData.pay_from}}">
+		<view class="weui-cell__bd">操作员</view>
+		<view class="weui-cell__ft">{{tradeData.created_by_uname}}</view>
+	</view>
+	<view class="weui-cell" wx:else>
+		<view class="weui-cell__bd">状态</view>
+		<view class="weui-cell__ft">{{order_status}}</view>
+	</view>
+</view>
+
+<block wx:if="{{'waimai' == tradeData.pay_from}}">
+	<view class="weui-cells__title">订单明细</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray">
+				<block wx:for="{{dishes}}">
+					<view>{{item.dish}}</view>
+				</block>
+			</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold">
+				<block wx:for="{{dishes}}">
+					<view>{{item.total}}份</view>
+				</block>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">备注</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%">{{order.remark}}</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:30%">期望送到时间</view>
+			<view class="weui-cell__ft" style="width:70%">{{order.delivery_time}}</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">收件人</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%" bindtap="copy_address">{{order.contact_name}} {{order.contact_mobile}} {{order.contact_address}}</view>
+		</view>
+	</view>
+</block>
+
+<block wx:if="{{'在线点单' == tradeData.detail}}">
+	<view class="weui-cells__title">订单明细</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray">
+				<block wx:for="{{dishes}}">
+					<view>{{item.dish}}</view>
+				</block>
+			</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold">
+				<block wx:for="{{dishes}}">
+					<view>{{item.total}}份</view>
+				</block>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">备注</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%">{{order.remark}}</view>
+		</view>
+		<view class="weui-cell" wx:if="{{order.get_no}}">
+			<view class="weui-cell__bd" style="color:gray;width:30%">取餐号</view>
+			<view class="weui-cell__ft" style="width:70%">{{order.get_no}}</view>
+		</view>
+		<view class="weui-cell" wx:if="{{order.table_name}}">
+			<view class="weui-cell__bd" style="color:gray;width:20%">桌号</view>
+			<view class="weui-cell__ft" style="width:70%">{{order.table_name}}</view>
+		</view>
+	</view>
+</block>
+
+<block wx:if="{{'mall' == tradeData.pay_from}}">
+	<view class="weui-cells__title">订单明细</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray">
+				<block wx:for="{{products}}">
+					<view>{{item.title}}</view>
+				</block>
+			</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold">
+				<block wx:for="{{products}}">
+					<view>{{item.total}}份</view>
+				</block>
+			</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">备注</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%">{{order.remark}}</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">收件人</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%" bindtap="copy_address">{{order.contact_name}} {{order.contact_mobile}} {{order.contact_address}}</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">发货时间</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%">{{order.delivery_at > '1970-01-01' ? order.delivery_at : '未发货'}}</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd" style="color:gray;width:20%">快递信息</view>
+			<view class="weui-cell__ft" style="color:black;font-weight:bold;width:80%" bindtap="copy_delivery_no">{{order.delivery_type}}{{order.delivery_no}}</view>
+		</view>
+	</view>
+</block>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<block wx:if="{{'waimai' == tradeData.pay_from}}">
+		<view class="weui-cell">
+			<view class="weui-cell__bd">餐费</view>
+			<view class="weui-cell__ft">{{order.amount}}元</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd">包装费</view>
+			<view class="weui-cell__ft">{{order.package_cost}}元</view>
+		</view>
+		<view class="weui-cell">
+			<view class="weui-cell__bd">外送费</view>
+			<view class="weui-cell__ft">{{order.delivery_cost}}元</view>
+		</view>
+	</block>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">订单金额</view>
+		<view class="weui-cell__ft">{{tradeData.trade}}元</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">实付金额</view>
+		<view class="weui-cell__ft">{{tradeData.cash_fee/100}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{'0' != tradeData.refund_fee}}">
+		<view class="weui-cell__bd">退款金额</view>
+		<view class="weui-cell__ft"><text class="red">{{tradeData.refund_fee/100}}元</text></view>
+	</view>
+	<view class="weui-cell" wx:if="{{'0' != tradeData.coupon_fee}}">
+		<view class="weui-cell__bd">使用微信支付券</view>
+		<view class="weui-cell__ft">{{tradeData.coupon_fee/100}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.use_point > 0 }}">
+		<view class="weui-cell__bd">使用积分</view>
+		<view class="weui-cell__ft">{{tradeData.use_point}}个</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.point_amount > 0 }}">
+		<view class="weui-cell__bd">积分抵扣</view>
+		<view class="weui-cell__ft">{{tradeData.point_amount}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{'0' != tradeData.use_coupon_id}}">
+		<view class="weui-cell__bd">使用会员优惠券</view>
+		<view class="weui-cell__ft">{{tradeData.use_coupon_name}}</view>
+	</view>
+	<view class="weui-cell" wx:if="{{'0' != tradeData.use_coupon_id}}">
+		<view class="weui-cell__bd">优惠券抵扣</view>
+		<view class="weui-cell__ft">{{tradeData.use_coupon_amount}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.use_reduce >0 }}">
+		<view class="weui-cell__bd">立减活动抵扣</view>
+		<view class="weui-cell__ft">{{tradeData.use_reduce}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.use_discount >0 }}">
+		<view class="weui-cell__bd">买单折扣抵扣</view>
+		<view class="weui-cell__ft">{{tradeData.use_discount}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.use_recharge >0 }}">
+		<view class="weui-cell__bd">使用储值余额</view>
+		<view class="weui-cell__ft">{{tradeData.use_recharge}}元</view>
+	</view>
+	<view class="weui-cell" wx:if="{{tradeData.member_discount >0 }}">
+		<view class="weui-cell__bd">会员折扣</view>
+		<view class="weui-cell__ft">{{tradeData.member_discount}}元</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">总计优惠</view>
+		<view class="weui-cell__ft">{{tradeData.save}}元</view>
+	</view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell">
+		<view class="weui-cell__bd">奖励积分</view>
+		<view class="weui-cell__ft">{{tradeData.get_point}}个</view>
+	</view>
+</view>
+
+<view class="weui-btn-area">
+	<block wx:if="{{'waimai' == tradeData.pay_from}}">
+		<button class="weui-btn" type="primary" wx:if="{{'0000-00-00 00:00:00' == order.accept_at}}" bindtap="order_accept">接单</button>
+		<button class="weui-btn" type="primary" wx:elif="{{'0000-00-00 00:00:00' == order.delivery_at}}" bindtap="order_delivery">
+			<text wx:if="{{'0' == order.is_self}}">开始配送</text>
+			<text wx:else>通知客户自提</text>
+		</button>
+		<button class="weui-btn" type="primary" wx:elif="{{'0000-00-00 00:00:00' == order.closed_at}}" bindtap="order_close">客户已收货</button>
+	</block>
+	<block wx:if="{{'mall' == tradeData.pay_from}}">
+		<button class="weui-btn" type="primary" bindtap="order_delivery_product" wx:if="{{'0000-00-00 00:00:00' == order.delivery_at}}">
+			<text>去发货</text>
+		</button>
+	</block>
+	<button class="weui-btn" type="warn" bindtap="refund" wx:if="{{((tradeData.pay_type == '1' || tradeData.pay_type == '2' ) && tradeData.refund_fee == '0' && 'admin' == user_role)}}">退款</button>
+	<button class="weui-btn" type="primary" plain="true" bindtap="back">返回</button>
+</view>

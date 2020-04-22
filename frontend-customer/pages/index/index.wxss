@@ -1,0 +1,269 @@
+/* pages/trade/index.wxss */
+.swiper {
+  margin-top: 5px;
+}
+.account-box {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.weui-cells {
+  font-size: 12px;
+  margin-top:5px;
+  margin-left:2%;
+  margin-right:2%;
+}
+
+.wei-cell {
+  padding: 5px 12px;
+}
+
+.shop_name {
+  font-size: 15px;
+  display: block;
+}
+
+.shop_time {
+  margin-top: 5px;
+  display: block;
+}
+
+.address {
+  border-right: solid gray 1px;
+}
+.func-row {
+  margin-top:5px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.func-box {
+  float: left;
+  margin-left:1%;
+  margin-right: 1%;
+  background-color: #C6E2FF;
+  width: 48%;
+  padding-top: 5px;
+  padding-bottom:5px;
+  border-radius: 5px;
+}
+.func-pic {
+  float: left;
+  padding-left: 20px;
+  vertical-align: center;
+}
+.func-word{
+  margin-left: 15px;
+  float: left;
+}
+.func-title{
+  font-size: 15px;
+  color: black;
+  padding-top: 12px;
+}
+.func-tip{
+  font-size: 10px;
+  color:gray;
+}
+.clear {
+  clear:both
+}
+
+.share-btn{
+  font-size: 14px;
+  color: black;
+  padding-left:0px;
+  padding-right:0px;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  background-color:#F8F8F8;
+}
+.share-btn:focus{
+  outline:0;
+}
+
+.share-btn::after{
+  border: none;
+}
+.slide-image {
+  width:100%;
+  height:150px;
+}
+.group-img{
+  width:20%;
+}
+.group-info{
+  width:60%;
+}
+.group-click{
+  float:right;
+}
+.group-box{
+  float: right;
+}
+.group-btn{
+  font-size: 12px;
+}
+
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 20rpx 0;
+    width: 80%;
+    background: #FFFFFF;
+    margin: 40% auto;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.ruleHide{
+    height: 60rpx!important;
+    width: 60rpx!important;
+    position: absolute;
+    top: 0rpx;
+    right: 0rpx;
+}
+.rule{
+    display: block;
+    border: 1px solid #fff;
+    width: 100rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
+.closeButton {
+  margin-top: 30px;
+}
+.tip{
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.contact-btn{
+  font-size:15px;
+  width:50%;
+}
+.keyword{
+  font-size:15px;
+  color: red;
+}
+
+
+.groupon-title {
+  font-size: 15px;
+  display: block;
+}
+.groupon-price{
+  color:red;
+  font-size: 15px;
+}
+.groupon-price-yuan{
+  color: red;
+  font-size: 12px;
+}
+.groupon-amount{
+  color:gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.groupon-amount-yuan{
+  color: gray;
+  font-size: 12px;
+  text-decoration:line-through;
+}
+.groupon-img{
+  width:35%;
+}
+.groupon-info{
+  margin-left:10px;
+  width:45%;
+}
+.groupon-click{
+  width:20%;
+  margin-left:5px;
+}
+.buy-btn{
+  color: white;
+  background-color: red;
+  font-size: 12px;
+  padding-left:10px;
+  padding-right:10px;
+}
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}
+.card-qrcode{
+  width: 25px;
+  height: 25px;
+}
+
+.getuser-btn{
+  font-size: 15px;
+  background-color: #d81e06;
+  color: black;
+  padding-left:0px;
+  padding-right:0px;
+  line-height: 1.5;
+}
+.getuser-btn:focus{
+  outline:0;
+}
+
+.getuser-btn::after{
+  border: none;
+}
+
+.footer {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: gray;
+}
+.weui-grid{
+  width:50%;
+  padding: 0px 0px;
+}
+.button-image{
+  width:50%;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+}
+.weui-grid__icon{
+  display: inline-block;
+  vertical-align: middle;
+}
+.weui-grid__label{
+  width:50%;
+  float: left;
+  text-align: left;
+}
+.button-title{
+  color: black;
+  font-weight: bold;
+}
+.button-tip{
+  color: gray;
+  font-size: 10px;
+}

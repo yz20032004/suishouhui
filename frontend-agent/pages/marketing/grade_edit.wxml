@@ -1,0 +1,117 @@
+<!--pages/marketing/grade_edit.wxml-->
+<form bindsubmit="submit">
+  <input type="number" style="display:none" name="id" value="{{grade.id}}" />
+  <input type="number" style="display:none" name="grade" value="{{grade.grade}}" />
+  <view class="weui-cells__title">修改会员等级</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">等级名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{grade.name}}" type="text" name="name" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">有效期天数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindDaysChange" value="{{valid_days[daysIndex].days}}" range="{{valid_days}}" range-key="title" name="valid_days">
+          <view class="weui-select weui-select_in-select-after">{{valid_days[daysIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="weui-cells__title">特权</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">消费折扣</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字，无则留空" type="digit" name="discount" value="{{discount}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">积分加速</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindPointSpeedChange" value="{{point_speed_range[speedIndex].speed}}" range="{{point_speed_range}}" range-key="title" name="point_speed">
+          <view class="weui-select weui-select_in-select-after">{{point_speed_range[speedIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">其它特权</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请填写，没有则留空" style="height: 4.3em" name="detail" value='{{grade.privilege}}' />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">升级规则</view>
+  <view class="weui-cells weui-cells_after-title">
+    <radio-group class="radio-group" name="condition" bindchange="conditionSwitch">
+      <block wx:if="{{'none'==display}}">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value='scan' checked="checked" disabled='disabled'></radio>
+          </view>
+          <view class="weui-cell__bd">免费加入</view>
+        </label>
+      </block>
+      <block wx:else>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value='recharge' wx:if="{{'recharge'==grade.catch_type}}" checked="checked"></radio>
+            <radio value="recharge" wx:else></radio>
+          </view>
+          <view class="weui-cell__bd">充值满一定金额</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value='frequency' wx:if="{{'frequency'==grade.catch_type}}" checked="checked"></radio>
+            <radio value="frequency" wx:else></radio>
+          </view>
+          <view class="weui-cell__bd">消费达到一定次数</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value='amount' wx:if="{{'amount'==grade.catch_type}}" checked="checked"></radio>
+            <radio value="amount" wx:else></radio>
+          </view>
+          <view class="weui-cell__bd">消费达到一定金额</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value='pay' wx:if="{{'pay'==grade.catch_type}}" checked="checked"></radio>
+            <radio value="pay" wx:else></radio>
+          </view>
+          <view class="weui-cell__bd">支付一定金额购买</view>
+        </label>
+      </block>
+    </radio-group>
+    <view class="weui-cells weui-cells_after-title" style='display:{{display}}'>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">请输入{{catch_title}}</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{grade.catch_value}}" type="number" name="catch" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">保存</button>
+    <button class="weui-btn" type="warn" data-id="{{grade.id}}" bindtap="delete" wx:if="{{1 != grade.grade}}">删除</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

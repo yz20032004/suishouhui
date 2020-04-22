@@ -1,0 +1,50 @@
+<!--pages/trade/list.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">选择日期</view>
+    </view>
+    <view class="weui-cell__bd picker_group">
+      <picker mode="date" value="{{date_start}}" start="2019-01-01" end="{{date_start}}" bindchange="bindDateStartChange">
+        <view class="picker">
+          {{date_start}}
+        </view>
+      </picker>
+      至
+      <picker mode="date" value="{{date_end}}" start="2019-01-01" end="date_end" bindchange="bindDateEndChange">
+        <view class="picker">
+          {{date_end}}
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">{{today}}</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{tradeData}}">
+    <navigator url="detail?out_trade_no={{item.out_trade_no}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+      <view style="width:25%">
+        <text class="trade-amount">{{item.trade}}元</text>
+      </view>
+      <view style="width:45%">
+        <view>
+          <text class="trade-name"></text>
+        </view>
+        <view>
+          <text class="trade-card">{{item.mobile}}</text>
+        </view>
+      </view>
+      <view style="width:30%">
+        <view>
+          <text class="trade-time">{{item.create_time}}</text>
+        </view>
+        <view class="trade-type">
+          <text>{{item.detail}}</text>
+        </view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </block>
+</view>

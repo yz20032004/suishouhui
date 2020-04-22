@@ -1,0 +1,9 @@
+/* pages/expand/xiaowei_input.wxss */
+.content {
+  width: 96%;
+  margin-left:2%;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}

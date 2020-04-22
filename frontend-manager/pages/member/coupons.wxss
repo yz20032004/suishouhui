@@ -1,0 +1,21 @@
+/* pages/member/coupons.wxss */
+.coupon-type {
+    font-size: 10px;
+    color:#AAAAAA;
+}
+
+.create-time {
+    font-size: 12px;
+    color: #bfbfbf;
+}
+
+.coupon-status {
+    color: red;
+    font-size:15px
+}
+
+.coupon-total {
+  margin-left:10px;
+  color:darkgray;
+  font-size:13px;
+}

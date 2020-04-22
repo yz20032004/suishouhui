@@ -1,0 +1,63 @@
+<!--pages/index/bind.wxml-->
+<view>
+  <view class="userinfo">
+    <image class="avatar" src="../../images/logo.jpg" background-size="cover"></image>
+    <text class="nickname">免费创建您的小程序</text>
+    <text class="tip">快速注册小程序，享受支付营销的便捷体验</text>
+  </view>
+</view>
+
+<view class="weui-btn-area" style='display:{{auth_display}}'>
+  <button class="weui-btn" type="primary" open-type='getUserInfo' bindgetuserinfo="onGotUserInfo">授权个人信息</button>
+</view>
+<form class="page-body" bindsubmit="submit" style='display:{{display}}'>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">企业名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="请输入企业名称" name="company" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">法人姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="请输入企业法人姓名" name="name" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">法人微信</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="请输入法人的微信号" name="name" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入手机号" name="mobile" bindinput="bindMobileInput" />
+      </view>
+      <view class="weui-cell__ft" bindtap="getCode">
+        <view class="weui-vcode-btn" style="font-size:15px">{{getCodeStatus}}</view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">验证码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="number" placeholder="请输入5位数字验证码" name="code" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">微信公司审核通过后会下发消息至法人微信</view>
+  <view class="weui-btn-area" style='display:{{display}}'>
+    <button class="weui-btn" type="primary" form-type='submit'>免费申请</button>
+  </view>
+</form>

@@ -1,0 +1,28 @@
+/* pages/member/index.wxss */
+.memberinfo {
+    text-align: center;
+    width: 25%;
+}
+
+.member-tip {
+    text-align: center;
+    font-size:12px;
+    color: #bfbfbf;
+}
+
+.member-number {
+    text-align: center;
+    font-size: 20px;
+}
+
+.memberinfo-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin: 10rpx;
+    border-radius: 50%;
+    vertical-align: middle
+}
+
+.memberinfo-name {
+    font-size: 15px;
+}

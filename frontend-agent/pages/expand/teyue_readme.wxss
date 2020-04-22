@@ -1,0 +1,35 @@
+/* pages/expand/teyue_readme.wxss */
+
+.readme {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+.bindphone {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.register_title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+  color:black;
+}
+.register_item{
+  text-align: left;
+  font-size:15px;
+  margin-bottom: 5px;
+  margin-left:5px;
+  color:gray;
+}
+.register_btn{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

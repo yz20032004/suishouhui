@@ -1,0 +1,82 @@
+<!--pages/setting/remind.wxml-->
+<view class="weui-cells__title">添加提醒</view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">新增会员提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeMemberSwitch" value="1" name="is_member" wx:if="{{remind.is_member == '1'}}" checked />
+			<switch bindchange="exchangeMemberSwitch" value="1" name="is_member" wx:else />
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">支付订单提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangePaySwitch" value="1" name="is_pay" wx:if="{{remind.is_pay == '1'}}" checked />
+			<switch bindchange="exchangePaySwitch" value="1" name="is_pay" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">充值订单提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeRechargeSwitch" value="1" name="is_recharge" wx:if="{{remind.is_recharge == '1'}}" checked />
+			<switch bindchange="exchangeRechargeSwitch" value="1" name="is_recharge" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">团购订单提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeGrouponSwitch" value="1" name="is_groupon" wx:if="{{remind.is_groupon == '1'}}" checked />
+			<switch bindchange="exchangeGrouponSwitch" value="1" name="is_groupon" wx:else />
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">外卖订单提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeWaimaiSwitch" value="1" name="is_waimai" wx:if="{{remind.is_waimai == '1'}}" checked />
+			<switch bindchange="exchangeWaimaiSwitch" value="1" name="is_waimai" wx:else />
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">商城订单提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeMallSwitch" value="1" name="is_mall" wx:if="{{remind.is_mall == '1'}}" checked />
+			<switch bindchange="exchangeMallSwitch" value="1" name="is_mall" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">付费卡售卖提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeVipcardSwitch" value="1" name="is_vipcard" wx:if="{{remind.is_vipcard == '1'}}" checked />
+			<switch bindchange="exchangeVipcardSwitch" value="1" name="is_vipcard" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">日报通知</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeDaySwitch" value="1" name="is_day" wx:if="{{remind.is_day == '1'}}" checked />
+			<switch bindchange="exchangeDaySwitch" value="1" name="is_day" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">周报通知</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeWeekSwitch" value="1" name="is_week" wx:if="{{remind.is_week == '1'}}" checked />
+			<switch bindchange="exchangeWeekSwitch" value="1" name="is_week" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">月报通知</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeMonthSwitch" value="1" name="is_month" wx:if="{{remind.is_month == '1'}}" checked />
+			<switch bindchange="exchangeMonthSwitch" value="1" name="is_month" wx:else />
+		</view>
+	</view>
+  <view class="weui-cell weui-cell_switch">
+		<view class="weui-cell__bd">微信群二维码将过期提醒</view>
+		<view class="weui-cell__ft">
+			<switch bindchange="exchangeWechatGroupSwitch" value="1" name="is_wechat_group" wx:if="{{remind.is_wechat_group == '1'}}" checked />
+			<switch bindchange="exchangeWechatGroupSwitch" value="1" name="is_wechat_group" wx:else />
+		</view>
+	</view>
+</view>
+<view class="weui-cells__title"><text>请添加微信公众号 </text><text style="color:red" bindtap="copy">{{wechat_number}}</text> 接收提醒消息</view>

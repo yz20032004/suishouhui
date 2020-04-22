@@ -1,0 +1,76 @@
+<!--pages/index/shop_dashboard.wxml-->
+<view class="page">
+
+  <view class="page__bd" style="margin-top:20px">
+    <view class="weui-grids">
+      <view bindtap="detail" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/detail.png" />
+        <view class="weui-grid__label">商户详情</view>
+      </view>
+      <view bindtap="revenue_config" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/fanli.png" />
+        <view class="weui-grid__label">分佣配置</view>
+      </view>
+      <view bindtap="ability" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/functions.png" />
+        <view class="weui-grid__label">功能列表</view>
+      </view>
+      <view bindtap="report" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/reports.png" />
+        <view class="weui-grid__label">业绩查看</view>
+      </view>
+      <view bindtap="list" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/list.png" />
+        <view class="weui-grid__label">收款记录</view>
+      </view>
+      <view bindtap="campaigns" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/campaigns.png" />
+        <view class="weui-grid__label">营销活动</view>
+      </view>
+      <view bindtap="groupon" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/tuangou.png" />
+        <view class="weui-grid__label">团购活动</view>
+      </view>
+      <view bindtap="marketing" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/config.png" />
+        <view class="weui-grid__label">营销配置</view>
+      </view>
+      <view bindtap="reg_mini" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/wxmember.png" />
+        <view class="weui-grid__label">申请小程序</view>
+      </view>
+      <view bindtap="bind_tenpay" class="weui-grid" hover-class="weui-grid_active" wx:if="{{'suishouhui'==merchant.pay_platform}}">
+        <image class="weui-grid__icon" src="/images/tenpay.jpg" />
+        <view class="weui-grid__label">绑定腾讯云支付</view>
+      </view>
+      <view bindtap="bindqrcode" class="weui-grid" hover-class="weui-grid_active" style="display:none">
+        <image class="weui-grid__icon" src="/images/payqrcode.png" />
+        <view class="weui-grid__label">绑定收款码</view>
+      </view>
+      <view bindtap="addwechatpay" class="weui-grid" hover-class="weui-grid_active" style="display:none">
+        <image class="weui-grid__icon" src="/images/paycode.png" />
+        <view class="weui-grid__label">添加微信收款</view>
+      </view>
+      <view bindtap="addalipay" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/alipay.png" />
+        <view class="weui-grid__label">添加支付宝收款</view>
+      </view>
+      <view bindtap="memberqrcode" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/payqrcode.png" />
+        <view class="weui-grid__label">查看会员码</view>
+      </view>
+      <view bindtap="pay_qrcode" class="weui-grid" hover-class="weui-grid_active" wx:if="{{'getihu' == merchant.mch_type}}">
+        <image class="weui-grid__icon" src="/images/scan.png" />
+        <view class="weui-grid__label">查看收款码</view>
+      </view>
+      <view bindtap="coupons" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/images/coupon.png" />
+        <view class="weui-grid__label">优惠券管理</view>
+      </view>
+      <view bindtap="shops" class="weui-grid" hover-class="weui-grid_active" wx:if="{{false}}">
+        <image class="weui-grid__icon" src="/images/shop.png" />
+        <view class="weui-grid__label">分店管理</view>
+      </view>
+    </view>
+  </view>
+</view>

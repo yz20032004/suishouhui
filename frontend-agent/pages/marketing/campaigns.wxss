@@ -1,0 +1,38 @@
+/**index.wxss**/
+.btn-area {
+  margin-top:10px;
+}
+button{
+  margin-top: 1rpx;
+}
+.button-sp-area{
+  margin: 0 auto;
+  width: 100%;
+}
+.mini-btn{
+  margin-right: 10rpx;
+}
+.cc {
+  float:left;
+  width:45%;
+  margin-left:10px;
+  margin-bottom:15px;
+}
+.img {
+  width:100%;
+}
+.label-3-text{
+  color: #576B95;
+  font-size: 28rpx;
+}
+.share {
+    float: right;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border: 0 solid #ffffff;
+    border-radius: 500px;
+    box-shadow: 4px 1px 1px #cccccc;
+}
+@import "/common/weui.wxss";

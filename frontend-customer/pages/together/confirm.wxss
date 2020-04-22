@@ -1,0 +1,61 @@
+/* pages/together/confirm.wxss */
+.money_trade {
+  margin-left: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.bottom-box {
+  position: fixed;
+  width: 100%;
+  line-height: 50px;
+  display: -webkit-flex;
+  bottom: 0px;
+  border: 1px;
+}
+
+.save {
+  color: red;
+  margin-right: 0px;
+}
+
+.btn-left {
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 60%;
+  background-color: white;
+  font-size: 14px;
+  padding-left:10px;
+  text-align: left
+}
+
+.btn-right {
+  padding-left:5px;
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 40%;
+  background-color: #d81e06;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.consume {
+  font-size: 20px;
+  color: red;
+}
+.buy-total {
+  padding-left:10px;
+  padding-right:10px;
+  font-size:18px;
+  vertical-align:middle; 
+}
+.together-tip{
+  margin-top: 15px;
+  color: #d81e06;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 5px;
+}

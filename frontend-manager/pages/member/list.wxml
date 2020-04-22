@@ -1,0 +1,45 @@
+<!--pages/member/list.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">选择查询条件</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择会员等级</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindGradeChange" value="{{grades[gradeIndex].grade}}" range="{{grades}}" range-key="name" name="grade">
+          <view class="weui-select weui-select_in-select-after">{{grades[gradeIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">姓名或手机</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="" type="text" name="keyword" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">查询</button>
+  </view>
+</form>
+<view class="weui-cells__title">共{{total}}名会员{{true == user.is_demo ? ',体验模式不显示会员手机号' : ''}}</view>
+<block wx:for="{{memberList}}">
+  <view class="weui-flex  weui-cell" data-openid="{{item.sub_openid}}" bindtap="previewMember">
+    <view style="width:20%">
+      <image class="memberinfo-avatar" src="{{item.headimgurl}}" background-size="cover"></image>
+    </view>
+    <view style="width:60%">
+      <text class="memberinfo-name">{{item.name ? item.name : item.nickname}} ({{item.grade_title}})
+        <p></p> 
+        <text wx:if="{{false == user.is_demo}}"> {{item.mobile}}</text>
+      </text>
+    </view>
+    <view style="width:20%;text-align:right">
+      <image src="/images/arrow.png" background-size="cover" style="width:20px;height:20px"></image>
+    </view>
+  </view>
+</block>

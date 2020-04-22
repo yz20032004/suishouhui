@@ -1,0 +1,131 @@
+.stat-tip {
+  font-size: 15px;
+  color: darkgray;
+}
+
+.stat-number {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.campaign-status {
+  color: red;
+  font-size: 15px;
+}
+
+/**index.wxss**/
+
+.shopinfo {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.shopinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.shopinfo-qrcode {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 10rpx;
+  margin-left: 20px;
+}
+
+.shopinfo-name {
+  margin: 10rpx;
+  font-size: 15px;
+  color: "#f85f48";
+}
+
+.statview {
+  text-align: center;
+  width: 33%;
+  margin-top:20px;
+  margin-bottom:5px;
+  position: relative;
+  float: left;
+  box-sizing:border-box;
+}
+
+.todaystat-tip {
+  text-align: center;
+  font-size: 10px;
+  color: #808080;
+}
+
+.todaystat-number {
+  text-align: center;
+  font-size: 20px;
+}
+.picker_group {
+  height: 85rpx;
+  line-height: 85rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  color: #888;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.picker_group picker {
+  /* background-color: yellow; */
+  color: #64bff1;
+  height: 55rpx;
+  line-height: 55rpx;
+  margin: 0 2%;
+  padding-left: 15px;
+  border: 1rpx solid #64bff1;
+  border-radius: 30rpx;
+  width: 50%;
+}
+.weui-label {
+  width:80px;
+}
+
+.memberinfo {
+    text-align: center;
+    width: 25%;
+}
+
+.member-tip {
+    text-align: center;
+    font-size:12px;
+    color: #bfbfbf;
+}
+
+.member-number {
+    text-align: center;
+    font-size: 20px;
+}
+
+.memberinfo-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    margin: 10rpx;
+    border-radius: 50%;
+    vertical-align: middle
+}
+
+.memberinfo-name {
+    font-size: 15px;
+}
+.buy-time {
+  font-size:12px;
+}
+.no-record{
+  font-size: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+.coupon_amount{
+  margin-left:10px;
+  color: green;
+}
+.no-trade{
+  margin-top: 30px;
+  text-align: center;
+  color: gray;
+  font-size: 15px;
+}

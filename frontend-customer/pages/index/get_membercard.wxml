@@ -1,0 +1,45 @@
+<!--pages/index/get_membercard.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell card-head">
+    <view style="width:20%;">
+      <image src="{{card.logo_url}}" class="membercard-avatar"></image>
+    </view>
+    <view style="width:80%;">
+      <view>
+        <text class="membercard-name">{{card.merchant_shortname}}</text>
+      </view>
+      <view class='membercard-grade'>
+        <text>{{card.grade_data.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="getUser" wx:if="{{!is_follow}}">立即领卡</button>
+    <button class="opencard-btn" hover-class="weui-form-preview__btn_active" bindtap="opencard" wx:else>立即领卡</button>
+  </view>
+</view>
+
+<view class="weui-cells__title">会员卡详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">开卡礼</view>
+    <view class="weui-cell__ft member-right">
+      <block wx:for="{{card.opengifts}}">
+        <view class='gift'>
+          赠{{item.coupon_name}}{{item.coupon_total}}张
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">会员特权</view>
+    <view class="weui-cell__ft member-right">
+      <view class="privilege">{{card.point_rule}}</view>
+      <view wx:if="{{card.grade_data.point_speed > 1}}" class="privilege">{{card.grade_data.name}}{{card.grade_data.point_speed}}倍返积分</view>
+      <view wx:if="{{card.grade_data.discount != 0}}" class="privilege">买单{{card.grade_data.discount}}折优惠</view>
+      <view wx:if="{{card.grade_data.privilege}}" class="privilege">{{card.grade_data.privilege}}</view>
+      <view class="privilege" wx:if="{{card.member_day}}">{{card.member_day}}</view>
+    </view>
+  </view>
+</view>

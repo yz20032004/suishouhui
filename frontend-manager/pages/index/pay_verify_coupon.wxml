@@ -1,0 +1,44 @@
+<!--pages/index/pay_verify_coupon.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">顾客请求使用如下优惠</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">券名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" value="{{coupon_name}}" disabled />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">券优惠金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="number" name="coupon_amount" value="{{coupon_amount}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">该券是否可以使用？</view>
+  <view class="weui-cells weui-cells_after-title">
+    <radio-group name="can_use" bindchange="radioGroupChange">
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__bd">可以使用</view>
+        <view class="weui-cell__hd">
+          <radio value="1" />
+        </view>
+      </label>
+      <label class="weui-cell weui-check__label">
+        <view class="weui-cell__bd">不可使用</view>
+        <view class="weui-cell__hd">
+          <radio value="0" />
+        </view>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确认</button>
+  </view>
+</form>

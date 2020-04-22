@@ -1,0 +1,19 @@
+<!--pages/vip/switch_shop.wxml-->
+<block wx:for="{{list}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title" data-id="{{item.mch_id}}" bindtap="switch_shop">
+    <view class="weui-cell card-head">
+      <view style="width:20%;">
+        <image src="{{item.logo_url}}" class="membercard-avatar"></image>
+      </view>
+      <view style="width:80%;">
+        <view>
+          <text class="membercard-name">{{item.business_name}}</text>
+        </view>
+        <view class='membercard-grade'>
+          <text>等级:{{item.grade_title}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

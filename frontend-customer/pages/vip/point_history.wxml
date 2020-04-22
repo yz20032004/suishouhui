@@ -1,0 +1,24 @@
+<!--pages/vip/point_history.wxml-->
+<view class='head'>
+  <view class='head-top'>当前积分</view>
+  <view class='head-point'>{{member.point}}分</view>
+  <view class='clear'></view>
+</view>
+<view class='line'></view>
+
+<view class='point_list'>
+  <block wx:for="{{list}}">
+    <view class='row'>
+      <view class='row-left'>
+        <view class='detail'>{{item.detail}}</view>
+        <view class='date'>{{item.created_at}}</view>
+      </view>
+      <view class='row-right'>
+        <text wx:if="{{item.modify_point > 0}}">+{{item.modify_point}}</text>
+        <text wx:else>{{item.modify_point}}</text>
+      </view>
+      <view class='clear'></view>
+    </view>
+    <view class='row_line'></view>
+  </block>
+</view>

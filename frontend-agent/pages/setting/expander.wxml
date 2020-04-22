@@ -1,0 +1,25 @@
+<!--pages/setting/expander.wxml-->
+<block wx:for="{{teamData}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="#" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+      <view style="width:20%">
+        <view style="width:20%">
+          <image class="memberinfo-avatar" src="{{item.headimgurl}}" background-size="cover"></image>
+        </view>
+      </view>
+      <view style="width:80%">
+        <view>
+          <text class="campaign-name">{{item.name}}</text>
+          <text wx:if="{{'0' == item.status}}" style="color:red;margin-left:10px" class="status">已禁用</text>
+        </view>
+        <view style="margin-top:5px;">
+          <text class="shop"></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</block>
+<view wx:if="{{teamData.length == '0'}}" class="no-team">
+  <text>暂无团队成员</text>
+</view>

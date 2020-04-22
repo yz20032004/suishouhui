@@ -1,0 +1,31 @@
+
+  <view class="page-body">
+    <view class="page-body-info">
+      <block>
+        <image src='/images/head.jpg' style='width:100%;height:120px'></image>
+      </block>
+    </view>
+    <view class="btn-area" id="buttonContainer">
+      <view class="button-sp-area">
+        <button class="mini-btn" type="{{new_active}}" size="mini" data-cate="0" bindtap='getlist'>最新</button>
+        <button class="mini-btn" type="{{right_active}}" size="mini" data-cate="1" bindtap='getlist'>会员权益</button>
+        <button class="mini-btn" type="{{recharge_active}}" size="mini" data-cate="3" bindtap='getlist'>储值</button>
+        <button class="mini-btn" type="{{campaign_active}}" size="mini" data-cate="4" bindtap='getlist'>会员活动</button>
+        <button class="mini-btn" type="{{marketing_active}}" size="mini" data-cate="5" bindtap='getlist'>市场活动</button>
+                <button class="mini-btn" type="{{open_active}}" size="mini" data-cate="2" bindtap='getlist'>开业活动</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <block wx:for="{{campaigns}}" wx:for-item="image">
+          <view class="cc">
+            <image class="img" src="{{image.preview_url}}" data-id="{{image.id}}" bindtap="previewDetail"></image>
+            <view class="label-3-text">{{image.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>

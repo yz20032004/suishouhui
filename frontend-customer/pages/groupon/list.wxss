@@ -1,0 +1,67 @@
+/* pages/groupon/list.wxss */
+
+.headimg-box {
+  height: 170px;
+}
+
+.head-box {
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.price-box {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.price {
+  font-size: 20px;
+  color: red;
+}
+
+.price-yuan {
+  font-size: 15px;
+  color: red;
+}
+
+.amount {
+  margin-left: 5px;
+  font-size: 15px;
+  color: gray;
+  text-decoration: line-through;
+}
+
+.count-box {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.balance {
+  font-size: 12px;
+  color: gray;
+  float: right;
+  padding-right: 5px;
+}
+
+.time {
+  float: right;
+  width: 55%;
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.title-box {
+  font-size: 15px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+}
+.empty {
+  margin-top: 30px;
+  text-align: center;
+  height: 100px;
+}

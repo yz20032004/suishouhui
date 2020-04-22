@@ -1,0 +1,32 @@
+<!--pages/mall/index.wxml-->
+<block wx:if="{{list.length > 0}}">
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{list}}">
+    <view class="weui-cell" bindtap='exchange' data-id="{{item.id}}">
+      <view class="product-img">
+        <image style="width:100%;height:120px;" src="{{item.icon_url}}"></image>
+      </view>
+      <view class="product-info">
+        <view class="product-right-top">
+          <view class="product-title">{{item.title}}</view>
+          <view class="product-cost">
+            <text class="product-price">￥{{item.price}}</text>
+            <text class="product-price-yuan">元</text>
+          </view>
+        </view>
+        <view class="product-right-bottom">
+          <view class="product-click">
+            <button class='buy-btn'>购买</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</block>
+<block wx:else>
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

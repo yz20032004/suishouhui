@@ -1,0 +1,34 @@
+<!--pages/vlog/list.wxml-->
+<view class="section tc" style="width:{{width}}px;height:{{height}}px" wx:if="{{vlog}}">
+	<video id="myVideo" style="width:{{width}}px;height:{{height}}px" src="{{vlog.vedio_url}}" controls="{{false}}" loop autoplay direction="0" show-progress="{{false}}" show-fullscreen-btn="{{false}}" show-play-btn="{{false}}" enable-progress-gesture="{{false}}"></video>
+
+	<cover-view class="cover-view">
+		<cover-view>
+			<cover-view class="flex-wrp" style="flex-direction:row;">
+				<cover-view style="padding-right:10px">
+        	<cover-image bindtap="home" src="{{shop.logo_url}}" style="width:40px;height:40px;border-radius:50%;margin-top:30px"></cover-image>
+					<cover-image bindtap="love" src="/images/{{is_love?'red':'white'}}_heart.png" style="width:40px;height:40px;border-radius:50%;margin-top:30px"></cover-image>
+          <cover-view class="loves">{{loves}}</cover-view>
+					<cover-view style="padding-left:5px" bindtap="share">
+						<button open-type="share" class="share-btn"><cover-image src="/images/white_share.png" style="width:30px;height:30px;border-radius:50%;margin-top:30px"></cover-image></button>
+            <cover-view class="share-tip">分享</cover-view>
+					</cover-view>
+				</cover-view>
+			</cover-view>
+		</cover-view>
+	</cover-view>
+
+	<cover-view class="bottom-view">
+		<cover-view class="groupon-view" wx:if="{{vlog.groupon_id > 0}}" bindtap="buy">
+			<cover-view style="width:30px;float:left;margin-top:2px">
+				<cover-image src="/images/vlog_buy.png" style="width:20px;height:20px;border-radius:50%"></cover-image>
+			</cover-view>
+			<cover-view style="font-size:12px;margin-left:10px;margin-top:5px">{{vlog.groupon_name}}</cover-view>
+		</cover-view>
+		<cover-view style="font-size:14px">@{{shop.business_name}}</cover-view>
+		<cover-view style="font-size:12px;margin-top:10px;width:80%;white-space:normal;">{{vlog.detail}}</cover-view>
+	</cover-view>
+</view>
+<view class='empty' wx:else>
+  <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+</view>

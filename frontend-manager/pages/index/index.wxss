@@ -1,0 +1,34 @@
+/* pages/count/count.wxss */
+.top-area{
+  width: 100%;
+  background-color: #d81e06;
+  padding-top: 35px;
+  padding-bottom: 30px;
+  padding-left: 5%;
+  padding-right:5%;
+}
+.switch-shop-area {
+  background-color: #d81e06;
+  padding-top: 10px;
+  padding-left:10px;
+  color: white;
+  font-size: 12px;
+}
+.top-icon-area {
+  width: 45%;
+  float: left;
+  text-align: center;
+}
+.clear {
+  clear: both;
+}
+.operator-title {
+  font-size: 14px;
+  color: white;
+}
+.scancode {
+    width: 50rpx;
+    height: 50rpx;
+    margin: 10rpx;
+    margin-left: 20px
+}

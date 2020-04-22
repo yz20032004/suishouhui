@@ -1,0 +1,27 @@
+<!--pages/marketing/recharge_preview.wxml-->
+<block wx:for="{{recharges}}">
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title" data-id="{{item.id}}" bindtap="edit">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">充值金额</view>
+      <view class="weui-cell__ft">{{item.touch}}元</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">奖励规则</view>
+      <view class="weui-cell__ft">再返
+        <text wx:if="{{'money_constant' == item.award_type}}">{{item.amount}}元</text>
+        <text wx:elif="{{'money_percent' == item.award_type}}">{{item.percent}}%本金</text>
+        <text wx:else>
+          <block wx:for="{{item.coupons}}">
+            {{item.coupon_name}}{{item.total}}张 <p></p>
+          </block>
+        </text>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="add">添加储值规则</button>
+  <button class="weui-btn" type="primary" plain="true" bindtap="back">返回</button>
+</view>

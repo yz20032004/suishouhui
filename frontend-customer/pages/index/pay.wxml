@@ -1,0 +1,128 @@
+<!--pages/coupon/create.wxml-->
+<form bindsubmit="submit" report-submit="true">
+  <input type='text' name="get_point" value='{{get_point}}' style='display:none'></input>
+  <input type='text' name="award_coupon_id" value='{{award_coupon_id}}' style='display:none'></input>
+  <input type='text' name="award_coupon_total" value='{{award_coupon_total}}' style='display:none'></input>
+  <input type='text' name="use_coupon_id" value='{{use_coupon_id}}' style='display:none'></input>
+  <input type='text' name="use_coupon_amount" value='{{use_coupon_amount}}' style='display:none'></input>
+  <input type='text' name="consume" value='{{consume}}' style='display:none'></input>
+  <input type="text" name="id" value="{{id}}" style="display:none" />
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd"></view>
+      <view class="weui-cell__ft">
+        <text>应付金额</text>
+        <text class="money_trade">¥{{trade}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">商户活动</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" wx:if="{{point_speed}}">
+      <view class="weui-cell__bd">
+        <text>{{point_title}}</text>
+      </view>
+      <view class="weui-cell__ft">
+        <text>+{{get_point - recharge_point}}积分</text>
+      </view>
+    </view>
+    <view class="weui-cell" wx:if="{{recharge_point > 0}}">
+      <view class="weui-cell__bd">
+        <text>{{recharge_point_title}}</text>
+      </view>
+      <view class="weui-cell__ft">
+        <text>+{{recharge_point}}积分</text>
+      </view>
+    </view>
+    <view class="weui-cell" wx:if="{{award_coupon_total}}">
+      <view class="weui-cell__bd">{{award_title}}</view>
+      <view class="weui-cell__ft">
+        <text>{{award_coupon_name}} X {{award_coupon_total}}张</text>
+      </view>
+    </view>
+    <view class="weui-cell" wx:if="{{reduce}}">
+      <view class="weui-cell__bd">{{reduce_title}}</view>
+      <view class="weui-cell__ft">
+        <text>-{{reduce}}元</text>
+      </view>
+    </view>
+    <view class="weui-cell" wx:if="{{discount}}">
+      <view class="weui-cell__bd">{{discount_title}}</view>
+      <view class="weui-cell__ft">
+        <text>-{{discount}}元</text>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{member_coupons.length >0}}">
+    <view class="weui-cells__title">使用优惠券</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="useCouponChange">
+        <label class="weui-cell weui-check__label" style='display:none'>
+          <view class="weui-cell__bd"></view>
+          <view class="weui-cell__hd">
+            <radio checked='{{radio_none_checked}}'  />
+          </view>
+        </label>
+        <label class="weui-cell weui-check__label" wx:for="{{member_coupons}}" wx:key="{{item}}">
+          <view class="weui-cell__bd">{{item.coupon_name}}</view>
+          <view class="weui-cell__hd">
+            <radio value="{{item.coupon_id}}" data-id="{{item.coupon_id}}" data-type="{{item.coupon_type}}" data-amount="{{item.amount}}" data-name="{{item.coupon_name}}" data-discount="{{item.discount}}" />
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">使用优惠券</view>
+        <view class="weui-cell__ft">
+          <text>无可用</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="weui-cells__title">会员优惠</view>
+  <view class="weui-cells weui-cells_after-title">
+    <checkbox-group bindchange="checkboxChange">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">使用储值余额 ( ¥ {{recharge}}元)</view>
+        <view class="weui-cell__ft">
+          <label class="checkbox">
+            <checkbox name="" value='use_recharge' />
+          </label>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch" wx:if="{{'1' == can_cash}}">
+        <view class="weui-cell__bd">使用积分 ({{point}}积分, {{exchange_need_points}}积分=1元)</view>
+        <view class="weui-cell__ft">
+          <label class="checkbox">
+            <checkbox value="use_point" />
+          </label>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch" wx:if="{{member_discount}}">
+        <view class="weui-cell__bd">{{grade_title}}会员折扣 ( ¥ {{member_discount}}元)</view>
+        <view class="weui-cell__ft">
+          <label class="checkbox">
+            <checkbox value="use_discount" checked disabled />
+          </label>
+        </view>
+      </view>
+    </checkbox-group>
+  </view>
+
+  <view class="weui-cells__title" style="height:50px"></view>
+  <view class="bottom-box">
+    <button class="btn-left" hover-class="weui-form-preview__btn_active">
+      省
+      <text class="save">{{save}}</text>元 还需支付
+      <text class='consume'> ¥{{consume}} </text>
+    </button>
+    <button class="btn-right" hover-class="weui-form-preview__btn_active" formType="submit" disabled='{{pay_disabled}}'>去支付</button>
+  </view>
+</form>

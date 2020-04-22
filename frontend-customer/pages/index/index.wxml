@@ -1,0 +1,221 @@
+<view class="page-section page-section-spacing swiper">
+	<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" style="height:{{swiper_height}}px">
+		<block wx:for="{{background_top}}" wx:key="*this">
+			<swiper-item>
+				<view class="swiper-item">
+					<image src="{{item.pic_url}}" bindtap="openimg" data-path="{{item.path}}" style="width:96%;padding-left:2%;"></image>
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+
+<view class="func-row">
+		<view class="weui-grids">
+				<view bindtap='selfpay' class="weui-grid" hover-class="weui-grid_active" wx:if="{{false}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/payment.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">快速买单</view>
+							<view class="button-tip">返积分</view>
+						</view>
+				</view>
+				<view bindtap='recharge' class="weui-grid" hover-class="weui-grid_active" wx:if="{{'general' != merchant.mch_type}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/recharge.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">在线充值</view>
+							<view class="button-tip">充值返优惠</view>
+						</view>
+				</view>
+				<view class="weui-grid" hover-class="weui-grid_active" bindtap="ordering" wx:if="{{'1' == merchant.is_ordering && '0' == merchant.is_tables}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/ordering.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">在线点单</view>
+							<view class="button-tip">快人一步</view>
+						</view>
+				</view>
+				<view bindtap='waimai' class="weui-grid" hover-class="weui-grid_active" wx:if="{{'1' == merchant.is_waimai}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/waimai.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">外卖到家</view>
+							<view class="button-tip">
+								<text wx:if="{{'0' == merchant.is_selftaking}}">同城配送</text>
+								<text wx:else>可到店自提</text>
+							</view>
+						</view>
+				</view>
+				<view bindtap='mall' class="weui-grid" hover-class="weui-grid_active" wx:if="{{'1' == merchant.is_mall}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/mall.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">会员商城</view>
+							<view class="button-tip">快递到家</view>
+						</view>
+				</view>
+				<view bindtap='pointmall' class="weui-grid" hover-class="weui-grid_active">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/pointmall.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">积分兑换</view>
+							<view class="button-tip">小积分大作用</view>
+						</view>
+				</view>
+				<view bindtap='openContactBtn' class="weui-grid" hover-class="weui-grid_active" wx:if="{{shop.has_wechat_group}}">
+						<view class="button-image"><image class="weui-grid__icon" src="/images/group.png" /></view>
+						<view class="weui-grid__label">
+							<view class="button-title">本店福利群</view>
+							<view class="button-tip">天天抢优惠</view>
+						</view>
+				</view>
+				<view class="weui-grid" hover-class="weui-grid_active">
+						<view class="button-image">
+						<button class="share-btn" open-type="share">
+							<image src='/images/share.png' style='width:28px;height:28px'></image>
+						</button>
+						</view>
+						<view class="weui-grid__label">
+							<view class="button-title">
+											<button open-type="share" class="share-btn">推荐好友</button>
+							</view>
+							<view class="button-tip">优惠齐分享</view>
+						</view>
+				</view>
+		</view>
+</view>
+
+<block wx:if="{{grouponData.length > 0}}">
+	<view class="weui-cells__title">超值抢购</view>
+	<view class="weui-cells weui-cells_after-title">
+		<block wx:for="{{grouponData}}">
+			<view class="weui-cell" bindtap='buy' data-id="{{item.id}}">
+				<view class="groupon-img">
+					<image style="width:100%;height:60px;" src="{{item.image_url}}"></image>
+				</view>
+				<view class="groupon-info">
+					<view class="groupon-title">{{item.title}}</view>
+					<view class="groupon-cost">
+						<text class="groupon-price">{{item.price}}</text>
+						<text class="groupon-price-yuan">元</text>
+						<text class="groupon-amount">{{item.amount}}</text>
+						<text class="groupon-amount-yuan">元</text>
+					</view>
+				</view>
+				<view class="groupon-click">
+					<button class='buy-btn'>抢购</button>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>
+
+
+<block wx:if="{{togetherData.length > 0}}">
+	<view class="weui-cells__title">拼团优惠</view>
+	<view class="weui-cells weui-cells_after-title">
+		<block wx:for="{{togetherData}}">
+			<view class="weui-cell" bindtap='together' data-id="{{item.id}}">
+				<view class="groupon-img">
+					<image style="width:100%;height:60px;" src="{{item.image_url}}"></image>
+				</view>
+				<view class="groupon-info">
+					<view class="groupon-title">{{item.title}}</view>
+					<view class="groupon-cost">
+						<text class="groupon-price">{{item.price}}</text>
+						<text class="groupon-price-yuan">元</text>
+						<text class="groupon-amount">{{item.amount}}</text>
+						<text class="groupon-amount-yuan">元</text>
+					</view>
+				</view>
+				<view class="groupon-click">
+					<button class='buy-btn'>拼团</button>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>
+<block wx:if="{{mallData.length > 0}}">
+	<view class="weui-cells__title">在线商城</view>
+	<view class="weui-cells weui-cells_after-title">
+		<block wx:for="{{mallData}}">
+			<view class="weui-cell" bindtap='buy_product' data-id="{{item.id}}">
+				<view class="groupon-img">
+					<image style="width:100%;height:60px;" src="{{item.icon_url}}"></image>
+				</view>
+				<view class="groupon-info">
+					<view class="groupon-title">{{item.title}}</view>
+					<view class="groupon-cost">
+						<text class="groupon-price">{{item.price}}</text>
+						<text class="groupon-price-yuan">元</text>
+						<text class="groupon-amount">{{item.amount}}</text>
+						<text class="groupon-amount-yuan">元</text>
+					</view>
+				</view>
+				<view class="groupon-click">
+					<button class='buy-btn'>抢购</button>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>
+<block wx:if="{{vipcardData.length > 0}}">
+	<view class="weui-cells__title">权益卡</view>
+	<view class="weui-cells weui-cells_after-title">
+		<block wx:for="{{vipcardData}}">
+			<view class="weui-cell" bindtap='buy_vipcard' data-id="{{item.id}}" wx:if="{{item.grade != member.grade}}">
+				<view class="groupon-img">
+					<image style="width:100%;height:60px;" src="{{item.pic_url}}"></image>
+				</view>
+				<view class="groupon-info">
+					<view class="groupon-title">{{item.grade_name}}</view>
+					<view class="groupon-cost">
+						<text class="groupon-price">{{item.price}}</text>
+						<text class="groupon-price-yuan">元</text>
+					</view>
+				</view>
+				<view class="groupon-click">
+					<button class='buy-btn'>加入</button>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{'1' == shop.total}}">
+	<view class="weui-cell">
+		<image style="width:20px;height:20px;margin-right:10px;" src="/images/shop.png"></image>
+		<view class="weui-cell__bd">
+			<text class="shop_name">{{shop.business_name}}{{shop.branch_name}}</text>
+		</view>
+		<view class="switch" wx:if="{{multiple_cards > 1}}" bindtap="switch_shop"> 
+      	<image src="/images/switch.png" style="width:20px;height:20px;margin-left:5px"></image> 
+    </view> 
+	</view>
+	<view class="weui-cell">
+		<image style="width:20px;height:20px;margin-right:10px;" src="/images/location.png"></image>
+		<view class="weui-cell__bd address" bindtap='open_location'>地址: {{shop.city}}{{shop.district}}{{shop.address}}</view>
+		<image style="width:20px;height:20px;margin-left:10px;margin-right:10px;" src="/images/phone.png" data-phone="{{shop.telephone}}" bindtap='call'></image>
+	</view>
+</view>
+
+<view class="ruleZhezhao" wx:if="{{showGroupTip}}">
+	<view class='ruleZhezhaoContent'>
+		<view class='tip'>
+			回复“
+			<text class="keyword">1</text>”获得入群二维码
+		</view>
+		<button type='primary' class='contact-btn' open-type="contact" bindcontact="handleContact">立即回复</button>
+		<image src='/images/close.png' class='ruleHide' bindtap='closeGroupBox'></image>
+	</view>
+</view>
+
+<view class="ruleZhezhao" wx:if="{{showOpenCardBox}}">
+	<view class='ruleZhezhaoContent'>
+		<view class='tip'>
+			<text class="keyword">您有一张会员卡待激活</text>
+		</view>
+		<button type='primary' class='contact-btn' bindtap="open_card">立即激活</button>
+		<image src='/images/close.png' class='ruleHide' bindtap='closeOpenCardBox'></image>
+	</view>
+</view>
+<view class="footer" bindtap="open_intro"> 
+  <view><image src="/images/logo.png" style="width:25px;height:25px;"></image></view> 
+  <view>随手惠管家提供技术支持</view> 
+</view>

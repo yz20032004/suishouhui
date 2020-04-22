@@ -1,0 +1,52 @@
+/* pages/mall/pay.wxss */
+
+.money_trade {
+  margin-left: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.bottom-box {
+  width: 100%;
+  line-height: 50px;
+  display: -webkit-flex;
+  bottom: 0px;
+  border: 1px;
+  position: fixed;
+}
+
+.save {
+  color: red;
+  margin-right: 0px;
+}
+
+.btn-left {
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 70%;
+  background-color: white;
+  font-size: 14px;
+  padding-left:10px;
+  text-align: left
+}
+
+.btn-right {
+  padding-left:5px;
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 30%;
+  background-color: #d81e06;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.consume {
+  font-size: 18px;
+  color: black;
+}
+.weui-cell__bd {
+  color: #1C86EE;
+}

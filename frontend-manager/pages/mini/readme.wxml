@@ -1,0 +1,19 @@
+<!--pages/mini/readme.wxml-->
+<view class='readme'>
+  <view class='register_title'>
+    开通须知
+  </view>
+  <view class='register_item'>1、本系统接入官方微信支付，请放心使用，收款手续费率为0.38%;</view>
+  <view class='register_item'>2、收款金额T+1日自动提现至您的个人银行卡;</view>
+  <view class='register_item'>3、您可免费使用基础支付功能，包括微信和支付宝收款，以及创建和发放优惠券;</view>
+  <view class='register_title'>
+    开通前准备
+  </view>
+  <view class='register_item'>1、请拍摄您的身份证正反面照片各一张;</view>
+  <view class='register_item'>2、请拍摄您店铺门口和店内照片各一张(手机横拍最佳）;</view>
+  <view class='register_item'>3、请准备您本人的银行卡号，收款金额将自动提现至该卡;</view>
+  <view class='register_item'>4、若有疑问可加客服微信号mikeyang详细咨询。</view>
+  <view class='register_btn'>
+    <button bindtap='register' type='primary'>现在去申请</button>
+  </view>
+</view>

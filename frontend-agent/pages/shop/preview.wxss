@@ -1,0 +1,37 @@
+/* pages/index/preview_shop.wxss */
+.content-box {
+  width: 96%;
+  margin-left: 2%;
+  background-color: white;
+  border-radius: 5px;
+  padding-bottom: 20px;
+}
+.shop-title-box {
+  padding-top: 30px;
+  background-color: #edece8;
+  height: 50px;
+}
+.shop-title {
+  font-size: 20px;
+  margin-left: 20px;
+  text-align: left;
+}
+.detail-row {
+  color: gray;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.row-title{
+  width: 30%;
+  float: left;
+}
+.row-info{
+  text-align: left;
+}
+.clear{
+  clear: both;
+}
+.marketing-type {
+  color: red;
+}

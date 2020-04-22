@@ -1,0 +1,64 @@
+<!--pages/marketing/rechargenopay.wxml-->
+<view class="weui-cells__title"></view>
+<form bindsubmit="submit">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">顾客消费满</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写金额" type="number" name="consume" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择储值倍数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCountChange" value="{{counts[countIndex]}}" range="{{counts}}" name="count">
+          <view class="weui-select weui-select_in-select-after">{{counts[countIndex]}}倍</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">享受</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindDiscountChange" value="{{discounts[discountIndex]}}" range="{{discounts}}" name="discount">
+          <view class="weui-select weui-select_in-select-after">{{discount_title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动开始日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+          <view class="weui-input">{{date_start}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">活动结束日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+          <view class="weui-input">{{date_end}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>
+<view class="weui-cells__title" bindtap="previewImage" class="preview-title">点此可查看效果图</view>

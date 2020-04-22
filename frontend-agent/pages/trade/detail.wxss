@@ -1,0 +1,11 @@
+/* pages/trade/detail.wxss */
+.member-avatar {
+    width: 50rpx;
+    height: 50rpx;
+    margin: 10rpx;
+    border-radius: 50%;
+    vertical-align: middle
+}
+.red{
+  color: red;
+}

@@ -1,0 +1,80 @@
+/* pages/vip/groupon_detail.wxss */
+
+.consume_info {
+  background-color: red;
+  color: white;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.consume_item {
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 5%;
+  border-radius:10px;
+  background-color: white;
+}
+.trade {
+  padding-left: 10px;
+  color: black;
+  padding-top: 5px;
+  padding-right: 10px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+}
+.detail {
+  margin-left:20px;
+  margin-right:10px;
+  font-size: 15px;
+  overflow: hidden;
+}
+.title {
+  float: left;
+  width:40%;
+  color: gray;
+  text-align: left;
+}
+.image-box{
+  width: 50%;
+  float: left;
+}
+.bill-box{
+  width:45%;
+  float: right;
+}
+.buy-total {
+  width: 50%;
+  color:gray;
+  text-align: left;
+}
+.bill {
+  color:gray;
+  text-align: left;
+}
+.date {
+  margin-left:20px;
+  color: gray;
+  text-align: right;
+  font-size: 15px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  padding-right: 5px;
+}
+.status {
+  text-align: right;
+  color: gray;
+  font-size: 15px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+}
+.line {
+  padding-top: 10px;
+  width:90%;
+  height:0;
+  margin-left: 5%;
+  border-bottom: #EAEAEA 1px dashed;
+}

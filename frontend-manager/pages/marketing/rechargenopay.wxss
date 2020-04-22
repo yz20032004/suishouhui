@@ -1,0 +1,6 @@
+/* pages/marketing/rechargenopay.wxss */
+.preview-title{
+  margin-top: 10px;
+  text-align: center;
+  color: gainsboro;
+}

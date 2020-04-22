@@ -1,0 +1,40 @@
+/* pages/marketing/payed_share.wxss */
+.weui-cell__hd{
+  width:50%;
+}
+.weui-label {
+  width:100%;
+}
+.disable_box{
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+.disable_info{
+  font-size: 15px;
+  color: red;
+}
+.coupon-name{
+  width: 70%;
+  text-align: left;
+}
+.coupon-percent{
+  width: 30%;
+  margin-left: 30px;
+  text-align: right;
+}
+.coupon-add {
+  text-align: right;
+}
+.coupon-add-left {
+  width: 30%;
+  text-align: left;
+}
+.coupon-add-right {
+  text-align: right;
+}
+.preview-title{
+  margin-top: 10px;
+  text-align: center;
+  color: gainsboro;
+}

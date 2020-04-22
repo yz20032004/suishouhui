@@ -1,0 +1,36 @@
+<!--pages/expand/xiaowei_ready.wxml-->
+<view class="content">
+  <view class="title-box">
+    <view class="title">准备材料</view>
+    <view class="title-tip">申请小微商户请提前准备以下材料</view>
+  </view>
+  <view class="line"></view>
+
+  <view class="need-info">
+    <view class="need-info-title">1.店面照片</view>
+    <view class="need-info-tip">正面和反面各一张照片</view>
+    <view class="need-info-image">
+      <image src=""></image>
+    </view>
+  </view>
+
+  <view class="need-info">
+    <view class="need-info-title">2.店内照片</view>
+    <view class="need-info-tip">正面和反面各一张照片</view>
+    <view class="need-info-image">
+      <image src=""></image>
+    </view>
+  </view>
+
+  <view class="need-info">
+    <view class="need-info-title">3.身份证正反面照片</view>
+    <view class="need-info-tip">正面和反面各一张照片</view>
+    <view class="need-info-image">
+      <image src=""></image>
+    </view>
+  </view>
+
+  <view class="btn-area">
+    <button type="default" bindtap="xiaowei_input">我准备好了</button>
+  </view>
+</view>

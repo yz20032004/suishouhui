@@ -1,0 +1,27 @@
+<!--pages/vip/groupon_history.wxml-->
+<view class='content'>
+  <block wx:for="{{list}}">
+    <view class='consume_item' bindtap="open_detail" data-tradeno="{{item.out_trade_no}}">
+      <view class='trade'>
+        {{item.title}}
+      </view>
+      <view class='line'></view>
+      <view class='detail'>
+        <view class='image-box'>
+          <image src="{{item.image_url}}" style="width:100%;height:80px"></image>
+        </view>
+        <view class='bill-box'>
+          <view class="buy-total">抢购{{item.buy_total}}份</view>
+          <view class="bill">支付￥{{item.total_fee/100}}元</view>
+        </view>
+      </view>
+      <view class='line'></view>
+      <view class='date'>{{item.created_at}}</view>
+    </view>
+  </block>
+</view>
+<block wx:if="{{list.length == '0'}}">
+  <view class='empty'>
+    <image src='/images/empty.png' style='width:150px;height:100px;'></image>
+  </view>
+</block>

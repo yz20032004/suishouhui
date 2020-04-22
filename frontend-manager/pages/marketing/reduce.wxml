@@ -1,0 +1,51 @@
+<!--pages/marketing/reduce.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title">可配置多层消费立减方案</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">消费满</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写金额" type="number" name="consume" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">立减</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写金额" type="number" name="reduce" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">开始日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+          <view class="weui-input">{{date_start}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">结束日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+          <view class="weui-input">{{date_end}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" wx:if="{{'assistant' != user.role}}">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+  </view>
+</form>

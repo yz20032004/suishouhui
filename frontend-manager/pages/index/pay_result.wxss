@@ -1,0 +1,40 @@
+/* pages/index/pay_result.wxss */
+
+.container {
+  padding: 50rpx 0;
+}
+
+.icon-box {
+  text-align: center;
+}
+
+.icon-box-title {
+  font-size: 15px;
+  margin-top: 10px;
+  color: green;
+}
+
+.pay-box-title {
+  margin-top:10px;
+  font-size: 20px;
+  color: green;
+}
+
+.line-top {
+  margin-left:10%;
+  width: 80%;
+  height: 1px;
+  border-top: solid #acc0d8 1px;
+}
+
+.complete {
+  width: 40%;
+  margin:20rpx auto;
+}
+.weui-cells {
+  font-size:15px;
+}
+
+.wei-cell {
+  padding:5px 15px;
+}

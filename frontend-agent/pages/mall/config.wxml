@@ -1,0 +1,53 @@
+<!--pages/mall/config.wxml-->
+<form bindsubmit="submit">
+	<view class="weui-cells__title">商城配置</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">统一运费（元）</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写金额" type="digit" name="delivery_cost" value="{{mall_config.delivery_cost}}" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">满X元免运费</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请填写金额" type="digit" name="delivery_free_atleast" value="{{mall_config.delivery_free_atleast}}" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_switch">
+			<view class="weui-cell__bd">可使用储值余额支付</view>
+			<view class="weui-cell__ft">
+				<switch value="1" name="can_recharge" wx:if="{{mall_config.can_recharge == '1'}}" checked />
+				<switch value="1" name="can_recharge" wx:else />
+			</view>
+		</view>
+	</view>
+	<view class="weui-cells__title">配置佳博小票打印机终端编号</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd" style="width:20%">
+				<view class="weui-label">编号</view>
+			</view>
+			<view class="weui-cell__bd" style="width:80%;">
+				<view style="width:65%;float:left;"><input class="weui-input" placeholder="请填写机器底部编号" type="digit" name="jiabo_device_no" value="{{jiabo_device_no}}" /></view>
+				<view style="width:35%;float:left;"><button class="mini-btn" type="primary" size="mini" style="background-color:#d81e06;margin-left:10px" bindtap="scanCode">扫码</button></view>
+			</view>
+		</view>
+	</view>
+	<view class="weui-cells__title">发货须知</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请填写发货须知，例如每天几点发货，只给哪些地区发货" style="height: 5.3em" name="delivery_tip" value="{{mall_config.delivery_tip}}" />
+      </view>
+    </view>
+  </view>
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" formType="submit">确定</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

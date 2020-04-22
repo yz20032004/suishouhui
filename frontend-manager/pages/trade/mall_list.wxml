@@ -1,0 +1,130 @@
+<!--pages/trade/mall_list.wxml-->
+<!--pages/trade/waimai_list.wxml-->
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell weui-cell_input">
+		<view class="weui-cell__hd">
+			<view class="weui-label">选择日期</view>
+		</view>
+		<view class="weui-cell__bd picker_group">
+			<picker mode="date" value="{{date_start}}" start="{{date_start_select}}" end="{{date_start}}" bindchange="bindDateStartChange">
+				<view class="picker">
+					{{date_start}}
+				</view>
+			</picker>
+			至
+			<picker mode="date" value="{{date_end}}" start="{{date_start_select}}" end="{{date_start}}" bindchange="bindDateEndChange">
+				<view class="picker">
+					{{date_end}}
+				</view>
+			</picker>
+		</view>
+	</view>
+</view>
+
+<view class="page">
+	<view class="page__bd">
+		<view class="weui-tab">
+			<view class="weui-navbar">
+				<block wx:for="{{tabs}}" wx:key="*this">
+					<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+						<view class="weui-navbar__title">{{item}}</view>
+					</view>
+				</block>
+				<view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+			</view>
+			<view class="weui-tab__panel">
+				<view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+					<view class="weui-cells__title">{{today}}</view>
+					<view class="weui-cells weui-cells_after-title">
+						<block wx:for="{{undelivery_data}}">
+							<navigator url="detail?out_trade_no={{item.out_trade_no}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+								<view style="width:25%">
+									<text class="trade-amount">{{item.total_amount}}元</text>
+								</view>
+								<view style="width:35%">
+									<view>
+										<text class="trade-name">{{item.contact_name}}</text>
+									</view>
+									<view>
+										<text class="trade-card">{{item.contact_mobile}}</text>
+									</view>
+								</view>
+								<view style="width:40%">
+									<view>
+										<text class="trade-time">{{item.create_time}}</text>
+									</view>
+									<view class="trade-type">
+										<text>{{item.delivery_time}}</text>
+									</view>
+								</view>
+								<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+							</navigator>
+						</block>
+					</view>
+				</view>
+				<view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+					<view class="weui-cells__title">{{today}}</view>
+					<view class="weui-cells weui-cells_after-title">
+						<block wx:for="{{unclosed_data}}">
+							<navigator url="detail?out_trade_no={{item.out_trade_no}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+								<view style="width:25%">
+									<text class="trade-amount">{{item.total_amount}}元</text>
+								</view>
+								<view style="width:35%">
+									<view>
+										<text class="trade-name"></text>
+									</view>
+									<view>
+										<text class="trade-card">{{item.contact_name}}</text>
+									</view>
+									<view>
+										<text class="trade-card">{{item.contact_mobile}}</text>
+									</view>
+								</view>
+								<view style="width:40%">
+									<view>
+										<text class="trade-time">{{item.create_time}}</text>
+									</view>
+									<view class="trade-type">
+										<text>{{item.delivery_time}}</text>
+									</view>
+								</view>
+								<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+							</navigator>
+						</block>
+					</view>
+				</view>
+				<view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+					<view class="weui-cells__title">{{today}}</view>
+					<view class="weui-cells weui-cells_after-title">
+						<block wx:for="{{closed_data}}">
+							<navigator url="detail?out_trade_no={{item.out_trade_no}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+								<view style="width:25%">
+									<text class="trade-amount">{{item.total_amount}}元</text>
+								</view>
+								<view style="width:35%">
+									<view>
+										<text class="trade-name"></text>
+									</view>
+									<view>
+										<text class="trade-card">{{item.contact_name}}</text>
+									</view>
+								</view>
+								<view style="width:40%">
+									<view>
+										<text class="trade-time">{{item.create_time}}</text>
+									</view>
+									<view class="trade-type">
+										<text>{{item.delivery_time}}</text>
+									</view>
+								</view>
+								<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+							</navigator>
+						</block>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

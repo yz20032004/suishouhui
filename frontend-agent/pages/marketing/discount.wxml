@@ -1,0 +1,57 @@
+<!--pages/marketing/discount.wxml-->
+<form bindsubmit="submit">
+  <view class="weui-cells__title" bindtap="previewDiscountImage">点此可查看买单折扣效果图</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">设置折扣</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写1~9.9" type="digit" name="discount" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">最高优惠</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="选填" type="number" name="reduce_max" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">开始日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date_start}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateStartChange" name="date_start">
+            <view class="weui-input">{{date_start}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">结束日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date_end}}" start="{{select_begin_date}}" end="{{select_end_date}}" bindchange="bindDateEndChange" name="date_end">
+            <view class="weui-input">{{date_end}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit" wx:if="{{'assistant' != user.role}}" disabled="{{btn_disabled}}">确定</button>
+      <button class="weui-btn" type="default" bindtap="back">返回</button>
+    </view>
+  </view>
+</form>
+
+<view wx:if="{{btn_disabled}}" class="disable_box">
+  <text class="disable_info">您的商户类型是微信小微商户（申请时未提交营业执照），无法创建本活动，请联系您的业务员升级账户。</text>
+</view>

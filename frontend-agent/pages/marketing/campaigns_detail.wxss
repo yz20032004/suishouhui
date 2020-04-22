@@ -1,0 +1,14 @@
+/* pages/marketing/campaigns_detail.wxss */
+.comment {
+  margin-top: 20px;
+  margin-left:20px;
+}
+.image {
+  max-width:90%;
+  max-height: 100%;
+}
+
+.button-back-area {
+  float:right;
+  margin-right:10px;
+}

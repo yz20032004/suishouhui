@@ -1,0 +1,17 @@
+/* pages/order/index.wxss */
+.weui-grid {
+  width:25%;
+  background-color:#71C671;
+  border-right: 2px solid #D9D9D9;
+  border-bottom: 2px solid #D9D9D9;
+  height: 80px;
+}
+.has_seat {
+  background-color: chocolate;
+}
+.add_table {
+  background-color: white;
+}
+.table_name{
+  white-space: normal;
+}

@@ -1,0 +1,7 @@
+/* pages/mall/config.wxss */
+.weui-cell__hd{
+  width:60%;
+}
+.weui-label {
+  width:100%;
+}

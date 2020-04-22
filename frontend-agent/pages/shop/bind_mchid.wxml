@@ -1,0 +1,19 @@
+<!--pages/shop/bind_mchid.wxml-->
+<view class="weui-cells__title">请填写微信支付10位商户号</view>
+<form bindsubmit="submit">
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">商户号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写数字" type="number" name="mch_id"/>
+        </view>
+    </view>
+    </view>
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" formType="submit">确定</button>
+    <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>
+</form>

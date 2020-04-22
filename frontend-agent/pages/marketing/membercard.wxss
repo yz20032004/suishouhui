@@ -1,0 +1,7 @@
+/* pages/marketing/membercard.wxss */
+.detail{
+  font-size: 15px;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+}

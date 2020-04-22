@@ -1,0 +1,38 @@
+<!--pages/vip/grade.wxml-->
+
+<block wx:for="{{list}}">
+<view class="weui-cells__title">{{item.name}}</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">升级方式</view>
+    <view class="weui-cell__ft member-right">
+        <view class='gift'>
+          <text wx:if="{{'scan' == item.catch_type}}">免费加入</text>
+          <text wx:elif="{{'frequency'==item.catch_type}}">消费累积满{{item.catch_value}}次</text>
+          <text wx:elif="{{'amount'==item.catch_type}}">消费累积满{{item.catch_value}}元</text>
+          <text wx:elif="{{'recharge'==item.catch_type}}">储值累积满{{item.catch_value}}元</text>
+          <text wx:elif="{{'pay'==item.catch_type}}">支付{{item.catch_value}}元购买</text>
+          </view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">有效期</view>
+    <view class="weui-cell__ft member-right">
+        <view class='gift' wx:if="{{'0' == item.valid_days}}">永久</view>
+        <view class='gift' wx:else>{{item.valid_days}}天</view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd member-left">等级特权</view>
+    <view class="weui-cell__ft member-right">
+        <view wx:if="{{item.point_speed > 1}}" class="privilege">积分{{item.point_speed}}倍加速</view>
+        <view wx:else class="privilege">
+          <text>每消费满{{item.point_rule.award_need_consume}}元返1积分</text>
+          <text wx:if="{{'1' == item.point_rule.can_cash}}">，{{item.point_rule.exchange_need_points}}积分抵扣1元</text>
+        </view>
+        <view wx:if="{{item.discount != 0}}" class="privilege">买单{{item.discount}}折优惠</view>
+        <view wx:if="{{item.privilege}}" class="privilege">{{item.privilege}}</view>
+    </view>
+  </view>
+</view>
+</block>

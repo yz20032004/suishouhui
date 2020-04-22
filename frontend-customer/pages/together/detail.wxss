@@ -1,0 +1,244 @@
+/* pages/groupon/detail.wxss */
+
+.headimg-box {
+  height: 170px;
+}
+
+.head-box {
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.price-box {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.price {
+  font-size: 20px;
+  color: red;
+}
+
+.price-yuan {
+  font-size: 15px;
+  color: red;
+}
+
+.amount {
+  margin-left: 5px;
+  font-size: 15px;
+  color: gray;
+  text-decoration: line-through;
+}
+
+.count-box {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.balance {
+  font-size: 12px;
+  color: gray;
+  float: right;
+  padding-right: 5px;
+}
+
+.time {
+  float: right;
+  width: 55%;
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.title-box {
+  font-size: 15px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.money_trade {
+  margin-left: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.bottom-box {
+  position: fixed;
+  width: 100%;
+  line-height: 50px;
+  display: -webkit-flex;
+  bottom: 0px;
+  border: 1px;
+}
+
+.save {
+  color: red;
+  margin-right: 0px;
+}
+
+.btn-left {
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 60%;
+  background-color: white;
+  font-size: 14px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.btn-right {
+  padding-left: 5px;
+  line-height: 50px;
+  border-radius: 0px;
+  height: 50px;
+  width: 40%;
+  background-color: #d81e06;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.consume {
+  font-size: 18px;
+  color: black;
+}
+
+.weui-cell__bd {
+  color: #1c86ee;
+}
+
+.clear {
+  clear: both;
+}
+
+.need-look {
+  padding-bottom: 5px;
+  background-color: #fff;
+}
+
+.look-title {
+  font-size: 15px;
+  padding-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  color: black;
+  font-weight: bold;
+}
+.rule-row{
+  margin-bottom: 10px;
+}
+.tip-title {
+  width: 20%;
+  float: left;
+  padding-left: 5px;
+  font-size: 12px;
+  color: gray;
+  padding-bottom: 10px;
+}
+
+.look-info {
+  width: 70%;
+  float: left;
+  font-size: 12px;
+  padding-left: 15px;
+  color: black;
+  padding-bottom: 10px;
+}
+
+.deal_detail {
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.deal-info {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.deal-title {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.shop-info {
+  padding-bottom: 5px;
+  background-color: #fff;
+}
+
+.shop_name {
+  font-size: 15px;
+  display: block;
+  color: gray;
+}
+
+.shop_time {
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  color: gray;
+}
+
+.address {
+  font-size: 12px;
+  border-right: solid gray 1px;
+  color: gray;
+}
+
+.footer {
+  height: 50px;
+}
+.footer-func-box{
+  width:33%;
+  float: left;
+}
+.footer-box-image{
+  height: 20px;
+  padding-top:10px;
+}
+.footer-box-text{
+  font-size:10px;
+  color: red;
+}
+.share-btn{
+  background-color: white;
+  font-size: 10px;
+  color: red;
+  padding-left: 0px;
+  padding-right:0px;
+  position: none;
+  display: fixed;
+  text-align: left;
+}
+.share-btn::after{
+border: none;
+}
+
+.together-box {
+  margin-bottom: 5px;
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+.headimgurl-box{
+  width:60%;
+  float: left;
+  padding-left:10px;
+}
+.memberinfo-avatar {
+  width: 110rpx;
+  height: 110rpx;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.need-people{
+  color: red;
+}
+.time-box{
+  float: right;
+  padding-right:15px;
+}

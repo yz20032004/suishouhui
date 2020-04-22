@@ -1,0 +1,73 @@
+<!--pages/marketing/research.wxml-->
+<form bindsubmit="submit">
+	<view class="weui-cells__title"></view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_switch">
+			<view class="weui-cell__bd">打开调研有礼功能</view>
+			<view class="weui-cell__ft">
+				<switch bindchange="exchangeOpenSwitch" value="1" name="is_open" wx:if="{{research_config.is_open == '1'}}" checked />
+				<switch bindchange="exchangeOpenSwitch" value="1" name="is_open" wx:else />
+			</view>
+		</view>
+	</view>
+
+	<view style="display:{{research_display}}">
+		<view class="weui-cells__title"></view>
+		<view class="weui-cells weui-cells_after-title">
+			<view class="weui-cell weui-cell_input">
+				<view class="weui-cell__hd">
+					<view class="weui-label">问卷表单ID</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" placeholder="" type="text" name="formid" value="{{research_config.formid}}" />
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_select">
+				<view class="weui-cell__hd weui-cell__hd_in-select-after">
+					<view class="weui-label">奖励方式</view>
+				</view>
+				<view class="weui-cell__bd">
+					<picker bindchange="bindCampaignChange" value="{{campaigns[campaignIndex].type}}" range="{{campaigns}}" range-key="title" name="award_type">
+						<view class="weui-select weui-select_in-select-after">{{campaigns[campaignIndex].title}}</view>
+					</picker>
+				</view>
+			</view>
+		</view>
+
+		<block wx:if="{{'point' == campaignType}}">
+			<view class="weui-cells__title"></view>
+			<view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">奖励积分数量</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写数字" type="number" name="award_value" value="{{research_config.award_value}}" />
+          </view>
+        </view>
+			</view>
+		</block>
+
+		<block wx:if="{{'coupon' == campaignType}}">
+			<view class="weui-cells__title"></view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_select">
+					<view class="weui-cell__hd weui-cell__hd_in-select-after">
+						<view class="weui-label">奖励优惠券</view>
+					</view>
+					<view class="weui-cell__bd">
+						<picker bindchange="bindCouponChange" value="{{coupons[couponIndex].id}}" range="{{coupons}}" range-key="name" name="award_value">
+							<view class="weui-select weui-select_in-select-after">{{award_coupon_name}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+
+	<view class="weui-btn-area">
+		<button class="weui-btn" type="primary" form-type="submit">确定</button>
+    <button class="weui-btn" type="warn" bindtap="getqrcode">导出二维码</button>
+		<button class="weui-btn" type="default" bindtap="back">返回</button>
+	</view>
+</form>

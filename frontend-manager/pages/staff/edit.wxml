@@ -1,0 +1,35 @@
+<!--pages/staff/edit.wxml-->
+<form  bindsubmit="submit">
+<input type="number" name="id" value="{{staffData.id}}" style="display:none" />
+<view class="weui-cells__title">修改店员资料</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">姓名</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请填写姓名" type="text" value="{{staffData.name}}" name="name" />
+    </view>
+  </view>
+    <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">手机号</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请填写手机" type="text" value="{{staffData.mobile}}" name="mobile" />
+    </view>
+  </view>
+</view>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" formType="submit" disabled='{{disabled}}'>保存</button>
+  <block wx:if="{{'1' == staffData.status}}">
+  <button class="weui-btn" type="warn" data-id="{{staffData.id}}" bindtap="disable" disabled='{{disabled}}'>禁止使用</button>
+  </block>
+  <block wx:else>
+  <button class="weui-btn" type="warn" data-id="{{staffData.id}}" bindtap="enable" disabled='{{disabled}}'>恢复使用</button>
+  </block>
+  <button class="weui-btn" type="warn" data-id="{{staffData.id}}" bindtap="delete" disabled='{{disabled}}'>删除账户</button>
+  <button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>
+</form>

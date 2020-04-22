@@ -1,0 +1,35 @@
+<!--pages/vip/groupon_detail.wxml-->
+
+<view class='content'>
+  <view class='consume_item'>
+    <view class='trade'>
+      {{groupon.title}}
+    </view>
+    <view class='line'></view>
+    <view class='detail'>
+      <view class='image-box'>
+        <image src="{{groupon.image_url}}" style="width:100%;height:80px"></image>
+      </view>
+      <view class='bill-box'>
+        <view class="buy-total">抢购{{groupon.buy_total}}份</view>
+        <view class="bill">支付￥{{groupon.total_fee/100}}元</view>
+        <view class="together-share" wx:if="{{groupon.is_together == '1'}}">
+          <button class="share-btn" open-type="share" type="primary" size="mini" bindtap="createShare" data-index="{{index}}" wx:if="{{'open' == groupon.together_status}}">邀请好友拼单</button>
+          <text wx:elif="{{'expire' == groupon.together_status}}" class="bill">拼团已过期</text>
+          <text wx:else class="bill">已成团</text>
+        </view>
+      </view>
+    </view>
+    <view class='line'></view>
+    <view class='detail'>
+      <view class='title'>商户订单号</view>
+      <view class='bill'>{{groupon.out_trade_no}}</view>
+      <view class='title'>购买时间</view>
+      <view class='bill'>{{groupon.created_at}}</view>
+      <block wx:if="{{'0' != groupon.refund_fee}}">
+        <view class='title'>退款</view>
+        <view class='bill'>￥{{groupon.refund_fee/100}}</view>
+      </block>
+    </view>
+  </view>
+</view>

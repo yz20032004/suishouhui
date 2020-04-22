@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket演示程序</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        #message {
+            width: 100%;
+            min-height: 300px;
+            max-height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background: #f7f7f7;
+        }
+
+        .message-area {
+            padding: 10px;
+        }
+
+        .message-content {
+            padding: 6px 12px;
+            position: relative;
+            min-width: 36px;
+            max-width: 768px;
+            transition: background-color 2s linear;
+            min-height: 36px;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-row type="flex" class="row-bg" justify="center">
+        <el-col :span="12">
+            <el-row>
+                <h1>WebSocket演示程序</h1>
+            </el-row>
+            <el-row>
+                <div id="message">
+                    <el-row class="message-area" v-for="item in all_message" :key="item.hash">
+                        <el-row class="message-content">
+                            {{item.content}}
+                        </el-row>
+                    </el-row>
+                </div>
+            </el-row>
+            <!--消息发送部分-->
+            <el-row style="margin-top: 20px;">
+                <el-col :span="18">
+                    <el-input
+                            type="textarea"
+                            :rows="2"
+                            placeholder="请输入需要发送的内容"
+                            v-model="contentSend">
+                    </el-input>
+                </el-col>
+                <el-col :span="6">
+                    <el-button type="success" plain :disabled="contentSend.length === 0" style="margin-left: 10px;" @click="sendMessage">发送
+                    </el-button>
+                </el-col>
+            </el-row>
+            <!--消息发送部分-->
+        </el-col>
+    </el-row>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!--vue resource-->
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                visible: false,
+                /*由客户端生成*/
+                channel: '',
+                /*在线上时替换为post*/
+                post_method: 'post',
+                //post_method: 'jsonp',
+                /*线上环境*/
+                post_url_prefix: '',
+                //post_url_prefix: 'http://gequ.sinaapp.com',
+                all_message: [],
+                contentSend: '',
+            }
+        },
+        methods: {
+            sendMessage: function () {
+                if (!this.contentSend.length === 0) {
+                    this.$message({
+                        showClose: true,
+                        message: '请输入需要发送的内容',
+                        type: 'warning'
+                    });
+                }
+                var post_data = {};
+                post_data.channel = this.getChannel();
+                post_data.message = this.contentSend;
+                this.pushMessage('开始发送数据');
+                var url = this.post_url_prefix + '/send_message.php?spa=1';
+                if (this.post_method === 'jsonp') {
+                    // 将传递的参数放到URL中
+                    for (var k in post_data) {
+                        url += '&' + k + '=' + encodeURIComponent(post_data[k]);
+                    }
+                    // 不发送POST data
+                    post_data = {};
+                }
+                var _this = this;
+                this.$http[this.post_method](url, post_data, {
+                    headers: {},
+                    emulateJSON: true
+                }).then(function (response) {
+                    // get body data
+                    if (response.body.code != 0) {
+                        _this.$alert(response.body.message, '提示', {
+                            confirmButtonText: '确定'
+                        });
+                        return false;
+                    }
+                    _this.$message({
+                        showClose: true,
+                        message: '发送成功',
+                        type: 'success'
+                    });
+                    _this.contentSend = '';
+                }, function (response) {
+                    // error callback
+                });
+            },
+            toBottom: function () {
+                document.getElementById('message').scrollTo(0, 500000);
+            },
+            pushMessage: function (message) {
+                var data = [];
+                data.hash = Math.random().toString(36).substr(2);
+                data.content = message;
+                this.all_message.push(data);
+                var _this = this;
+                setTimeout(function () {
+                    _this.toBottom();
+                }, 1000);
+            },
+            getChannel: function () {
+                if (!this.channel) {
+                    //this.channel = Math.random().toString(36).substr(2);
+                    this.channel = 'be34b94379acc4e5';
+                }
+                return this.channel;
+            },
+            createChannel: function () {
+                var post_data = {};
+                post_data.channel = this.getChannel();
+                this.pushMessage('开始获取WebSocket连接信息');
+                var url = this.post_url_prefix + '/create_channel.php?spa=1';
+                if (this.post_method === 'jsonp') {
+                    // 将传递的参数放到URL中
+                    for (var k in post_data) {
+                        url += '&' + k + '=' + encodeURIComponent(post_data[k]);
+                    }
+                    // 不发送POST data
+                    post_data = {};
+                }
+                var _this = this;
+                this.$http[this.post_method](url, post_data, {
+                    headers: {},
+                    emulateJSON: true
+                }).then(function (response) {
+                    // get body data
+                    if (response.body.code != 0) {
+                        _this.$alert(response.body.message, '提示', {
+                            confirmButtonText: '确定'
+                        });
+                        return false;
+                    }
+                    _this.pushMessage('获取成功');
+                    _this.pushMessage('地址：' + response.body.data);
+                    _this.initWebSocket(response.body.data);
+                }, function (response) {
+                    // error callback
+                });
+            },
+            initWebSocket(ws_uri) {
+                this.pushMessage('开始连接WebSocket服务器');
+                this.websock = new WebSocket(ws_uri);
+                this.websock.onopen = this.WebSocketOpen;
+                this.websock.onmessage = this.WebSocketOnMessage;
+                this.websock.onclose = this.WebSocketClose;
+                this.websock.onerror = this.WebSocketError;
+            },
+            WebSocketOpen() {
+                console.log("WebSocket连接成功，等待接收消息");
+                this.pushMessage('WebSocket连接成功，等待接收消息');
+            },
+            WebSocketOnMessage(e) {
+                // e.data
+                console.log(e.data);
+                this.pushMessage(e.data);
+            },
+            WebSocketClose() {
+                this.$alert('WebSocket连接关闭', '提示', {
+                    confirmButtonText: '确定'
+                });
+                this.pushMessage('WebSocket连接关闭');
+            },
+            WebSocketError() {
+                this.$alert('WebSocket连接失败', '提示', {
+                    confirmButtonText: '确定'
+                });
+                this.pushMessage('WebSocket连接失败');
+            }
+        },
+        mounted: function () {
+            this.createChannel();
+        }
+    })
+</script>
+</html>

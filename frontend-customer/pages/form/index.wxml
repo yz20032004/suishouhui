@@ -1,0 +1,2 @@
+<!--pages/form/index.wxml-->
+<web-view src="{{form_url}}" wx:if="{{enter_form}}"></web-view>

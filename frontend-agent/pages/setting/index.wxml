@@ -1,0 +1,105 @@
+<!--pages/setting/index.wxml-->
+<view class="weui-cells weui-cells_after-title member-background">
+  <view class="weui-flex  weui-cell memberinfo-box">
+    <view style="width:20%">
+      <open-data type="userAvatarUrl" class="memberinfo-avatar"></open-data>
+    </view>
+    <view style="width:80%">
+      <view>
+        <view class="memberinfo-name">{{user.name}}</view>
+      </view>
+      <view class="clear"></view>
+      <view class='memberinfo-grade'>
+        等级:
+        <text wx:if="{{'pay' == user.agent_type}}">支付</text>
+        <text wx:else>会员营销</text>
+        <text wx:if="{{'1' == user.is_leader}}">团长</text>
+        <text wx:else>推手</text>
+      </view>
+    </view>
+  </view>
+  <view class="weui-flex account-box">
+    <view class="memberinfo" bindtap="openMerchant">
+      <view>
+        <text class="member-number">{{user.merchants}}</text>
+      </view>
+      <view>
+        <text class="member-tip">商户数</text>
+      </view>
+    </view>
+    <view class="memberinfo" bindtap="openCashout">
+      <view>
+        <text class="member-number">{{wait_cash_out}}</text>
+      </view>
+      <view>
+        <text class="member-tip">待提现</text>
+      </view>
+    </view>
+    <view class="memberinfo_coupon" bindtap="openCashout">
+      <view>
+        <text class="member-number">{{total_revenue}}</text>
+      </view>
+      <view>
+        <text class="member-tip">总收益</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="clear"></view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <navigator url="cash_out" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/bill.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>提现记录</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+  </navigator>
+  <navigator url="expander" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'1' == user.is_leader}}">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/member.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>我的团队</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+  </navigator>
+  <navigator url="merchant" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/shop.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>商户排名</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+  </navigator>
+  <navigator url="expand_qrcode" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'1' == user.is_leader}}">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/scan.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>我的拓展码</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+  </navigator>
+  <navigator url="doc" class="weui-cell weui-cell_access" hover-class="weui-cell_active" style="display:none">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/bean.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>返佣政策</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      <text class='beans'>查看</text></view>
+  </navigator>
+  <navigator url="#" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="openGuanjia">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/wxmember.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>随手惠管家</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      <text class='beans'>商户后台</text></view>
+  </navigator>
+  <navigator url="../marketing/campaigns" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{'pay' != user.agent_type}}">
+    <image style="width:20px;height:20px;margin-right:10px;" src="../../images/marketing1.png"></image>
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>营销大全</view>
+    </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      <text class='beans'>案例库</text></view>
+  </navigator>
+</view>

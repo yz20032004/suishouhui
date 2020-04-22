@@ -1,0 +1,91 @@
+<!--pages/mall/detail.wxml-->
+<view class="weui-cells__title">商品详情</view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell">
+		<view class="weui-cell__bd">商品名称</view>
+		<view class="weui-cell__ft">{{mallData.title}}</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">
+			<text>原价</text>
+		</view>
+		<view class="weui-cell__ft">{{mallData.amount}}元</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">
+			<text>售价</text>
+		</view>
+		<view class="weui-cell__ft">{{mallData.price}}元</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">
+			<text>库存</text>
+		</view>
+		<view class="weui-cell__ft">{{mallData.total_limit}}份</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">
+			<text>每人限购</text>
+		</view>
+		<view class="weui-cell__ft">
+			<text wx:if="{{'0' == mallData.single_limit}}">不限购</text>
+			<text wx:else>{{mallData.single_limit}}份</text>
+		</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">
+			<text>限购人群</text>
+		</view>
+		<view class="weui-cell__ft">
+			<text wx:if="{{'0' == mallData.is_member_limit}}">不限购</text>
+			<text wx:else>仅限会员购买</text>
+		</view>
+	</view>
+	<view class="weui-cell" wx:if="{{'1' == mallData.is_distribute}}">
+		<view class="weui-cell__bd">
+			<text>分销每单提成</text>
+		</view>
+		<view class="weui-cell__ft">{{mallData.distribute_bonus}}元</view>
+	</view>
+</view>
+
+<view class="weui-cells__title">销售情况</view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell" bindtap="open_sold_list">
+		<view class="weui-cell__bd">已售卖</view>
+		<view class="weui-cell__ft">{{mallData.sold}}份</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">收益</view>
+		<view class="weui-cell__ft">{{mallData.revenue}}元</view>
+	</view>
+	<block wx:if="{{'1' == mallData.is_distribute}}">
+		<view class="weui-cell">
+			<view class="weui-cell__bd">分销笔数</view>
+			<view class="weui-cell__ft">{{mallData.distribute_sold}}份</view>
+		</view>
+	</block>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell" bindtap="copydata">
+		<view class="weui-cell__bd">小程序路径</view>
+		<view class="weui-cell__ft">pages/mall/detail?id={{mallData.id}}</view>
+	</view>
+	<view class="weui-cell" bindtap="getqrcode">
+		<view class="weui-cell__bd">导出二维码</view>
+		<view class="weui-cell__ft">点此查看</view>
+	</view>
+	<view class="weui-cell">
+		<view class="weui-cell__bd">创建时间</view>
+		<view class="weui-cell__ft">{{mallData.created_at}}</view>
+	</view>
+</view>
+
+<view class="weui-btn-area">
+	<picker bindchange="bindOptionChange" value="{{doIndex}}" range="{{do_options}}">
+		<button class="weui-btn" type="primary">操作</button>
+	</picker>
+	<button class="weui-btn" type="default" bindtap="back">返回</button>
+</view>

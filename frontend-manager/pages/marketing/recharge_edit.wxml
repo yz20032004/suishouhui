@@ -1,0 +1,97 @@
+<!--pages/marketing/recharge_edit.wxml-->
+<form bindsubmit="submit">
+  <input type="number" style="display:none" name="id" value="{{rechargeData.id}}" />
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">充值金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="number" name="touch" value="{{rechargeData.touch}}" disabled />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">奖励规则</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindRuleChange" value="{{rules[ruleIndex].type}}" range="{{rules}}" range-key="title" name="award_type" disabled>
+          <view class="weui-select weui-select_in-select-after">{{rules[ruleIndex].title}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title"></view>
+  <view class="weui-cells weui-cells_after-title" style="display:{{money_constant_display}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">奖励金额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="number" name="amount" value="{{rechargeData.amount}}" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title" style="display:{{money_percent_display}}">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">奖励百分比</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请填写数字" type="number" name="percent" value="{{rechargeData.percent}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title" wx:if="{{award_coupons.length > 0}}">奖励优惠券</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{award_coupons.length > 0}}">
+    <block wx:for="{{award_coupons}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          {{item.coupon_name}}{{item.total}}张
+        </view>
+        <button class="mini-btn" type="warn" size="mini" bindtap='del_coupon' data-id='{{item.id}}'>删除</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="weui-cells__title" wx:if="{{award_coupons.length > 0}}">继续添加</view>
+  <view class="weui-cells weui-cells_after-title" style="display:{{coupon_display}}">
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">奖励优惠券</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCouponChange" value="{{coupons[couponIndex].id}}" range="{{coupons}}" range-key="name" name="coupon_id">
+          <view class="weui-select weui-select_in-select-after">{{coupons[couponIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">奖励几张</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCountChange" value="{{countIndex}}" range="{{counts}}" name="count_id">
+          <view class="weui-select weui-select_in-select-after">{{counts[countIndex]}}张</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+ <view class="weui-cells__title">储值说明</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" style="height: 3.5em" name="remark" value="{{rechargeData.remark}}" placeholder="选填" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit" wx:if="{{'coupon' == rechargeData.award_type}}">添加优惠券</button>
+    <button class="weui-btn" type="warn" data-id="{{rechargeData.id}}" bindtap="delete">删除</button>
+    <button class="weui-btn" type="primary" plain="ture" bindtap="back">返回</button>
+  </view>
+</form>

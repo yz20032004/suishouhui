@@ -1,0 +1,28 @@
+<!--pages/setting/merchant.wxml-->
+<block wx:if="{{merchantData.length > 0}}">
+  <view class="weui-cells__title">商户昨日交易排名</view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{merchantData}}">
+      <navigator url="../stat/merchant?mch_id={{item.mch_id}}" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+        <view style="width:20%">
+          <view style="width:20%">
+            <image class="memberinfo-avatar" src="/images/shop.png" background-size="cover"></image>
+          </view>
+        </view>
+        <view style="width:80%">
+          <view>
+            <text class="campaign-name">{{item.name}}</text>
+          </view>
+        </view>
+        <view class="weui-cell__f">
+          <text style="color:red;margin-left:10px" class="status">{{item.trade_amount}}元</text>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="no-merchant">
+    <text>暂无商户</text>
+  </view>
+</block>

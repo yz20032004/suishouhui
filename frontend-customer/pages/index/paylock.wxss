@@ -1,0 +1,60 @@
+/* pages/index/paylock.wxss */
+.shop-box{
+  margin-bottom: 20px;
+  width: 94%;
+  margin-left: 2%;
+  height: 60px;
+}
+.shop-avatar {
+  float: left;
+  vertical-align: middle;
+  padding-top: 5px;
+}
+.shop-name{
+  float: left;
+  color: black;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 60px;
+}
+.clear{
+  clear:both;
+}
+
+.lock-box {
+  width: 94%;
+  margin-left: 2%;
+}
+
+.lock-item {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+  height: 70px;
+}
+
+.lock-icon {
+  width: 20%;
+  float: left;
+  padding-left:1%;
+  padding-top: 10px;
+}
+
+.lock-title {
+  width:73%;
+  float:left;
+}
+
+.lock-to{
+  width:5%;
+  float: right;
+  padding-top:25px;
+  padding-right: 1%;
+}
+.title{
+  font-size: 18px;
+  padding-top:25px; 
+  line-height: 70px;
+}

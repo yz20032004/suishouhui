@@ -1,0 +1,59 @@
+/* pages/index/cashpay.wxss */
+.edit_cash {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  width: 90%;
+  margin-left: 2%;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.edit_cash p {
+  font-size: 14px;
+  color: #8d8d8f;
+}
+
+.shuru {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.shuru span {
+  position: absolute;
+  top: 5px;
+  font-size: 25px;
+}
+
+.submit {
+  display: block;
+  margin: 20px auto 0;
+  width: 90%;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  background: #80d983;
+  border: 1px solid #47d14c;
+  border-radius: 3px;
+}
+
+.symbol {
+  float: left;
+  font-size:40px;
+  width:20%;
+}
+.money-input {
+  font-size: 40px;
+  width:80%;
+}
+.button {
+  width:90%;
+}
+input {
+  min-height:4rem;
+}
+shop {
+  font-size: 10px;
+  color: black;
+}

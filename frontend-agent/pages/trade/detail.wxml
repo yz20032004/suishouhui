@@ -1,0 +1,100 @@
+<!--pages/trade/detail.wxml-->
+<view class="weui-cells  weui-cells_after-title">
+  <view style="text-align:center">
+    <text class="member-name" wx:if="{{tradeData.nickname}}">
+      {{tradeData.nickname}} {{tradeData.mobile}}
+    </text>
+  </view>
+  <view style="text-align:center">
+    <text style="font-size:30px;text-align:center">{{tradeData.trade}}</text>
+    <text style="font-size:15px">元</text>
+    <image src="/images/{{pay_image}}.png" style="width:30px;height:30px;margin-left:10px;"></image>
+  </view>
+  <view style="text-align:center;margin-bottom:20px">
+    <text style="font-size:15px;">交易成功</text>
+  </view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">时间</view>
+    <view class="weui-cell__ft">{{tradeData.created_at}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">流水号</view>
+    <view class="weui-cell__ft">{{tradeData.out_trade_no}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">操作员</view>
+    <view class="weui-cell__ft">{{tradeData.created_by_uname}}</view>
+  </view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">订单金额</view>
+    <view class="weui-cell__ft">{{tradeData.trade}}元</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">实付金额</view>
+    <view class="weui-cell__ft">{{tradeData.cash_fee/100}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{'0' != tradeData.refund_fee}}">
+    <view class="weui-cell__bd">退款金额</view>
+    <view class="weui-cell__ft"><text class="red">{{tradeData.refund_fee/100}}元</text></view>
+  </view>
+  <view class="weui-cell" wx:if="{{'0' != tradeData.coupon_fee}}">
+    <view class="weui-cell__bd">使用微信支付券</view>
+    <view class="weui-cell__ft">{{tradeData.coupon_fee/100}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.use_point > 0 }}">
+    <view class="weui-cell__bd">使用积分</view>
+    <view class="weui-cell__ft">{{tradeData.use_point}}个</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.point_amount > 0 }}">
+    <view class="weui-cell__bd">积分抵扣</view>
+    <view class="weui-cell__ft">{{tradeData.point_amount}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{'0' != tradeData.use_coupon_id}}">
+    <view class="weui-cell__bd">使用会员优惠券</view>
+    <view class="weui-cell__ft">{{tradeData.use_coupon_name}}</view>
+  </view>
+  <view class="weui-cell" wx:if="{{'0' != tradeData.use_coupon_id}}">
+    <view class="weui-cell__bd">优惠券抵扣</view>
+    <view class="weui-cell__ft">{{tradeData.use_coupon_amount}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.reduce >0 }}">
+    <view class="weui-cell__bd">立减活动抵扣</view>
+    <view class="weui-cell__ft">{{tradeData.reduce}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.use_discount >0 }}">
+    <view class="weui-cell__bd">买单折扣抵扣</view>
+    <view class="weui-cell__ft">{{tradeData.use_discount}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.use_recharge >0 }}">
+    <view class="weui-cell__bd">使用储值余额</view>
+    <view class="weui-cell__ft">{{tradeData.use_recharge}}元</view>
+  </view>
+  <view class="weui-cell" wx:if="{{tradeData.member_discount >0 }}">
+    <view class="weui-cell__bd">会员折扣</view>
+    <view class="weui-cell__ft">{{tradeData.member_discount}}元</view>
+  </view>
+    <view class="weui-cell">
+    <view class="weui-cell__bd">总计优惠</view>
+    <view class="weui-cell__ft">{{tradeData.save}}元</view>
+  </view>
+</view>
+
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">奖励积分</view>
+    <view class="weui-cell__ft">{{tradeData.get_point}}个</view>
+  </view>
+</view>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" plain="true" bindtap="back">返回</button>
+</view>

@@ -1,0 +1,5 @@
+/* pages/marketing/shops.wxss */
+.create-time {
+    font-size: 10px;
+    color: #bfbfbf;
+}
