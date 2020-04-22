@@ -37,15 +37,15 @@ PHP+MYSQL+REDIS
 
 #### 程序架构
 suishouhui
-├── frontend-customer --顾客端小程序
-├── frontend-manager  --商户端小程序
-├── frontend-agent    --代理商端小程序
-├── frontend-customer-template  --顾客端小程序模板（供微信开放平台使用，生成商户主体的独立小程序）
-├── backend           --服务端脚本，供小程序调用
-├── backend-websocket --新浪云websocket程序
-├── backend-open      --微信开放平台事件回调
-├── crontab-and-jobs  --服务端定时任务和守护进程
-├── sql-data          --数据结构和测试数据
+##### ├── frontend-customer --顾客端小程序
+##### ├── frontend-manager  --商户端小程序
+##### ├── frontend-agent    --代理商端小程序
+##### ├── frontend-customer-template  --顾客端小程序模板（供微信开放平台使用，生成商户主体的独立小程序）
+##### ├── backend           --服务端脚本，供小程序调用
+##### ├── backend-websocket --新浪云websocket程序
+##### ├── backend-open      --微信开放平台事件回调
+##### ├── crontab-and-jobs  --服务端定时任务和守护进程
+##### ├── sql-data          --数据结构和测试数据
 
 #### 安装教程
 
