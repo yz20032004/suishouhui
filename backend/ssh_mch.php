@@ -636,7 +636,7 @@
 
       $sql = "UPDATE user_mch_submit SET mch_type = 'getihu' WHERE sub_mch_id = $newMchId";
       $db->query($sql);
-      $sql = "UPDATE mchs SET mch_tpe = 'getihu' WHERE mch_id = $newMchId";
+      $sql = "UPDATE mchs SET mch_type = 'getihu' WHERE mch_id = $newMchId";
       $db->query($sql);
 
       $sql = "SELECT appid FROM mchs WHERE mch_id = $newMchId";

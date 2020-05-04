@@ -44,6 +44,7 @@ suishouhui
 ##### ├── backend           --服务端脚本，供小程序调用
 ##### ├── backend-websocket --新浪云websocket程序
 ##### ├── backend-open      --微信开放平台事件回调
+##### ├── backend-template  --供微信开放平台生成的小程序调用的后台服务器程序
 ##### ├── crontab-and-jobs  --服务端定时任务和守护进程
 ##### ├── sql-data          --数据结构和测试数据
 
